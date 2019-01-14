@@ -73,7 +73,7 @@
 %\uczelnia{POLITECHNIKA WARSZAWSKA}
 %\wydzial{WYDZIAŁ ELEKTRYCZNY}
 \instytut{INSTYTUT ELEKTROENERGETYKI}
- \zaklad{ZAKŁAD SIECI I SYSTEMÓW ELEKTROENERGETYCZNYCH}
+\zaklad{ZAKŁAD SIECI I SYSTEMÓW ELEKTROENERGETYCZNYCH}
 %\kierunekstudiow{INFORMATYKA}
 
 % domyslnie praca jest inzynierska, ale po odkomentowaniu ponizszej linii zrobi sie magisterska
@@ -97,12 +97,35 @@
 % Wstęp
 %-----------------
 \chapter{Wstęp}
-Tu trzeba zacząć wstawiać własną treść i oczywiście usunąć tę, która jest użyta w przykładzie...
+Celem niniejszej pracy jest przeniesienie gry Turbo Slam Dunk Unleashed do środowiska Unity oraz dodanie do niej modułu online multiplayer. Ponadto, podjęte zostały kroki w celu ułatwienia przygotowania projektu do uruchomienia na nowych platformach. W tym celu gra musiała zostać napisana od zera w języku C\#. Pierwotnie gra została stworzona przez autora niniejszej pracy w środowisku Game Maker.
+
 \section{Gry Komputerowe}
+Gry Komputerowe to zagadnienie które powstało ... 
+Takie gry technicznie nie różnią się bardzo od innych programów komputerowych. Kluczową różnicą jest cel uruchomienia. Ich głownym celem jest dostarczenie użytkownikowi rozrwyke. W dzsiejszych czasach są już niemal kultowe, blah blah zdecydwoana większosć osób młodych miała z nimi stycznosc, może być porównane do innych dziedzin kultury. Ponadto branża gier komputerowych nie rózni się bardzo od branży filmowej. Powoli zaczyna doganiać ich rozmiar w niektórych krajach. W Polsce z roku na rok branża rośnie i można poweidzieć że polskie gry są jednym z lepszych towarów eksportowych. Zdecydowanie mają przed sobą ciekawą przyszłośc. Dlatego też gra komputerowa jest głównym tematem tej pracy. 
 
-\section{Środowisko Unity}
+\section{Motywacja}
+Pierwotnie Gra Turbo Slam Dunk Unleashed została wykonana w środowisku Game Maker. Dawało to wystarczające możliwości jak na prostotę gry, jednak narzucało również dużo ograniczeń oraz komplikacji. Game Maker jest prostym narzędziem do tworzenia gier dwuwymiarowych.
 
-\section{Gra “Turbo Slam Dunk Unleashed”}
+\section{Założenia}
+
+Przeniesienie gry w wersji podstawowej do środowiska Unity:
+2 graczy na 1 komputerze
+Rzucanie i zabieranie piłki, faule
+Liczenie punktów
+Wybór postaci, piłki oraz planszy
+Dodanie trybu online multiplayer
+Przygotowanie gry do przeniesienia na nowe platformy (Linux, Android, Switch?)
+
+
+%-----------------
+% Opis Środowiska
+%-----------------
+\chapter{Opis Środowiska}
+
+%-----------------
+% Opis gry “Turbo Slam Dunk Unleashed”
+%-----------------
+\chapter{Opis gry “Turbo Slam Dunk Unleashed”}
 
 %-----------------
 % Implementacja
@@ -555,73 +578,8 @@ jądro oraz \tech{Shushi}, stałe numery IP oraz porty TCP, losowe dane dla
 
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Bibliografia}
-\bibitem{Stevens}{W. R. Stevens, G. R. Wright, ,,Biblia TCP/IP tom 1'', RM, 
-1998.}
-\bibitem{USDoD}{U. S. Department Of Defense, ,,Trusted Computer System 
-Evaluation Criteria'', 1985.}
-\bibitem{FirstCC}{B. W. Lampson, ,,A note on the confinment problem'', w ,,Proc. 
-of the Communications of the ACM'', październik 1973, numer 16:10,\newline 
-strony 613-615.} 
-\bibitem{PrisonersProblem}{G. J. Simmons, ,,The prisoners' problem and the 
-subliminal channel'', w ,,Advances in Cryptology: Proceedings of Crypto 83 (D. 
-Chaum, ed.)'', strony 51-67, Plenum Press, 1984.}
-\bibitem{Kerckhoff}{ A. Kerckhoffs, ,,La Cryptographie Militaire (Military 
-Cryptography)'', J. Sciences Militaires, luty 1883.} 
-\bibitem{Hanssen}{A. Havill, ,,The Spy Who Stayed Out In The Cold: The Secret 
-Life of Double Agent Robert Hanssen'', St. Martin's Press, 2001.}
-\bibitem{schematKomunikacjiPrzypis}{C.Cachin, ,,An Information-Theoretic Model 
-for Steganography'', w ,,Information and Computation'', 4 marzec 2004.}
-\bibitem{SweetyPresentation}{S.Chauhan, ,,Embedding Covert Channels into 
-TCP/IP'', 7th Information Hiding Workshop, czerwiec 2005.}
-\bibitem{RFC793}{Information Sciences Institute, University of Southern 
-California, ,,Transmission Control Protocol'', RFC793, wrzesień 1981.}
-\bibitem{RFC1323}{V. Jacobson, R. Braden, D. Borman, ,,TCP extensions for high 
-performance'', RFC1323, maj 1992.}
-\bibitem{RFC1948}{S. Bellovin, ,,Defending against sequence number attacks.'', 
-RFC1948, IETF, 1996.}
-\bibitem{RFC2960}{R. Stewart, Q. Xie, K. Morneault, C. Sharp, H. Schwarzbauer, 
-T. Taylor, I. Rytina, M. Kalla, L. Zhang, V. Paxson, „Stream Control 
-Transmission Protocol”, RFC2960, Network Working Group, październik 2000.}
-\bibitem{Rowland}{C. H. Rowland, ,,Covert Channels in the TCP/IP Protocol 
-Suite'', First Monday, 1997. \newline 
-\url{http://www.firstmonday.dk/issues/issue2\_5/rowland/}}
-\bibitem{LOKI}{Alhambra, daemon9, ,,Project Loki: ICMP Tunneling'', Phrack 
-Magazine, Issue 49. \url{http://phrack.org}}
-\bibitem{LOKI2}{daemon9, ,,LOKI2'', Phrack Magazine, Issue 51. 
-\url{http://phrack.org}}
-\bibitem{RWWWS}{van Hauser, Reverse WWW Shell,  THC, The Hacker's 
-Choice.\newline \url{www.thc.org}}
-\bibitem{CCdetectionSVM}{T. Sohn, J. Seo, J. Moon, ,,A Study on the Covert 
-Channel Detection of TCP/IP Header Using Support Vector Machine'', Volume 2836 
-of Lecture Notes in Computer Science., Springer-Verlag (2003) 313-324.}
-\bibitem{LOKIdetectionSVM}{T. Sohn, T. Noh, J. Moon, ,,Support Vector Machine 
-Based ICMP Covert Channel Attack Detection'', Volume 2836 of Lecture Notes in 
-Computer Science., Springer-Verlag, 2003, strony 461-464.}
-\bibitem{devcc}{J. Giffin, R. Greenstadt, P. Litwack, R. Tibbetts, ,,Covert 
-messaging in TCP'', w Dingledine, Privacy Enhancing Technologies. Volume 2482 of 
-Lecture Notes in Computer Science., Springer-Verlag (2002) 194-208. 
-\url{http://www.mit.edu/\textasciitilde gif/covert-channel/}}
-\bibitem{ActiveWardens}{G. Fisk, M. Fisk, Ch. Papadopoulos, J. Neil, 
-,,Eliminating Steganography in Internet Traffic with Active Wardens'', 5th 
-International Workshop on Information Hiding, październik 2002.} 
-\bibitem{JR}{J. Rutkowska, ,,The Implementation of Passive Covert Channels in 
-Linux Kernel'', Chaos Communication Congress, grudzień 2004.}
-\bibitem{LinuxNetwork}{Ch. Benvenuti, ,,Understanding Linux Network Internals'', 
-O'Reilly,\newline grudzień 2005.}
-\bibitem{p55}{kossak, ,,Building Into The Linux Network Layer'', Phrack 
-Magazine, Issue 55. \url{http://phrack.org}}
-\bibitem{ML}{Steven J.Murdoch and Stephen Lewis, ,,Embedding Covert Channels 
-into TCP/IP'', University of Cambridge, Computer Laboratory,\newline 29 lipec 
-2005.}
-\bibitem{NvsNN}{Eugene Tumoian, Maxim Anikeev, ,,Detecting NUSHU Covert Channels 
-Using Neural Networks'', Taganrog State University of Radio Engineering, 
-Department of Information Security.}
-\bibitem{p58}{mayhem, ,,IA32 Advanced Function Hooking'', Phrack 
-Magazine,\newline Issue 58. \url{http://phrack.org}}
-\bibitem{p61}{bioforge, ,,Hacking the Linux Kernel Network Stack'', Phrack 
-Magazine, Issue 61. \url{http://phrack.org}}
-\bibitem{kernelMEM}{Robert Love, ,,Kernel Korner - Allocating Memory in the 
-Kernel'',\newline 1 grudzień 2003.}
+\bibitem{TSDUGameJolt}{Gra Turbo Slam Dunk Unleashed w serwise GameJolt. https://gamejolt.com/games/turbo-slam-dunk-unleashed/123485 [dostęp 14 stycznia 2019]}
+\bibitem{FilmDokumentGry1} {Ten dokument od Canal plus o twórców światów}
 
 \end{thebibliography}
 
