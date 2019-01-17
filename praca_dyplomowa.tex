@@ -104,17 +104,38 @@ Gry Komputerowe to zagadnienie które powstało ...
 Takie gry technicznie nie różnią się bardzo od innych programów komputerowych. Kluczową różnicą jest cel uruchomienia. Ich głownym celem jest dostarczenie użytkownikowi rozrwyke. W dzsiejszych czasach są już niemal kultowe, blah blah zdecydwoana większosć osób młodych miała z nimi stycznosc, może być porównane do innych dziedzin kultury. Ponadto branża gier komputerowych nie rózni się bardzo od branży filmowej. Powoli zaczyna doganiać ich rozmiar w niektórych krajach. W Polsce z roku na rok branża rośnie i można poweidzieć że polskie gry są jednym z lepszych towarów eksportowych. Zdecydowanie mają przed sobą ciekawą przyszłośc. Dlatego też gra komputerowa jest głównym tematem tej pracy. 
 
 \section{Motywacja}
-Pierwotnie Gra Turbo Slam Dunk Unleashed została wykonana w środowisku Game Maker. Dawało to wystarczające możliwości jak na prostotę gry, jednak narzucało również dużo ograniczeń oraz komplikacji. Game Maker jest prostym narzędziem do tworzenia gier dwuwymiarowych.
+Pierwotnie Gra Turbo Slam Dunk Unleashed została wykonana w środowisku Game Maker Studio. Dawało to wystarczające możliwości jak na prostotę gry, jednak narzucało również dużo ograniczeń oraz komplikacji. Game Maker jest prostym narzędziem do tworzenia gier dwuwymiarowych. Struktura projektu którą narzuca te środowisko sprawia że projekt strasznie trudno się skaluje. Korzysta on z języka skryptowego Game Maker Language (GML) który składa się na skrypty w grze. Z tego powodu pisanie warstwy sieciowej wprowadza chaos w projekcie. Ponadto wsparcie dla konsol, mimo swojego istnienia, jest znacznie ograniczone w stosunku do tego w Unity. Środowisko Unity pozwala pokonać wszystkie te problemy, dodając przy tym projektowi nowego potencjału dla rozwiązywania niektórych, zarówno algorytmicznych jak i designowych problemów w grze. Wsparcie samych twórców silnika jest silnik jest stabilniejsze w przypadku Unity z prostego powodu - komercyjnych gier tworzonych za jego pomocą jest znacznie więcej. Najważniejszym powodem przepisania gry nie była sama technologia, co postęp doświadczenia twórcy. Finalna wersja gry powstała w 2016 roku. Po 3 latach umiejętności twórcy znacznie się poprawiły i projekt może zdecydowanie na tym skorzystać. 
 
 \section{Założenia}
+Założenia, które musi spełniać gra żeby uznać ją za kompletną:
 
-Przeniesienie gry w wersji podstawowej do środowiska Unity:
-2 graczy na 1 komputerze
-Rzucanie i zabieranie piłki, faule
-Liczenie punktów
-Wybór postaci, piłki oraz planszy
-Dodanie trybu online multiplayer
-Przygotowanie gry do przeniesienia na nowe platformy (Linux, Android, Switch?)
+\begin{itemize}
+    \item Przeniesienie gry w wersji podstawowej do środowiska Unity
+    \begin{itemize}
+        \item Mecz 2 graczy na 1 komputerze
+        \item Rzucanie i zabieranie piłki, faule
+        \item Liczenie punktów, stan meczu
+        \item Wybór postaci, piłki, planszy oraz czasu meczu
+    \end{itemize}
+    
+    \item Dodanie trybu online multiplayer
+    \begin{itemize}
+        \item Mecz 2 graczy na 2 komputerach przez sieć
+        \item Synchronizacja pozycji graczy oraz piłki
+        \item Synchronizacja stanu meczu - punkty, faule, czas i inne
+        \item Synchronizacja wyboru ustawień meczu - wygląd graczy, piłki, mapa oraz czas meczu
+        \item Możliwość dołączenia do losowego gracza lub gry ze znajomym
+        \item obsługa błędów związana z problemami z połączeniem.
+    \end{itemize}
+    
+    \item Przygotowanie gry do przeniesienia na nowe platformy
+    \begin{itemize}
+        \item Przygotowanie warstwy abstrakcji inputu
+        \item Optymalizacja logiki i warstwy sieciowej
+        \item Dunno
+    \end{itemize}
+\end{itemize}
+
 
 
 %-----------------
@@ -122,15 +143,88 @@ Przygotowanie gry do przeniesienia na nowe platformy (Linux, Android, Switch?)
 %-----------------
 \chapter{Opis Środowiska}
 
+\section{Unity}
+
+\section{Język C\#}
+
 %-----------------
 % Opis gry “Turbo Slam Dunk Unleashed”
 %-----------------
 \chapter{Opis gry “Turbo Slam Dunk Unleashed”}
 
+\section{Historia}
+
+Proces tworzenia gry rozpoczął się w 2015 roku, a jej pełna wersja została udostępniona w serwisie Gamejolt.com 3 czerwca 2016 roku. Na początku był to projekt hobbystyczny, który potem zamienił się w projekt kołowy i był tworzony w ramach Koła Naukowego Twórców Gier "Polygon". Finalna wersja została zaprezentowana na jednym z pokazów projektów kołowych.
+\begin{figure}[!htbp]
+	\begin{center}
+\centering
+\includegraphics[scale=0.25]{\ImgPath/rys/gamejolt_page.png}
+\end{center}
+	\caption{Strona główna gry w serwise Gamejolt.com}
+	\label{gamejolt_page}
+\end{figure}
+
+\section{Ogólny opis gry}
+Głównym elementem rozgrywki są mecze koszykówki miedzy dwoma graczami rywalizującymi na jednym komputerze. Gracze używają jednej klawiatury lub padów żeby poruszać swoimi postaciami w świecie gry. Istnieje jedna piłka, której wrzucenie do kosza przeciwnika powoduje zdobycie punktu. W grze istnieją również faule. Faul to sytuacja gdy jeden gracz uderzy drugiego żeby zabrać mu piłkę  w które gracz wyskoczył z piłką i jej nie rzucił - tak jak w prawdziwej koszykówce. Faule są liczone i odejmowane od zdobytych punktów pod koniec meczu. Mecz trwa określony czas, domyślenie 3 minuty i po tym czasie liczone są punkty i wyświetlany jest werdykt meczu.
+
+\section{Opis elementów gry}
+
+Gra jest bardzo prosta i składa się z kilku podstawowych elementów.
+Poniżej znajduje się obrazek pokazujacy graficzne reprezantacje wymienionych elementów.
+\begin{enumerate}
+    \item Plansza - Świat gry w którym poruszają się gracze, głównie są to elementy wizualne
+    \item Postacie graczy - W grze istnieją 2 instancje. Jest ona sterowana przez człowiek poprzez zestaw wejść. Może chodzić w lewo lub w prawo, skakać, rzucać piłkę oraz uderzać. Dwie ostatnie akcje możliwe są zarówno podczas stania jak i w locie. Skok służy do zwiększenia zasięgu rzutu lub po prostu lepszego do niego ustawienia. Obrót gracza jest niemożliwy w powietrzu, pozwala to na dokładniejsze dostosowanie swojej pozycji do rzutu. Rzut piłki służy głownie do umiejscowienia jej w obręczy kosza. Po rozpoczęciu przyciskania klawisza odpowiedzialnego za rzut, gracz traci możliwość chodzenia i jest w trakcie rzutu. Podczas tego czasu pokazuje się wskaźnik siły rzutu który oscyluje między minimalną i maksymalna siłą rzutu. Po puszczeniu przycisku piłka jest rzucana zgodnie z siłą która była wskazana w tym momencie. Uderzanie służy do zabierania piłki drugiemu graczowi. Po przyciśnięciu klawisza uderzenia rozpoczyna się animacja uderzenia i jeżeli trafiliśmy ręką w punkt w którym znajduje się piłka piłka jest wybijana drugiem graczowi. W trakcie trwania animacji, możliwość chodzenia jest zablokowana.
+    \item Piłka - Główny element, służy do zdobywania punktów przez graczów. Jej fizyka jest symulowana w 2 wymiarach, przez co uzyskujemy bardzo ciekawe efekty jej wyrzutu. Jeżeli znajdzie się w obręczy kosza, naliczane są 2 punkty graczowi atakującemu ten kosz. Jeżeli piłka została wyrzucona z odpowiednio dużej odległości, trafienie daje dodatkowy punkt. Jeżeli piłka wyleci poza boisko to jej pozycja resetuje się do środka planszy, a gracze pojawiają się na swoich początkowych pozycjach.
+    \item Kosze -  W grze istnieją 2 instancje. Trafienie do jednego z nich dodaje punkty. Ich wygląd różni się zależnie od planszy, ale sama funkcjonalność pozostaje niezmienna.
+    \item Tablica Wyników - Pokazuje aktualny stan meczu - pozostały czas, ilość punktów oraz ilość fauli każdego z graczy. na środku tablicy znajduje się grafika piłki, której kolor zmiana się zależnie od wyniku meczu.
+\end{enumerate}
+
+\begin{figure}[!htbp]
+	\begin{center}
+\centering
+\includegraphics[scale=0.7]{\ImgPath/rys/game_elements.png}
+\end{center}
+	\caption{Elementy gry na zrzucie ekranu z aplikacji}
+	\label{game_elements}
+\end{figure}
+
+\section{Inne funkcjonalności}
+Wyżej wymienione elementy stanowią podstawę gry. Teoretycznie wystarczą one do przeprowadzenia pełnej rozgrywki jednak, nie wydaje się ona zbyt ciekawa. Gra posiada wiele funkcjonalności które ułatwiają rozgrywkę, zwiększają jej komfort, bądź też jej odczucie przez gracza:
+\begin{itemize}
+    \item Ekran ustawień - pozwala na ustawienie klawiszy które odpowiedzialne są za konkretne akcje w grze, oraz ustawienie poziomu głośności dźwięków. Ustawienia te są zapisywane w pliku .ini przez co po restarcie gry nie trzeba ich od nowa ustawiać. 
+    \item Ekran ustawień meczu - pozwala na zmianę ustawień pojedynczego meczu. Zmienione może zostać:
+    \begin{itemize}
+        \item Czas meczu
+        \item Wygląd postaci każdego z graczy
+        \item Wygląd piłki
+        \item Plansza
+    \end{itemize}
+    \item Dźwięki - zwiększają immersję i stanowią dodatkową informacje zwrotną z gry. W grze można usłyszeć dźwięki tła z plansz, uderzeń piłki o różne powierzchnie, gwizdka sygnalizujące faul, oraz dźwięki wyboru przycisku w menu.
+    \item Efekty cząsteczkowe - Małe dodatki graficzne które sprawiają że gra wygląda ciekawiej. Można do nich zaliczyć efekt sypiącego się piasku gdy postać rusza. 
+    \item Efekty specjalne - Głównie lekkie trzęsienie kamerą przy uderzeniach piłki o kosz. Stanowią dodatkową informacje zwrotną z gry.
+    \item Dynamiczna kamera - Kamera która zawsze pokazuje w kadrze piłkę lub gracza z piłką. Gracz z piłką nie jest na środku, ponieważ kamera pokazuje zdecydowanie więcej strony w którą jest aktualnie zwrócony, tak żeby można było swobodnie rzucać.
+    \item Obsługa padów - Gracze mogą nie chcieć używać klawiatury do gry z wielu powodów, dlatego też gra w pełni wspiera obsługiwanie jej tzw. padem czyli specjalnym kontrolerem stworzonym właśnie do grania w gry. Dzięki temu każdy gracz może wybrać swój preferowany sposób obsługi i nie musi dzielić klawiatury z przeciwnikiem.
+    \item Osiągnięcia - Strona Gamejolt.com posiada system osiągnięć. Każdy użytkownik może je odblokować jeżeli zostały one zaimplementowane przez developera. W grze istnieją 3 osiągnięcia. Osiągnięcia są często ciekawym dodatkiem do gry i przedłużają czas jaki można spędzić                 nad grą.
+    \item Znaczniki pozycji - Ponieważ postacie graczy nie zawsze są w kadrze, gracze nie posiadają informacji o swojej pozycji. Dzięki prostym strzałkom w kolorze gracza ta informacja jest zachowana. Ponadto, ponieważ możliwa jest zmiana wyglądu kontrolowanej postaci, a nawet możliwy jest wybór takiego samego wyglądu dla obu graczy, nad ich głowami widnieją znaczniki z numerem gracza.
+\end{itemize}
+
+
+\begin{figure}[!htbp]
+	\begin{center}
+\centering
+\includegraphics[scale=0.5]{\ImgPath/rys/match_setup_old.png}
+\end{center}
+	\caption{Ekran ustawień meczu}
+	\label{match_setup_old}
+\end{figure}
+
+
 %-----------------
 % Implementacja
 %-----------------
-\chapter{Implementacja}
+\chapter{Implementacja nowej wersji gry}
+
+\section{Zmiany w stosunku do oryginalnej wersji gry}
 
 \section{Implementacja gry z wykorzystaniem środowiska Unity}
 
@@ -143,6 +237,8 @@ Przygotowanie gry do przeniesienia na nowe platformy (Linux, Android, Switch?)
 %-----------------
 \chapter{Testowanie}
 
+
+Ważne, pameitaj że w poprzednim roku na techniki multimedialne robiłeś samasymulacje piłki - były to ponieka testy.
 \section{Przetestowanie opracowanej gry komputerowe}
 
 \iffalse
