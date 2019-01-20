@@ -100,19 +100,21 @@
 Celem niniejszej pracy jest przeniesienie gry Turbo Slam Dunk Unleashed do środowiska Unity oraz dodanie do niej modułu online multiplayer. Ponadto, podjęte zostały kroki w celu ułatwienia przygotowania projektu do uruchomienia na nowych platformach. W tym celu gra musiała zostać napisana od zera w języku C\#. Pierwotnie gra została stworzona przez autora niniejszej pracy w środowisku Game Maker.
 
 \section{Gry Komputerowe}
-Gry Komputerowe to zagadnienie które początków można szukać już nawet przed stworzeniem pierwszych komputerów osobistych z wyświetlaczami. Mało osób wie że pierwsze gry były produkcjami akademickimi. Takie gry technicznie nie różnią się bardzo od innych programów komputerowych. Kluczową różnicą jest cel ich powstania. Głównym celem jest dostarczenie użytkownikowi rozrywki.
+Gry Komputerowe to zagadnienie które początków można szukać już nawet przed stworzeniem pierwszych komputerów osobistych z wyświetlaczami. Mało osób wie, że pierwsze gry były produkcjami akademickimi. Takie gry technicznie nie różnią się bardzo od innych programów komputerowych. Kluczową różnicą jest cel ich powstania. Głównym celem gier jest dostarczenie użytkownikowi rozrywki.
 
-W dzisiejszych czasach gry są już niemal kultowe. Mimo tak krótkiej historii istnieją już klasyki które zna znakomita większość graczy. Zdecydowana większość osób młodych miała z już nimi styczność. Popularność gier można zawdzięczać chociażby faktowi że gry powstają na niemalże każdą platformę elektroniczną - Od starszych telefonów komórkowych z dedykowanymi systemami operacyjnymi po nowoczesne telewizory. Do ciekawszych przykładów platform na które stworzone zostały gry można zaliczyć: oscyloskopy, czytniki ebooków, czy zegarki. Zjawisko to może być porównane do innych dziedzin kultury.
+W dzisiejszych czasach gry są już niemal wszędzie. Mimo tak krótkiej historii istnieją już klasyki które zna znakomita większość graczy. Zdecydowana większość osób młodych miała z już nimi styczność. Popularność gier można zawdzięczać chociażby faktowi, że gry powstają na niemalże każdą platformę elektroniczną - od starszych telefonów komórkowych z dedykowanymi systemami operacyjnymi po nowoczesne konsole do gier. Do ciekawszych przykładów platform na które stworzone zostały gry można zaliczyć: oscyloskopy, czytniki ebooków, zegarki czy telewizory typu SmartTV. Zjawisko to może być porównane do innych dziedzin kultury.
 
 Sam problem stworzenia gry komputerowej może wydawać się pozornie prosty, ze strony jej odbiorcy, jednak są to jedne z najbardziej zaawansowanych dzieł ludzkich. Poza kompleksowymi problemami natury programistycznej czy algorytmicznej, dobra gra musi przyciągać uwagę użytkownika i zaspokajać jego ciekawość oraz potrzeby rozrywki. Do osiągnięcia tych celów nie rzadko korzysta się z bardzo wielu dziedzin nauki takich jak psychologia, fizyka lub biologia.
 
-Ponadto branża gier komputerowych nie różni się bardzo od branży filmowej czy muzycznej. Powoli zaczyna doganiać ich rozmiar w niektórych krajach, a globalny rynek gier komputerowych przwyższył swoją wartością przemysł filmowy już w 2013 roku. W Polsce z roku na rok branża rośnie i można powiedzieć że polskie gry są jednym z lepszych towarów eksportowych. Zdecydowanie mają przed sobą ciekawą przyszłość. Dlatego też zagadnienie to jest głównym tematem tej pracy. 
+Ponadto branża gier komputerowych nie różni się bardzo od branży filmowej czy muzycznej. Powoli zaczyna doganiać ich rozmiar w niektórych krajach, a globalny rynek gier komputerowych przwyższył swoją wartością przemysł filmowy już w 2013 roku. W Polsce z roku na rok branża rośnie i można powiedzieć że polskie gry są jednym z lepszych towarów eksportowych\cite{canalplus_gry}. Zdecydowanie mają przed sobą ciekawą przyszłość. Dlatego też zagadnienie to jest głównym tematem tej pracy. 
 
 \section{Motywacja}
-Pierwotnie Gra Turbo Slam Dunk Unleashed została wykonana w środowisku Game Maker Studio. Dawało to wystarczające możliwości jak na prostotę gry, jednak narzucało również dużo ograniczeń oraz komplikacji. Game Maker jest prostym narzędziem do tworzenia gier dwuwymiarowych. Struktura projektu którą narzuca te środowisko sprawia że projekt strasznie trudno się skaluje. Korzysta on z języka skryptowego Game Maker Language (GML) który składa się na skrypty w grze. Z tego powodu pisanie warstwy sieciowej wprowadza chaos w projekcie. Ponadto wsparcie dla konsol, mimo swojego istnienia, jest znacznie ograniczone w stosunku do tego w Unity. Środowisko Unity pozwala pokonać wszystkie te problemy, dodając przy tym projektowi nowego potencjału dla rozwiązywania niektórych, zarówno algorytmicznych jak i designowych problemów w grze. Wsparcie samych twórców silnika jest silnik jest stabilniejsze w przypadku Unity z prostego powodu - komercyjnych gier tworzonych za jego pomocą jest znacznie więcej. Najważniejszym powodem przepisania gry nie była sama technologia, co postęp doświadczenia twórcy. Finalna wersja gry powstała w 2016 roku. Po 3 latach umiejętności twórcy znacznie się poprawiły i projekt może zdecydowanie na tym skorzystać. 
+Pierwotnie Gra Turbo Slam Dunk Unleashed została wykonana w środowisku Game Maker Studio. Dawało to wystarczające możliwości jak na prostotę gry, jednak narzucało również dużo ograniczeń oraz komplikacji. Game Maker jest prostym narzędziem do tworzenia gier dwuwymiarowych. Struktura projektu którą narzuca te środowisko sprawia że projekt strasznie trudno się skaluje. Korzysta on z języka skryptowego Game Maker Language (GML) który składa się na skrypty w grze. Z tego powodu pisanie warstwy sieciowej wprowadziłoby chaos w wystarczająco skomplikowanym już projekcie. Ponadto wsparcie dla konsol, mimo swojego istnienia, jest znacznie ograniczone w stosunku do tego w Unity.
+
+Środowisko Unity pozwala pokonać wszystkie te problemy, dodając przy tym projektowi nowego potencjału dla rozwiązywania niektórych, zarówno algorytmicznych jak i designowych problemów w grze. Wsparcie samych twórców silnika jest stabilniejsze w przypadku Unity z prostego powodu - komercyjnych gier tworzonych za jego pomocą jest znacznie więcej. Najważniejszym powodem przepisania gry nie była sama technologia, co postęp doświadczenia twórcy. Finalna wersja gry powstała w 2016 roku. Po 3 latach umiejętności autora znacznie się poprawiły i projekt może zdecydowanie na tym skorzystać. 
 
 \section{Założenia}
-Gry komputerowe nie mają jasno określonej granicy "skończenia". Zawsze mozża coś poprawić, dodać czy zmienić. W takim projekcie ważne jest żeby wyznaczyć jasne cele i wymagania które doprowadzą do stworzenia skończonego produktu. Dlatego też zostały stworzone założenia, które musi spełniać gra żeby uznać ją za kompletną:
+Gry komputerowe nie mają jasno określonej granicy skończenia. Zawsze można coś poprawić, dodać czy zmienić. W takim projekcie ważne jest żeby wyznaczyć jasne cele i wymagania które doprowadzą do stworzenia skończonego produktu. Dlatego też zostały stworzone założenia, które musi spełniać gra żeby uznać ją za kompletną:
 
 \begin{itemize}
     \item Przeniesienie gry w wersji podstawowej do środowiska Unity
@@ -148,7 +150,7 @@ Gry komputerowe nie mają jasno określonej granicy "skończenia". Zawsze mozża
 \chapter{Opis Środowiska}
 W tym rozdziale znajduje się opis narzędzi przy pomocy których został zrealizowany projekt gry.
 \section{Unity}
-Unity jest częściowo darmowym silnikiem do tworzenia gier stworzonym w 2005 roku. Od tego czasu silnik był wielokrotnie modyfikowany i zostało opublikowane wiele nowych wersji. Obecnie najnowsza stabilna wersja oznaczona jest numerem 2018.3. Silnikiem do gry nazywamy zestaw narzędzi, oraz sprawdzonych algorytmów które często używane są do tworzenia gier. Pierwsza wersja Unity została stworzona przez 3 kolegów - Davida Helgason, Joachima Ante oraz Nicholasa Francisa w Dani. Unity posiada kilka typów licencji, podstawowa jest darmowa jednak po przekroczeniu określonego przez Unity półapu przychodów rocznie, należy kupić licencję wyższego poziomu. Płatne licencje nie tylko dają tylko takiej możliwości, rozszerzają one nieco możliwości edytora a także zwiększają wsparcie developerów. W przyapdku najdorższej wersji - enterprise, użytkownicy silnika mają nawet dostęp do kodu źródłowego silnika. 
+Unity jest częściowo darmowym silnikiem do tworzenia gier stworzonym w 2005 roku. Od tego czasu silnik był wielokrotnie modyfikowany i zostało opublikowane wiele nowych wersji. Obecnie najnowsza stabilna wersja oznaczona jest numerem 2018.3\cite{unity_wiki}. Silnikiem do gry nazywamy zestaw narzędzi, oraz sprawdzonych algorytmów które często używane są do tworzenia gier. Pierwsza wersja Unity została stworzona przez 3 kolegów - Davida Helgason, Joachima Ante oraz Nicholasa Francisa w Dani. Unity posiada kilka typów licencji, podstawowa jest darmowa jednak po przekroczeniu określonego przez Unity półapu przychodów, należy kupić licencję wyższego poziomu. Płatne licencje nie dają tylko takiej możliwości, rozszerzają one nieco możliwości edytora a także zwiększają wsparcie developerów. W przypadku najdroższej wersji - Enterprise, użytkownicy silnika mają nawet dostęp do kodu źródłowego silnika.
 
 \begin{table}[h!]
 \centering
@@ -176,7 +178,7 @@ Na chwilę obecną silnik obsługuje 27 platform: iOS, Android, Tizen, Windows, 
 
 Sam silnik napisany jest w językach C, C++ oraz C\#. W pierwszych dwóch napisane są podstawy silnika takie jak renderowanie, logika czy obsługa wejść. Trzeci z tych języków został użyty do napisania warstwy wizualnej - GUI edytora oraz do stworzenia podstawowych komponentów. Może on być równiwerz używany przez twórców gier do tworzenia własnych komponentów lub rozszerzeń silnika. Unity przyjmuje podejście komponentowe. Typ obiektu w grze definiuje zestaw jego komponentów. Komponenty są mniejszymi elementami które realizują określone zdania. Do podstawowych typów komponentów można zaliczyć miedzy innymi:
 \begin{itemize}
-    \item \textit{Transform} - Posiada go każdy GameObject, służy do określenia pozycji, rotacji oraz skali obiektu w przestrzeni trójwymiarowej sceny. Transformy tworzą hierarchie sceny podobną do drzewa. Dzięki temu możemy np tworzyć skompilowane obiekty na scenie a następnie poruszać je całe poprzez transalcje jednego, nadrzędnego transforma.
+    \item \textit{Transform} - Posiada go każdy GameObject, służy do określenia pozycji, rotacji oraz skali obiektu w przestrzeni trójwymiarowej sceny. Transformy tworzą hierarchie sceny podobną do drzewa. Dzięki temu możemy np. tworzyć skompilowane obiekty na scenie a następnie poruszać je całe poprzez transalcje jednego, nadrzędnego transforma.
     \item \textit{Camera} - Podstawa renderingu, wyświetla na danym ekranie część sceny na którą aktualnie obejmuje. Posiada 2 tryby projekcji - ortogonalną oraz perspektywiczną. Z zasady pierwszy typ wykorzystywany jest dla gier dwuwymiarowych natomiast drugi dla trójwymiarowych.
     \item \textit{Sprite Renderer} - Komponent odpowiedzialny za rysowanie dwuwymiarowych obrazków - tzw. Spritów. Posiada różne tryby rysowania, obroty w osiach X i Y, kolejność sortowania oraz możliwość przemnożenia kolorów obrazka przez jeden wybrany kolor,
     \item \textit{Box Collider 2D} - Komponent ten umożliwia rejestrowanie kolizji - fundamentalnej funkcjonalności gry. Kolizje występują kiedy dwa obiekty są w kontakcie, a także dostarczają szczegółowych informacji o tych kontaktach. Typ Box jest prostszym kształtem, istnieją też inne bardziej lub mniej skomplikowane kształty colliderów.
@@ -200,7 +202,7 @@ Do programowania rozgrywki oraz logiki gry używa się języka C\#. Nie jest on 
 	\label{mono_architecture_scripting}
 \end{figure}
 
-W przeszłości do podobnych celów wykorzystywało się języki skryptowe. Wiele silników posiadało własne implementacje mniej lub bardziej wydajne. Często jednak wielkość skryptów przekraczała możliwości interpretatora lub nawet silnika skryptowania przez co możliwości były bardzo ograniczone. Mono używa różnych języków do różnych celów, a więc traktuje je jako narzędzia które służą do rozwiązywania innych problemów.
+W przeszłości do podobnych celów wykorzystywało się języki skryptowe. Wiele silników posiadało własne mniej lub bardziej wydajne implementacje. Często jednak wielkość skryptów przekraczała możliwości interpretatora lub nawet silnika skryptowania przez co możliwości były bardzo ograniczone. Mono używa różnych języków do różnych celów, a więc traktuje je jako narzędzia które służą do rozwiązywania innych problemów.
 
 Podczas gdy ważna, krytyczna część aplikacji może być napisana w wydajnym nisko poziomowym języku jak C, częściami takimi jak interfejs użytkownika czy interakcje z użytkownikiem zajmuje się język wyższego poziomu który nie jest tak samo wydajny ale pozwala zmniejszyć ilość wymaganych linijek kodu do zrealizowania konkretnego zadania. Kod napisany w takim języku jest zdecydowanie wolniejszy od kodu natywnego ale w porównaniu z popularnymi językami skryptowymi takimi jak np. LUA jest zdecydowanie szybszy. Mono umożliwia bardzo proste wołanie metod w języku natywnym przez co łatwo jest podzielić zadania na te które powinny być napisane optymalnie, a te które nie wymagają aż takiej oszczędności. Wspierane jest wiele języków wyższego poziomu do których należą miedzy innymi: C\#, Java, F\#, Python czy JavaScript.
 
@@ -218,9 +220,9 @@ Język C\# jest stworzonym dla Microsoft obiektowym językiem programowania. Kod
 
 Język ten jest silnie typowany, deklaratywnym imperatywny oraz funkcyjny. Powstał w około 2000 roku i został zaakceptowany jako standard przez ECMA (ECMA-334) oraz ISO (ISO/IEC 23270:2006). Posiada wiele przydatnych funkcji:
 \begin{itemize}
-    \item Odśmiecanie pamięci - C\# automatyczne zarządzą pamięcią poprzez liczenie referencji do obiektów. Jeże do danego obiektu nie prowadzi żadna referencja jest on niszczony podczas przebiegu tzw Garbage collectora
-    \item Delegaty oraz Zdarzenia - bardzo wygodny sposób na kontrolowanie wykonawania kodu i uruchominie go podczas zdarzeń. Jest to pewnym roszerzniem wskaźników któe możemy spotkać w jezykach niższego poziomu.
-    \item Refleksja i Atrybuty klas - Podczas działania programu istnieje możliwość analizy jego struktury z poziomu tego kodu. Przydaje się chociażby podczas debugowania kodu czy innych zastosowaniach które korzystają z nieznanej podczas kompilacji struktury kodu.
+    \item Odśmiecanie pamięci - C\# automatyczne zarządzą pamięcią poprzez liczenie referencji do obiektów. Jeżeli do danego obiektu nie prowadzi żadna referencja jest on niszczony podczas przebiegu tzw Garbage collectora
+    \item Delegaty oraz Zdarzenia - bardzo wygodny sposób na kontrolowanie wykonywania kodu i uruchomienie go podczas zdarzeń. Jest to pewnym rozszerzeniem wskaźników które możemy spotkać w językach niższego poziomu.
+    \item Refleksja i atrybuty klas - Podczas działania programu istnieje możliwość analizy jego struktury z poziomu tego kodu. Przydaje się chociażby podczas debugowania kodu czy innych zastosowaniach które korzystają z nieznanej podczas kompilacji struktury kodu.
     \item Typy generyczne - mechanizm zbliżony do działania szablonów w C++. Pozwala na tworzenie całych klas operujących na danych o nieznanym typie ale posiadającym konkretny zestaw funkcji.
 \end{itemize}
 
@@ -242,7 +244,7 @@ Do stworzenia kompletnej gry teoretycznie wystarczy sam silnik jednak używnie z
 
 \section{Historia}
 
-Proces tworzenia gry rozpoczął się w 2015 roku, a jej pełna wersja została udostępniona w serwisie Gamejolt.com 3 czerwca 2016 roku. Na początku był to projekt hobbystyczny, który potem zamienił się w projekt kołowy i był tworzony w ramach Koła Naukowego Twórców Gier "Polygon". Finalna wersja została zaprezentowana na jednym z pokazów projektów kołowych.
+Proces tworzenia gry rozpoczął się w 2015 roku, a jej pełna wersja została udostępniona w serwisie Gamejolt.com 3 czerwca 2016 roku\cite{gamejolt_page}. Na początku był to projekt hobbystyczny, który potem zamienił się w projekt kołowy i był tworzony w ramach Koła Naukowego Twórców Gier "Polygon". Finalna wersja została zaprezentowana na jednym z pokazów projektów kołowych.
 \begin{figure}[!htbp]
 	\begin{center}
 \centering
@@ -762,10 +764,11 @@ jądro oraz \tech{Shushi}, stałe numery IP oraz porty TCP, losowe dane dla
 
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Bibliografia}
-\bibitem{TSDUGameJolt}{Gra Turbo Slam Dunk Unleashed w serwise GameJolt. \url{https://gamejolt.com/games/turbo-slam-dunk-unleashed/123485} [dostęp 14 stycznia 2019]}
-\bibitem{FilmDokumentGry1} {Ten dokument od Canal plus o twórców światów [dostęp 16 stycznia 2019]}
+\bibitem{gamejolt_page}{Gra Turbo Slam Dunk Unleashed w serwise GameJolt. \url{https://gamejolt.com/games/turbo-slam-dunk-unleashed/123485} [dostęp 14 stycznia 2019]}
+\bibitem{unity_wiki} {Strona Wikipedi poświęcona Unity  \url{https://en.wikipedia.org/wiki/Unity_(game_engine)} [dostęp 17 stycznia 2019]}
+\bibitem{canalplus_gry} {Twórcy Światów - Dokument zrealizowany przez Canal + \url{https://www.canalplus.pl/discovery/tworcy-swiatow}}
 \bibitem{wiki_gameshistory} {Historia gier komputerowych na Wikipedi: \url{https://pl.wikipedia.org/wiki/Historia_gier_komputerowych} [dostęp 19 stycznia 2019]}
-\bibitem{about_mono} {Strona Mono: \url{https://www.mono-project.com/docs/about-mono/} [dostęp 20 stycznia 2019]}
+\bibitem{about_mono} {Oficjalna strona Mono \url{https://www.mono-project.com/docs/about-mono/} [dostęp 20 stycznia 2019]}
 
 \end{thebibliography}
 
