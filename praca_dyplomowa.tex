@@ -137,7 +137,6 @@ Gry komputerowe nie mają jasno określonej granicy "skończenia". Zawsze mozża
     \begin{itemize}
         \item Przygotowanie warstwy abstrakcji wejść
         \item Optymalizacja logiki i warstwy sieciowej
-        \item Dunno
     \end{itemize}
 \end{itemize}
 
@@ -190,6 +189,41 @@ Powyższe elementy są najczęściej wykorzystywane podczas tworzenia gry dwuwym
 
 \section{Język C\# oraz Mono}
 
+Do programowania rozgrywki oraz logiki gry używa się języka C\#. Nie jest on jednak natywnym językiem silnika. Żeby możliwe było obsługiwanie Skryptów w tym języku Unity używa zewnętrznej platformy zwaną Mono. Mono jest open-sourcowym projektem opartym na frameworku .Net\cite{about_mono}. Pozwala między innymi na łatwe budowanie aplikacji na wiele platform.
+
+\begin{figure}[!htbp]
+	\begin{center}
+\centering
+\includegraphics[scale=0.6]{\ImgPath/rys/mono_architecture_scripting.png}
+\end{center}
+	\caption{Architektura implementacji C\# jako język skryptowy w Mono}
+	\label{mono_architecture_scripting}
+\end{figure}
+
+W przeszłości do podobnych celów wykorzystywało się języki skryptowe. Wiele silników posiadało własne implementacje mniej lub bardziej wydajne. Często jednak wielkość skryptów przekraczała możliwości interpretatora lub nawet silnika skryptowania przez co możliwości były bardzo ograniczone. Mono używa różnych języków do różnych celów, a więc traktuje je jako narzędzia które służą do rozwiązywania innych problemów.
+
+Podczas gdy ważna, krytyczna część aplikacji może być napisana w wydajnym nisko poziomowym języku jak C, częściami takimi jak interfejs użytkownika czy interakcje z użytkownikiem zajmuje się język wyższego poziomu który nie jest tak samo wydajny ale pozwala zmniejszyć ilość wymaganych linijek kodu do zrealizowania konkretnego zadania. Kod napisany w takim języku jest zdecydowanie wolniejszy od kodu natywnego ale w porównaniu z popularnymi językami skryptowymi takimi jak np. LUA jest zdecydowanie szybszy. Mono umożliwia bardzo proste wołanie metod w języku natywnym przez co łatwo jest podzielić zadania na te które powinny być napisane optymalnie, a te które nie wymagają aż takiej oszczędności. Wspierane jest wiele języków wyższego poziomu do których należą miedzy innymi: C\#, Java, F\#, Python czy JavaScript.
+
+Język C\# jest stworzonym dla Microsoft obiektowym językiem programowania. Kod napisany w tym języku kompilowany jest do Common Intermediate Language (CIL) który jest z kolei wykonywany w środowisku uruchomieniowym  takim jak .Net czy właśnie Mono.  
+
+
+\begin{figure}[!htbp]
+	\begin{center}
+\centering
+\includegraphics[scale=0.43]{\ImgPath/rys/CIL.png}
+\end{center}
+	\caption{Schemat pokazujący proces kompilacji języka wykorzystującego CIL}
+	\label{CIL}
+\end{figure}
+
+Język ten jest silnie typowany, deklaratywnym imperatywny oraz funkcyjny. Powstał w około 2000 roku i został zaakceptowany jako standard przez ECMA (ECMA-334) oraz ISO (ISO/IEC 23270:2006). Posiada wiele przydatnych funkcji:
+\begin{itemize}
+    \item Odśmiecanie pamięci - C\# automatyczne zarządzą pamięcią poprzez liczenie referencji do obiektów. Jeże do danego obiektu nie prowadzi żadna referencja jest on niszczony podczas przebiegu tzw Garbage collectora
+    \item Delegaty oraz Zdarzenia - bardzo wygodny sposób na kontrolowanie wykonawania kodu i uruchominie go podczas zdarzeń. Jest to pewnym roszerzniem wskaźników któe możemy spotkać w jezykach niższego poziomu.
+    \item Refleksja i Atrybuty klas - Podczas działania programu istnieje możliwość analizy jego struktury z poziomu tego kodu. Przydaje się chociażby podczas debugowania kodu czy innych zastosowaniach które korzystają z nieznanej podczas kompilacji struktury kodu.
+    \item Typy generyczne - mechanizm zbliżony do działania szablonów w C++. Pozwala na tworzenie całych klas operujących na danych o nieznanym typie ale posiadającym konkretny zestaw funkcji.
+\end{itemize}
+
 \section{Dodatkowe narzędzia}
 Do stworzenia kompletnej gry teoretycznie wystarczy sam silnik jednak używnie zewnętrznych programów do tworzenia plików znacznie poprawia jakość zarówno samej produkcji jak i pracy nad nią. Poniżej znajduje się listą użytego oprogramowania:
 
@@ -236,7 +270,7 @@ Poniżej znajduje się obrazek pokazujacy graficzne reprezantacje wymienionych e
 \begin{figure}[!htbp]
 	\begin{center}
 \centering
-\includegraphics[scale=0.3]{\ImgPath/rys/game_elements.png}
+\includegraphics[scale=0.6]{\ImgPath/rys/game_elements.png}
 \end{center}
 	\caption{Elementy gry na zrzucie ekranu z aplikacji}
 	\label{game_elements}
@@ -728,9 +762,10 @@ jądro oraz \tech{Shushi}, stałe numery IP oraz porty TCP, losowe dane dla
 
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Bibliografia}
-\bibitem{TSDUGameJolt}{Gra Turbo Slam Dunk Unleashed w serwise GameJolt. https://gamejolt.com/games/turbo-slam-dunk-unleashed/123485 [dostęp 14 stycznia 2019]}
-\bibitem{FilmDokumentGry1} {Ten dokument od Canal plus o twórców światów [kiedy]}
-\bibitem{wiki_gameshistory} {Wiki page \url{https://pl.wikipedia.org/wiki/Historia_gier_komputerowych} [kiedy]} 
+\bibitem{TSDUGameJolt}{Gra Turbo Slam Dunk Unleashed w serwise GameJolt. \url{https://gamejolt.com/games/turbo-slam-dunk-unleashed/123485} [dostęp 14 stycznia 2019]}
+\bibitem{FilmDokumentGry1} {Ten dokument od Canal plus o twórców światów [dostęp 16 stycznia 2019]}
+\bibitem{wiki_gameshistory} {Historia gier komputerowych na Wikipedi: \url{https://pl.wikipedia.org/wiki/Historia_gier_komputerowych} [dostęp 19 stycznia 2019]}
+\bibitem{about_mono} {Strona Mono: \url{https://www.mono-project.com/docs/about-mono/} [dostęp 20 stycznia 2019]}
 
 \end{thebibliography}
 
