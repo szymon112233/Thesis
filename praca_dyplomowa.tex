@@ -314,22 +314,46 @@ Wyżej wymienione elementy stanowią podstawę gry. Teoretycznie wystarczą one 
 %-----------------
 \chapter{Implementacja nowej wersji gry}
 
+Tak jak zostało już wspomniane wcześniej, gra została przepisana od zera w środowisku Unity. W tym rozdziale znajduje się szczegółowy opis implementacji.
+
 \section{Zmiany w stosunku do oryginalnej wersji gry}
+
+Oryginalnej gra była atrakcyjna dla graczy, jednak z perspektywy czasu jej design może być poprawiony w wielu aspektach. Niektóre aspekty okazały się nietrafione a inne po prostu mogą być ulepszone o nowe pomysły. W obecnej wersji zostały wprowadzone następujące zmiany w stosunku do wersji oryginalnej:
+\begin{itemize}
+    \item Dodanie trybu online multiplayer - W oryginalnej grze możliwa była tylko gra na jednym komputerze. Dlatego też niezbędna była obecność 2 graczy przy jednym urządzeniu. Dzięki wprowadzeniu takiego trybu, gracze nie muszą być teraz fizycznie w jednym miejscu. Nie muszą też współdzielić klawiatury.
+    \item Zmiana rozmiaru okna gry - Oryginalna gra jest wyświetlana w oknie o rozdzielczości 800x600. Jest to zdecydowanie przestarzała rozdzielczość nie mówiąc już o jej współczynniku proporcji - 4:3. Użytkownicy posiadają monitory o wile większych rozdzielczościach najczęściej w 16:9. Dlatego też gra zaczęła wspierać rozdzielczość 1920x1080  nazywaną czasami FullHD jako domyślną. Większość monitorów komputerów PC operuje na takiej rozdzielczości lub innych o takim samym współczynniku proporcji. Tak długo jak jest on zachowany okno gry skaluje się poprawnie i widoczne są wszystkie elementy gry.
+    \item Poprawa kamery - Kamera nie różni się bardzo od podstawowej wersji, jednak zostały wprowadzone małe usprawnienia. Śledzony jest teraz każdy gracz oraz piłka, zamiast tylko gracza z piłką lub samej piłki. Dzięki temu kluczowe elementy gry zawsze znajdują się w polu widzenia. Przed każdym graczem widoczna jest też konkretna przestrzeń, tak żeby kosze były widoczne. Dzięki takiemu rozwiązaniu możliwe jest też zobaczenie całej mapy na ekranie.  
+    \item Zmiana systemu kolorowania graczy - W wersji oryginalnej warianty kolorystyczne graczy były realizowane poprzez podmianę spritów gracza. W takim rozwiązaniu dla każdego wariantu kolorystycznego musiał powstać zestaw wszystkich klatek animacji. W wersji obecnej zmiana koloru odbywa się w tzw. shaderze. Jest to część kodu wykonywana na karcie graficznej podczas rednerowania. Shader korzystając z maski zamienia kolory gracza w każdej animacji, przez co możliwe jest stworzenie niemalże nieskończonej liczby wariantów, bardzo tanim kosztem. Rozwiązanie te jest też dużo wydajniejsze pamięciowo - każdy nowy wariant nie wymaga tworzenia plików które ładowane są do pamięci.
+    \item Zmiany zasad rozgrywki - W wersji oryginalnej wyrzucenie piłki poza plansze oznaczało restart pozycji graczy oraz piłki za każdym razem. W tej wersji piłka jest po prostu odrzucana ze strony z której wyleciała. Pozwala to zachować dynamikę gry i jest nieco humorystycznym akcentem w grze. Ponadto zdobycie punktów, po prostu resetuje pozycję graczy zamiast ustawiać ich w pozycji zależeni od tego kto zdobył punkt i jaki kosz został zaatakowany.
+    \item usunięie achievementów
+    \item usunięcie znaczników pozycji
+    \item usuniecie obsługi padów
+    \item brak mniejszych szczegołów.
+\end{itemize}
 
 \section{Implementacja gry z wykorzystaniem środowiska Unity}
 
+Fajnie się robiło
+
+
 \section{Implementacja trybu online multiplayer}
+Meeh się robiło
 
 \section{Przygotowanie gry pod nowe platformy}
+
+całkiem ok
 
 %-----------------
 % Testowanie
 %-----------------
-\chapter{Testowanie}
+\chapter{Przetestowanie opracowanej gry komputerowe}
 
 
 Ważne, pameitaj że w poprzednim roku na techniki multimedialne robiłeś samasymulacje piłki - były to ponieka testy.
-\section{Przetestowanie opracowanej gry komputerowe}
+
+\section{Gameplay}
+
+\section{Wydajność}
 
 \iffalse
 %-----------------
