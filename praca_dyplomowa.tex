@@ -417,16 +417,36 @@ Każdy z elementów sterujących wyborem zawiera strzałki do zmiany aktualnie w
 	\label{match_setup}
 \end{figure}
 
-Kolejną sceną w grze jest scena o nazwie "MutiplayerJoin". Znajduje się w niej głównie UI oraz inne obiekty związane z łączeniem się przez sieć z innym graczem. Scena jest wczytywana po wybraniu guzika Online Match w menu głównym. Funkcjonalność zostanie sceny zostanie szczegółowiej opisana w podrozdziale \ref{implementation_online}.
-
-Ostatnie 2 sceny w grze są dość podobne - obydwie służą do samej rozgrywki. Różnią się głównie wyglądem tła oraz koszów. Mają też nieco zmienione Collidery. Na potrzeby tej pracy opisana zostanie tylko pierwsza z nich - COURT\_1
-
-
-
-
 % Coś o spawnerze piłek
 
 % Ustawinia kamery
+
+Kolejną sceną w grze jest scena o nazwie "MutiplayerJoin". Znajduje się w niej głównie UI oraz inne obiekty związane z łączeniem się przez sieć z innym graczem. Scena jest wczytywana po wybraniu guzika Online Match w menu głównym. Funkcjonalność zostanie sceny zostanie szczegółowiej opisana w podrozdziale \ref{implementation_online}.
+
+Ostatnie 2 sceny w grze są dość podobne - obydwie służą do samej rozgrywki. Różnią się głównie wyglądem tła oraz koszów. Mają też nieco zmienione Collidery. Na potrzeby tej pracy opisana zostanie tylko pierwsza z nich - COURT\_1. Scena opisywana będzie chwilę po rozpoczęciu gry, gdyż dopiero wtedy wszystkie niezbędone obiekty się na niej znajdują. W domyślnym widoku nie ma np. postaci graczy ponieważ są oni tworzeni dynamicznie na podstawie ustawień meczu. Lista ważniejszych elementów sceny:
+\begin{itemize}
+    \item Universe Manager - Główny obiekt decydujący o rozgrywce. W nim dzieję się niemalże cała logika meczu. Opisany bardziej szczegółowo poniżej.
+    \item SceneRoot - Korzeń całej grafiki która znajduje się na planszy. Jego funkcja jest głownie organizacyjna ale pozwala też na manipulowanie całą planszą.
+    \item GameplayUI - Obiekt zawierający komponent Canvas. Zajmuje się całą logiką z w interfejsem użytkonika wyświetlanym podczas meczu. Opisany bardziej szczegółowo poniżej.
+    \item GameInput - Obiekt realizujący obsługę wejść w grze. Opisany bardziej szczegółowo poniżej.
+    \item MainCamera - Kamera główna renerująca całą scenę.
+    \item VirtualCamera
+    \item TargetGroup
+    \item Basket
+    \item GameState
+    \item Player
+    \item Ball
+    \item Spawner
+    \item Background
+    \item Platform
+    \item BallOutCollider
+\end{itemize}
+
+
+
+
+
+
 
 
 \section{Implementacja trybu online multiplayer}
