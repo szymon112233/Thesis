@@ -1,0 +1,134 @@
+public void SpawnBall(Vector3 position, Vector2 initialForce = new Vector2(), float torque = 0.0f)
+{
+	if (GameState.Instance.isMultiplayer)
+	{
+		currentBall = PhotonNetwork.Instantiate(ballPrefab.name, position, Quaternion.identity, 0);
+	}
+	else
+	{
+		if (currentBall != null)
+			DestroyImmediate(currentBall);
+		currentBall = Instantiate(ballPrefab, position, Quaternion.identity);
+	}
+	
+	currentBall.GetComponent<Rigidbody2D>().AddForce(initialForce, ForceMode2D.Impulse);
+	currentBall.GetComponent<Rigidbody2D>().AddTorque(torque, ForceMode2D.Impulse);
+	currentBall.GetComponent<SpriteRenderer>().sprite = ballColors[currentMatchSetup.BallColorIndex];
+	if (currentState == MatchState.AFTER)
+	{
+		currentBall.GetComponent<BallCollisionDetector>().OnCollisionWithSurface += OnBallCollision;
+		currentBall.GetComponent<BallCollisionDetector>().OnCollisionWithOutOfField += OnBallOutOfFieldEndGame;
+	}
+
+	targetGroup.AddMember(currentBall.transform, 1, CameraFollowRadiusBall);
+}
+
+public void DoneFoul(int number)
+{
+	fouls[number]++;
+	FireFoulsChanged();
+	if (GameState.Instance.isMultiplayer)
+		FireDoneFoulPhotonEvent(number);
+}
+
+public void HitPlayer(int playerID, int direction)
+{
+	if (GameState.Instance.isMultiplayer)
+	{
+		FirePlayerHitPhotonEvent(playerID, direction);
+	}
+	else
+	{
+		if (allPlayers.ContainsKey(playerID))
+		{
+			allPlayers[playerID].GetHit(direction);
+		}
+		else
+		{
+			Debug.LogErrorFormat("Couldn't find other player with playerID: {0}", playerID);
+		}
+	}
+   
+}
+
+public void RequestPickupBall(int playerID)
+{
+	if (GameState.Instance.isMultiplayer)
+	{
+		Debug.LogFormat("RequestPickupBall: networkPlayerID = {0}, controlledPlayer.networkNumber +1 = {1}", playerID, controlledPlayer.number + 1);
+		if (PhotonNetwork.IsMasterClient && controlledPlayer.number + 1 == playerID)
+		{
+			if (!BallPickedUp)
+			{
+				controlledPlayer.HasBall = true;
+				if (currentBall.gameObject.GetComponent<PhotonView>().IsMine)
+					PhotonNetwork.Destroy(currentBall);
+				else
+				{
+					currentBall.gameObject.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer);
+					PhotonNetwork.Destroy(currentBall);
+				}
+			}
+		}
+		else
+		{
+			FireRequestBallPickupPhotonEvent(playerID);
+		}
+	}
+	else
+	{
+		if (allPlayers.ContainsKey(playerID))
+		{
+			allPlayers[playerID].HasBall = true;
+			currentBall.GetComponent<BallCollisionDetector>().PickedUp = true;
+			Destroy(currentBall);
+		}
+		else
+		{
+			Debug.LogErrorFormat("Couldn't find other player with playerID: {0}", playerID);
+		}
+	}
+}
+
+void InitGameSingleplayer()
+{
+    for (int i = 0; i < currentMatchSetup.PlayerCount; i++)
+    {
+        GameObject go = Instantiate(playerPrefab, spawners[i].transform.position, Quaternion.identity);
+
+        TSDUPlayer player = go.GetComponent<TSDUPlayer>();
+        player.ballPosition.GetComponent<SpriteRenderer>().sprite = ballColors[currentBallColor];
+        player.localInputDeviceNumber = (uint)i;
+        targetGroup.AddMember(go.transform, 1, CameraFollowRadius);
+    }
+
+    score = new int[currentMatchSetup.PlayerCount];
+    fouls = new int[currentMatchSetup.PlayerCount];
+
+    for (int j = 0; j < pointCounters.Length; j++)
+    {
+        int i = j;
+        pointCounters[j].PointScored += () => {
+            score[i]+=2;
+            FireScoreChanged();
+            currentBall.GetComponent<BallCollisionDetector>().PickedUp = true;
+            StartCoroutine(DelayedActionCoroutine(1.5f, ResetPositons));
+        };
+    }
+
+    for (int i = 0; i < outOfFieldDtetectors.Length; i++)
+    {
+        outOfFieldDtetectors[i].BallOut += OnBallOutOfField;
+    }
+
+    ResetState();
+
+    matchTimer = currentMatchSetup.CountDownTime;
+}
+
+void EndMatch()
+{
+    if (EndOfTheMatch != null)
+        EndOfTheMatch(new Vector2Int(score[0] - fouls[0], score[1] - fouls[1]));
+    Debug.Log("End of the match!");
+}

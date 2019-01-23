@@ -266,7 +266,7 @@ Gra jest bardzo prosta i składa się z kilku podstawowych elementów.
 Poniżej znajduje się obrazek pokazujący graficzne reprezentacje wymienionych elementów.
 \begin{enumerate}
     \item Plansza - Świat gry w którym poruszają się gracze, głównie są to elementy wizualne
-    \item Postacie graczy - W grze istnieją 2 instancje. Jest ona sterowana przez człowiek poprzez zestaw wejść. Może chodzić w lewo lub w prawo, skakać, rzucać piłkę oraz uderzać. Dwie ostatnie akcje możliwe są zarówno podczas stania jak i w locie. Skok służy do zwiększenia zasięgu rzutu lub po prostu lepszego do niego ustawienia. Obrót gracza jest niemożliwy w powietrzu, pozwala to na dokładniejsze dostosowanie swojej pozycji do rzutu. Rzut piłki służy głownie do umiejscowienia jej w obręczy kosza. Po rozpoczęciu przyciskania klawisza odpowiedzialnego za rzut, gracz traci możliwość chodzenia i jest w trakcie rzutu. Podczas tego czasu pokazuje się wskaźnik siły rzutu który oscyluje między minimalną i maksymalna siłą rzutu. Po puszczeniu przycisku piłka jest rzucana zgodnie z siłą która była wskazana w tym momencie. Uderzanie służy do zabierania piłki drugiemu graczowi. Po przyciśnięciu klawis0za uderzenia rozpoczyna się animacja uderzenia i jeżeli trafiliśmy ręką w punkt w którym znajduje się piłka piłka jest wybijana drugiem graczowi. W trakcie trwania animacji, możliwość chodzenia jest zablokowana.
+    \item Postacie graczy - W grze istnieją 2 instancje. Jest ona sterowana przez człowiek poprzez zestaw wejść. Może chodzić w lewo lub w prawo, skakać, rzucać piłkę oraz uderzać. Dwie ostatnie akcje możliwe są zarówno podczas stania jak i w locie. Skok służy do zwiększenia zasięgu rzutu lub po prostu lepszego do niego ustawienia. Obrót gracza jest niemożliwy w powietrzu, pozwala to na dokładniejsze dostosowanie swojej pozycji do rzutu. Rzut piłki służy głownie do umiejscowienia jej w obręczy kosza. Po rozpoczęciu przyciskania klawisza odpowiedzialnego za rzut, gracz traci możliwość chodzenia i jest w trakcie rzutu. Podczas tego czasu pokazuje się wskaźnik siły rzutu który oscyluje między minimalną i maksymalna siłą rzutu. Po puszczeniu przycisku piłka jest rzucana zgodnie z siłą która była wskazana w tym momencie. Uderzanie służy do zabierania piłki drugiemu graczowi. Po przyciśnięciu klawisza uderzenia rozpoczyna się animacja uderzenia i jeżeli trafiliśmy ręką w punkt w którym znajduje się piłka piłka jest wybijana drugiem graczowi. W trakcie trwania animacji, możliwość chodzenia jest zablokowana.
     \item Piłka - Główny element, służy do zdobywania punktów przez graczów. Jej fizyka jest symulowana w 2 wymiarach, przez co uzyskujemy bardzo ciekawe efekty jej wyrzutu. Jeżeli znajdzie się w obręczy kosza, naliczane są 2 punkty graczowi atakującemu ten kosz. Jeżeli piłka została wyrzucona z odpowiednio dużej odległości, trafienie daje dodatkowy punkt. Jeżeli piłka wyleci poza boisko to jej pozycja resetuje się do środka planszy, a gracze pojawiają się na swoich początkowych pozycjach.
     \item Kosze -  W grze istnieją 2 instancje. Trafienie do jednego z nich dodaje punkty. Ich wygląd różni się zależnie od planszy, ale sama funkcjonalność pozostaje niezmienna.
     \item Tablica Wyników - Pokazuje aktualny stan meczu - pozostały czas, ilość punktów oraz ilość fauli każdego z graczy. na środku tablicy znajduje się grafika piłki, której kolor zmiana się zależnie od wyniku meczu.
@@ -425,29 +425,76 @@ Kolejną sceną w grze jest scena o nazwie "MutiplayerJoin". Znajduje się w nie
 
 Ostatnie 2 sceny w grze są dość podobne - obydwie służą do samej rozgrywki. Różnią się głównie wyglądem tła oraz koszów. Mają też nieco zmienione Collidery. Na potrzeby tej pracy opisana zostanie tylko pierwsza z nich - COURT\_1. Scena opisywana będzie chwilę po rozpoczęciu gry, gdyż dopiero wtedy wszystkie niezbędone obiekty się na niej znajdują. W domyślnym widoku nie ma np. postaci graczy ponieważ są oni tworzeni dynamicznie na podstawie ustawień meczu. Lista ważniejszych elementów sceny:
 \begin{itemize}
-    \item Universe Manager - Główny obiekt decydujący o rozgrywce. W nim dzieję się niemalże cała logika meczu. Opisany bardziej szczegółowo poniżej.
+    \item Universe Manager - Główny obiekt decydujący o rozgrywce. W nim dzieję się niemalże cała logika meczu. Opisany bardziej szczegółowo poniżej w podsekcji \ref{universe_manager}.
     \item SceneRoot - Korzeń całej grafiki która znajduje się na planszy. Jego funkcja jest głownie organizacyjna ale pozwala też na manipulowanie całą planszą.
-    \item GameplayUI - Obiekt zawierający komponent Canvas. Zajmuje się całą logiką z w interfejsem użytkonika wyświetlanym podczas meczu. Opisany bardziej szczegółowo poniżej.
-    \item GameInput - Obiekt realizujący obsługę wejść w grze. Opisany bardziej szczegółowo poniżej.
-    \item MainCamera - Kamera główna renerująca całą scenę.
-    \item VirtualCamera
-    \item TargetGroup
-    \item Basket
-    \item GameState
-    \item Player
-    \item Ball
-    \item Spawner
-    \item Background
-    \item Platform
-    \item BallOutCollider
+    \item GameplayUI - Obiekt zawierający komponent Canvas. Zajmuje się całą logiką z w interfejsem użytkonika wyświetlanym podczas meczu. Opisany bardziej szczegółowo poniżej w podsekcji \ref{gameplayui}.
+    \item GameInput - Obiekt realizujący obsługę wejść w grze. Opisany bardziej szczegółowo poniżej w podsekcji \ref{gameinput}.
+    \item MainCamera - Kamera główna renderująca całą scenę. Jej właściwości są sterowane obiektem komponentem Cinemachine Brain oraz obiektem VirtualCamera.
+    \item VirtualCamera - Obiekt reprezentujący ustawienia kamery w module Cinemachine. Śledzi ona obiekt TargetGroup. Opisany bardziej szczegółowo poniżej w podsekcji \ref{virtualcamera}.
+    \item TargetGroup - Pozycją tego obiektu jest uśredniony punkt wszystkich obiektów które śledzi kamera.
+    \item Basket - Obiekt reprezentujący kosz. Posiada obręcz oraz punkt w który należy trafić żeby zdobyć punkty. Opisany bardziej szczegółowo poniżej w podsekcji \ref{basket}.
+    \item GameState - Obiekt przechowujący stan gry. Jest przenoszony między scenami. Opisany bardziej szczegółowo wyżej.
+    \item Player - Reprezentacja postaci sterowanej przez gracza w świecie gry. Opisany bardziej szczegółowo poniżej w podsekcji \ref{player}.
+    \item Ball - Obiekt odpowiedzialny za fizyczną symulację piłki w dwóch wymiarach. Opisany bardziej szczegółowo poniżej w podsekcji \ref{ball}.
+    \item Spawners - Zestaw obiektów reprezentujących pozycję początkową piłki oraz graczy. Są to zwykłe obiektu posiadające jedynie komponent typu Transform. Pozwalają na łatwe i wygodne ustawienie tych pozycji na scenie.
+    \item Background - Zestaw obiektów posiadających komponent Sprite Renderer do stworzenia grafiki boiska. W jej skład wchodzi każdy element graficzny poza koszami, postaciami graczy piłką i interfejsem użytkownika.
+    \item Platforms - Zestaw obiektów posiadających komponent Box Collider 2D reprezentujących fizyczne granice do poruszania dla postaci gracza. Aktualnie jest to jeden duży Collider służący jako podłoże do chodzenia oraz dwa Collidery pełniące rolę ścian blokujących graczy przed wyjściem poza planszę.
+    \item BallOutColliders - Zestaw dwóch obiektów posiadających komponent Box Collider 2D, odpowiednie po lewej i prawej stronie poza strefą rozgrywki. Służą do wykrywania sytuacji gdy piłka zostanie wyrzucona poza boisko.
 \end{itemize}
 
+\begin{figure}[H]
+	\begin{center}
+\centering
+\includegraphics[width = \textwidth]{\ImgPath/rys/COURT_1.png}
+\end{center}
+	\caption{Scena COURT\_1 podczas rozgrywki}
+	\label{COURT_1}
+\end{figure}
+
+\subsection{Universe Manager}
+\label{universe_manager}
+Obiekt zarządzający całą rozgrywką. Istnieje tylko jeden na scenie. jest realizowany jako singleton z tą różnicą że istnieje tylko na scenach z rozgrywką. Po opuszczeniu takiej sceny zostaje zniszczony i przy rozpoczęciu nowego meczu tworzony jest nowy obiekt. Jedynym komponentem tego obiektu jest skrypt UniverseManager który odpowiada za wspomniane właśnie funkcje. Kod wybranych funkcji można znaleźć w załączniku \ref{code_UniverseManager}. Implementacje funkcji różnią się zależnie od tego czy gramy w trybie online czy local.
+
+Podstawą skrytpu jest zestaw funkcji czysto rozgrywkowych. Każda z ważniejszych mechanik w grze jest realizowana przez ten obiekt. Są to akcje takie jak: rzut piłki, wybicie piłki innemu graczu, popełnienie faulu oraz podnoszenie piłki. Działa to w taki sposób że gracz robiąc konkretne akcje uruchamia funkcje w skrypcie. W przypadku rzutu piłki gracz uruchamia funkcję SpawnBall() która za argument przyjmuje pozycje z której zostanie wyrzucona piłka, siłę rzutu oraz początkowy moment obrotowy piłki. Gracz po wywołaniu tej funkcji przyjmuje że piłka została wyrzucona, a sam skrypt zajmuje się już umieszczeniem piłki o danych parametrach w świecie gry. Wybicie piłki wygląda bardzo podobnie do wyrzutu. Informuje ona gracza który został uderzony że nie stracił on piłkę, wykonując na nim funkcję GetHit(). Gracz w tej funkcji dostosowuje swój wewnętrzny stan do tej sytuacji i woła funkcję SpawnBall() na skrypcie. Podniesienie piłki przez gracza odbywa się poprzez zawołanie funkcji RequestPickupBall(). W wersji lokalnej jest ona trywialna - informuje gracza o podniesieniu przez niego piłki oraz ustawia odpowiednie flagi na obiekcie piłki. Flagi te sprawiają że nie może być ona podniesiona przez innego gracza, oraz że obiekt piłki zostanie zniszczony pod koniec klatki. Funkcja odpowiedzialna za faule - DoneFoul() W wersji lokalnej zwiększa tylko licznik fauli.
+
+Kolejnym ważnym zdaniem skryptu jest monitorowanie stanu rozgrywki. Istnieją funkcje odpowiedzialne za początek i koniec meczu, zmianę liczników punktów oraz fauli a także obsługę wyrzucenia piłki poza obszar rozgrywki. Reszta obiektów na scenie jest informowana poprzez tzw. eventy czyli zdarzenia pod które dowolny obiekt może doczepić wykonanie własnej funkcji. Są one zaimplementowane używając C\# akcji (System.Action). Zdarzenia takie występują np. gdy mecz się zakończy lub zmieniony zostanie wynik. Skrypt ten też liczy czas rozgrywki i aktualizuje co klatkę pozostały czas meczu w sekundach.
+
+\subsection{GameplayUI}
+\label{gameplayui}
+Obiekt odpowiedzialny za wizualizacje stanu meczu. Posiada komponent typu Canvas oraz skrypt GameplayUI. jego dziećmi są poszczególne elementy UI takie jak tekst czy grafiki. Wyświetla aktualne stany liczników punktów oraz fauli, a także pozostały czas do końca meczu. Wartości te są aktualizowane poprzez nasłuchiwanie na eventy skryptu UniverseManager. Dla przykładu po zdobyciu punktów wysyłany jest odpowiedzialne zdarzenie. Skrypt GameplayUI obsługuje te zdarzenie poprzez zmianę tekstu odpowiedzialnego za wyświetlanie punktów. Pod koniec meczu wyświetlany jest dodatkowo ekran podsumowujący mecz.
+
+\subsection{Player}
+\label{player}
+Jest to obiekt o najbardziej skomplikowanej hierarchii, zawierający wiele obiektów jako dzieci. Są to głównie obiekty zawierające komponenty Box Collider 2D. Każdy Collider ma inny cel, zaczynając o głównego collidera który definiuje fizyczne granice obiektu, kończąc na wykrywaczu piłki. Najważniejszy jest jednak skrypt p nazwie TSDUPlayer znajdujący się na głównym obiekcie. 
 
 
+\subsection{Ball}
+\label{ball}
+Bardzo prosty obiekt reprezentujący piłkę. Zawiera takie komponenty jak Sphere Collider 2D, Rigidbody 2D, Sprite Renderer oraz skrypt BallCollisionDetector. Wartości Rigidbody są ustawione tak żeby realnie oddać fizyczne zachowanie piłki w dwóch wymiarach. Jej ustawienia można zaobserwować na rysunku \ref{rigidbody_ball}. Collider odpowiada wielkością spritowi piłki. Skrypt odpowiedzialny jest za informowanie UniverseManagera o zderzeniach, lub wyleceniu poza boisko, w przypadku gdy czas gry dobiegł końca. Gra kończy się dopiero wtedy, pozwala to na decydujące rzuty w ostatnich sekundach trwania meczu.
+
+\begin{figure}[H]
+	\begin{center}
+\centering
+\includegraphics[width = \textwidth]{\ImgPath/rys/text_component.png}
+\end{center}
+	\caption{Komponent Rigidbody 2D na obiekcie Ball (Obrazek do zmiany)}
+	\label{rigidbody_ball}
+\end{figure}
+
+\subsection{Basket}
+\label{basket}
+
+\subsection{GameInput}
+\label{gameinput}
+Obiekt ten zawiera, poza Transformem tylko jeden komponent - skrypt GameInput. Jest on odpowiedzialny za sczytywanie stanu urządzeń wejść. Obiekt ten jest singletonem. Posiada metody zwracające boola z zapytaniem o to czy dany guzik jest kliknięty, został właśnie kliknięty lub został właśnie puszczony. Parametrami tych funkcji jest numer gracza oraz kod klawisza o który pytamy. Posiada również podobne metody zwracające wartości osi. Osie są metodą na dokładniejsze dostarczanie stanu wejść do software. Dla przykładu, gałki pada do gry posiadają 2 osie - pionową i poziomą, reprezentujące kierunek wychylenia gałki. Osie te mają wartość w przedziale <-1 ; 1>. Kiedy wychylimy gałkę maksymalnie do przodu wartość osi pionowej wynosi 1 a poziomej 0. W przypadku klawiatury kliknięcie przycisku prawej strzałki oś pozioma wskazuje wartość 0. Argumentami tych funkcji są numer gracza oraz nazwa osi. 
+
+\subsection{VirtualCamera}
+\label{virtualcamera}
 
 
-
-
+\subsection{TargetGroup}
+\label{targetgroup}
+Obiekt zawierający skrypt TargetGroup z modułu Cinemachine. Skrypt ten wyznacza średnie centrum listy Transformów podanych jako target. Sam obiekt znajduje się zawsze w tym centrum. W ten sposób kamera śledząca ten punkt zawsze obejmuje na wszystkie obiekty w grupie. Dodatkowo możliwa jest ustawienie ciężkości każdego z Transformów tak żeby środek był przesunięty bardziej w stronę cięższych Transformów, oraz zmiana promienia, tak żeby nie tylko pojedynczy punkt - pozycja Transformu znajdowała się w kadrze, a większa obszar wyznaczony okręgiem o danym promieniu, gdzie sam Transform jest środkiem.
 
 \section{Implementacja trybu online multiplayer}
 \label{implementation_online}
@@ -462,17 +509,23 @@ całkiem ok
 %-----------------
 \chapter{Przetestowanie opracowanej gry komputerowe}
 
+Zagadnienie przetestowania całej gry komputerowej jest ogromnym zadaniem - ilość możliwych stanów jakich może znaleźć się aplikacja jest kolosalna. Wiele gier mimo uznania je za kompletne i wydania wersji 1.0 posiada liczne błędy. Zwykle im większa jest gra tym więcej zawiera błędów. Kluczową rzeczą jest upewnienie się nie że gra nie posiada błędów ale że nie posiada błędów które uniemożliwiają rozgrywkę lub sprawiają że staje się ona bardzo trudna albo nieprzyjemna. Dobrze też żeby gra działała płynnie na docelowym sprzęcie - komputerze osobistym, konsoli czy urządzeniu mobilnym. 
 
-Ważne, pameitaj że w poprzednim roku na techniki multimedialne robiłeś samasymulacje piłki - były to ponieka testy.
+%Ważne, pameitaj że w poprzednim roku na techniki multimedialne robiłeś samasymulacje piłki - były to ponieka testy.
 
 \section{Gameplay}
 
+Najważniejszymi testami w przypadku gier są testy prowadzane przez użytkowników - w tym przypadku graczy. W celu przetestowania projektu został stworzony serwer na platformie Discord. Platforma ta pozwala na komunikację natychmiastową (zarówno tekstową jak i głosową) na licznych kanałach założonych przed administratora serwera. Na serwer została zaproszona grupa 20 osób której udostępnioną została najnowsza stabilna wersja gry. Dodatkowo zostały założone kanały tekstowe których celem było opisywanie błędów, dodawanie sugestii oraz ogólnie rozmowy o grze. Część błędów zgłoszonych do czasu powstania pracy została naprawiona, a część wciąż czeka na naprawę. Nie są to jednak rzeczy uniemożliwiające rozgrywkę dzięki czemu testerzy mogą dalej grać w grę i znajdować nowe błędy. Przeprowadzono również tzw. stress testy, czyli zachowanie aplikacji podczas dużego obciążenia. W przypadku gry, darmowy plan Photona pozwala na zaledwie 20 graczy, co wyznacza maksymalną ilość graczy grających na raz w grę w trybie online. W tym celu zostały założone też 3 dodatkowe kanały głosowe na serwerze Discord. Testerzy zebrali się 24 stycznia 2019 w godzinach wieczornych w celu przeprowadzenia tych właśnie testów. W ich wyniku zostało stwierdzone kilka nowych błędów podczas rozgrywki jednak sam system łączenia graczy w pary działał bardzo dobrze i nie udało się znaleźć żadnego błędu.
+
 \section{Wydajność}
+Wyżej wspomniani gracze korzystali z prywatnych komputerów i laptopów do testowania, w celu zbadania możliwych problemów z wydajnością. 
 
 %-----------------
 % Podsumowanie i wnioski 
 %-----------------
 \chapter{Podsumowanie i wnioski }
+
+%minimum 2 strony w tym opis problemow programistycznych i ich rozwiazanie, perspektywy rozwoju gry itp
 
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Bibliografia}
