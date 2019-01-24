@@ -392,7 +392,7 @@ Jednym z ważniejszych elementów sceny jest obiekt GameState. Zawiera on dane k
 \begin{figure}[H]
 	\begin{center}
 \centering
-\includegraphics[width = \textwidth]{\ImgPath/rys/default_game_data_instance.png}
+\includegraphics[width = 0.9\textwidth]{\ImgPath/rys/default_game_data_instance.png}
 \end{center}
 	\caption{Instancja GameDefaultData w grze}
 	\label{default_game_data_instance}
@@ -465,8 +465,20 @@ Obiekt odpowiedzialny za wizualizacje stanu meczu. Posiada komponent typu Canvas
 
 \subsection{Player}
 \label{player}
-Jest to obiekt o najbardziej skomplikowanej hierarchii, zawierający wiele obiektów jako dzieci. Są to głównie obiekty zawierające komponenty Box Collider 2D. Każdy Collider ma inny cel, zaczynając o głównego collidera który definiuje fizyczne granice obiektu, kończąc na wykrywaczu piłki. Najważniejszy jest jednak skrypt p nazwie TSDUPlayer znajdujący się na głównym obiekcie. 
+Jest to obiekt o najbardziej skomplikowanej hierarchii, zawierający wiele obiektów jako dzieci. Są to głównie obiekty zawierające komponenty Box Collider 2D. Każdy Collider ma inny cel, zaczynając o głównego Collidera który definiuje fizyczne granice obiektu, kończąc na wykrywaczu piłki. Najważniejszy jest jednak skrypt o nazwie TSDUPlayer znajdujący się na głównym obiekcie. Odpowiada on za poruszanie postacią gracza oraz wykonywanie akcji. W samym skrypcie znajduje się zarówno logika i zestaw zmiennych od których zależna jest ta logika. Przykładami zmiennych może być szybkość poruszania się czy siła wyskoku.
 
+Dzieckiem tego obiektu jest również obiekt zawierający komponenty Sprite oraz Animator. Jest to reprezentacja graficzna postaci gracza. Zawiera ona liczne animacje poklatkowe. Animacje te są sterowane za pomocą maszyny stanów. Przejścia między stanami determinowane są poprzez zmiany flag w maszynie stanów. Za miane flag odpowiada również skrypt TSDUPlayer. Na rysunku \ref{anim_state_machine} pokazany jest schemat maszyny stanów. 
+
+Kolejnym ciekawszym dzieckiem jest obiekt odpowiedzialny za wyświetlanie wskaźnika siły rzutu. Pojawia się on tylko gdy przycisk rzutu jest wciśnięty. Jest kontrolowany również przez skrypt TSDUPlayer na głównym obiekcie. Sam obiekt posiada komponent Canvas którego tryb wyświetlania ustawiony jest na przestrzeń trójwymiarową. Dzięki temu możemy korzystać z wszystkich elementów interfejsu użytkownika.Jedna z funkcjonalności komponentu Image, jest tutaj bardzo przydatna 0 zmiana typu obrazu. Typ obrazu ustawiony na został na Fill, a tryb wypełniania na pionowy. Poprzez miane wartości pola fill ammount uzyskujemy w bardzo prosty sposób pasek wskazujący aktualną siłę rzutu. Gdy fill ammount wynosi 1 widoczny jest cały obrazek i oznacza to maksymalną siłę rzutu. W przeciwnym wypadku (fill ammount = 0) obrazek jest niewidoczny i oznacza on minimalną siłę.  
+
+\begin{figure}[H]
+	\begin{center}
+\centering
+\includegraphics[width = 1.45\textwidth, angle = -90]{\ImgPath/rys/anim_state_machine.png}
+\end{center}
+	\caption{Maszyna stanów animatora postaci gracza}
+	\label{anim_state_machine}
+\end{figure}
 
 \subsection{Ball}
 \label{ball}
@@ -475,7 +487,7 @@ Bardzo prosty obiekt reprezentujący piłkę. Zawiera takie komponenty jak Spher
 \begin{figure}[H]
 	\begin{center}
 \centering
-\includegraphics[width = \textwidth]{\ImgPath/rys/text_component.png}
+\includegraphics[width = 0.7\textwidth]{\ImgPath/rys/text_component.png}
 \end{center}
 	\caption{Komponent Rigidbody 2D na obiekcie Ball (Obrazek do zmiany)}
 	\label{rigidbody_ball}
@@ -484,13 +496,15 @@ Bardzo prosty obiekt reprezentujący piłkę. Zawiera takie komponenty jak Spher
 \subsection{Basket}
 \label{basket}
 
+Obiekt ten jest reprezentacją graficzną kosza do którego należy wrzucić piłkę aby zdobyć punkty. Na ten obiekt składa się kilka mniejszych obiektów zawierających komponenty Collider. Dzięki temu łatwiej jest odwzorować skomplikowany kształt kosza, co daje satysfakcjonujące efekty dobić piłki. Sama obręcz kosza posiada na jej dole specjalny obiekt który poza zwykłym Colliderem posiada też komponent Platform Effector 2D który pozwala piłkom na przenikanie przez niego z góry ale blokuje piłki lecące od dołu. Dzięki temu nie możliwe jest wrzucenie piłki do kosza o dołu. Ponadto, w środku siatki kosza znajduje się mały Collider wykrywający piłkę. Jeżeli piłka go dotknie, naliczany jest punkt.
+
 \subsection{GameInput}
 \label{gameinput}
 Obiekt ten zawiera, poza Transformem tylko jeden komponent - skrypt GameInput. Jest on odpowiedzialny za sczytywanie stanu urządzeń wejść. Obiekt ten jest singletonem. Posiada metody zwracające boola z zapytaniem o to czy dany guzik jest kliknięty, został właśnie kliknięty lub został właśnie puszczony. Parametrami tych funkcji jest numer gracza oraz kod klawisza o który pytamy. Posiada również podobne metody zwracające wartości osi. Osie są metodą na dokładniejsze dostarczanie stanu wejść do software. Dla przykładu, gałki pada do gry posiadają 2 osie - pionową i poziomą, reprezentujące kierunek wychylenia gałki. Osie te mają wartość w przedziale <-1 ; 1>. Kiedy wychylimy gałkę maksymalnie do przodu wartość osi pionowej wynosi 1 a poziomej 0. W przypadku klawiatury kliknięcie przycisku prawej strzałki oś pozioma wskazuje wartość 0. Argumentami tych funkcji są numer gracza oraz nazwa osi. 
 
 \subsection{VirtualCamera}
 \label{virtualcamera}
-
+Obiekt zawierający skrypt Cinemachine Virtual Camera z modułu Cinemachine. Jest to bardzo  zaawansowany skrypt posiadający wiele możliwości. Służy do zaawansowanej obsługi kamery, zarówno dwu jak i trójwymiarowej. Większość jej możliwości nie jest wykorzystywana w grze. Najważniejszą funkcja jest podążanie za obiektami. Kamera przesuwa się tak żeby w kadrze były wszystkie obserwowane elementy. Jeżeli nie jest możliwe objęcie wszystkich w jednym kadrze powiększa się on aż do momentu w którym spełniony jest ten warunek lub maksymalny rozmiar zostanie osiągnięty. 
 
 \subsection{TargetGroup}
 \label{targetgroup}
