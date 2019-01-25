@@ -1,0 +1,27 @@
+public class InputPlayer
+{
+    public int id;
+    public bool inputEnabled;
+
+
+    public virtual bool GetButton(GameButtons button)
+    {
+        return false;
+    }
+
+    public virtual bool GetButtonPressed(GameButtons button)
+    {
+        return false;
+    }
+
+    public virtual bool GetButtonReleased(GameButtons button)
+    {
+        return false;
+    }
+
+    public virtual float GetAxis(GameAxis axis)
+    {
+
+        return 0.0f;
+    }
+}
