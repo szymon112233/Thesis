@@ -62,8 +62,8 @@
 
 \opiekun{dr hab. inż. Paweł Piotrowski}
 %\konsultant{prof. Dzielny Konsultant}  % opcjonalnie
-\terminwykonania{28 stycznia 2017} % data na oświadczeniu o samodzielności
-\rok{2017}
+\terminwykonania{25 stycznia 2019} % data na oświadczeniu o samodzielności
+\rok{2019}
 
 
 % Podziekowanie - opcjonalne
@@ -164,7 +164,7 @@ Plus & \$200,000 & NIE & \$420 rocznie \\
 Pro & Nielimitowane & TAK & \$1500 rocznie \\
 Enterprise & Nielimitowane & TAK & Indywidualnie \\
 \end{tabular}
-\caption{Zestawienie licencji Unity |SOURE DODAC|}
+\caption{Zestawienie licencji Unity (źródło: \cite{unity_wiki})}
 \label{table_unity_versions}
 \end{table}
 
@@ -574,7 +574,25 @@ Zagadnienie przetestowania całej gry komputerowej jest ogromnym zadaniem - ilo�
 Najważniejszymi testami w przypadku gier są testy prowadzane przez użytkowników - w tym przypadku graczy. W celu przetestowania projektu został stworzony serwer na platformie Discord. Platforma ta pozwala na komunikację natychmiastową (zarówno tekstową jak i głosową) na licznych kanałach założonych przed administratora serwera. Na serwer została zaproszona grupa 20 osób której udostępnioną została najnowsza stabilna wersja gry. Dodatkowo zostały założone kanały tekstowe których celem było opisywanie błędów, dodawanie sugestii oraz ogólnie rozmowy o grze. Część błędów zgłoszonych do czasu powstania pracy została naprawiona, a część wciąż czeka na naprawę. Nie są to jednak rzeczy uniemożliwiające rozgrywkę dzięki czemu testerzy mogą dalej grać w grę i znajdować nowe błędy. Przeprowadzono również tzw. stress testy, czyli zachowanie aplikacji podczas dużego obciążenia. W przypadku gry, darmowy plan Photona pozwala na zaledwie 20 graczy, co wyznacza maksymalną ilość graczy grających na raz w grę w trybie online. W tym celu zostały założone też 3 dodatkowe kanały głosowe na serwerze Discord. Testerzy zebrali się 24 stycznia 2019 w godzinach wieczornych w celu przeprowadzenia tych właśnie testów. W ich wyniku zostało stwierdzone kilka nowych błędów podczas rozgrywki jednak sam system łączenia graczy w pary działał bardzo dobrze i nie udało się znaleźć żadnego błędu.
 
 \section{Wydajność}
-Wyżej wspomniani gracze korzystali z prywatnych komputerów i laptopów do testowania, w celu zbadania możliwych problemów z wydajnością. 
+Wyżej wspomniani gracze korzystali z prywatnych komputerów i laptopów do testowania, w celu zbadania możliwych problemów z wydajnością. Do debugowania wydajności w grach bardzo często korzysta się z profilerów. Są to specjalne programy liczące czas wykonania każdej funkcji. Podczas testów żadnemu z testerów nie zdarzyły się problemy z wydajnością. na rysunkach poniżej zostały zamieszczone wyniki działania profilera podczas uruchomienia menu głównego (rysunek \ref{profiler_mainmenu}) oraz meczu (rysunek \ref{profiler_gameplay}). Tak jak jest to spodziewane gra działa bardzo płynnie. Nie jest ona skomplikowana obliczeniowo.
+
+\begin{figure}[H]
+	\begin{center}
+\centering
+\includegraphics[width =\textwidth]{\ImgPath/rys/profiler_mainmenu.png}
+\end{center}
+	\caption{Okno profilera podczas działania gry w menu głównym}
+	\label{profiler_mainmenu}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{center}
+\centering
+\includegraphics[width = \textwidth]{\ImgPath/rys/profiler_gameplay.png}
+\end{center}
+	\caption{Okno profilera podczas działania gry w trakcie trwania meczu}
+	\label{profiler_gameplay}
+\end{figure}
 
 %-----------------
 % Podsumowanie i wnioski 

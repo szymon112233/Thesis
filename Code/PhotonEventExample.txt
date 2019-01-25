@@ -1,4 +1,3 @@
-//Wysłanie zdarzenia
 private void FireDoneFoulPhotonEvent(int playerNumber)
 {
     byte evCode = ConnectionManager.DoneFoulPhotonEvent;
@@ -8,7 +7,6 @@ private void FireDoneFoulPhotonEvent(int playerNumber)
     PhotonNetwork.RaiseEvent(evCode, content, raiseEventOptions, sendOptions);
 }
 
-// Obsługa otrzymanego zdarzenia
 public void HandleDoneFoulPhotonEvent(EventData photonEvent)
 {
     object[] recievedData = (object[])photonEvent.CustomData;
