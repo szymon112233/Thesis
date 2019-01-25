@@ -1,0 +1,21 @@
+//Wysłanie zdarzenia
+private void FireDoneFoulPhotonEvent(int playerNumber)
+{
+    byte evCode = ConnectionManager.DoneFoulPhotonEvent;
+    object[] content = new object[] { playerNumber };
+    RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
+    SendOptions sendOptions = new SendOptions { Reliability = true };
+    PhotonNetwork.RaiseEvent(evCode, content, raiseEventOptions, sendOptions);
+}
+
+// Obsługa otrzymanego zdarzenia
+public void HandleDoneFoulPhotonEvent(EventData photonEvent)
+{
+    object[] recievedData = (object[])photonEvent.CustomData;
+    int playerNetworkID = (int)recievedData[0];
+
+    Debug.LogFormat("Recieved DoneFoul with values: networkPlayerID = {0}", playerNetworkID);
+
+    fouls[playerNetworkID] ++;
+    FireFoulsChanged();
+}

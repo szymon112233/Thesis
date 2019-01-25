@@ -510,9 +510,46 @@ Obiekt zawierający skrypt Cinemachine Virtual Camera z modułu Cinemachine. Jes
 \label{targetgroup}
 Obiekt zawierający skrypt TargetGroup z modułu Cinemachine. Skrypt ten wyznacza średnie centrum listy Transformów podanych jako target. Sam obiekt znajduje się zawsze w tym centrum. W ten sposób kamera śledząca ten punkt zawsze obejmuje na wszystkie obiekty w grupie. Dodatkowo możliwa jest ustawienie ciężkości każdego z Transformów tak żeby środek był przesunięty bardziej w stronę cięższych Transformów, oraz zmiana promienia, tak żeby nie tylko pojedynczy punkt - pozycja Transformu znajdowała się w kadrze, a większa obszar wyznaczony okręgiem o danym promieniu, gdzie sam Transform jest środkiem.
 
+
+
+
 \section{Implementacja trybu online multiplayer}
 \label{implementation_online}
-Tryb online multiplayer oznacza konieczność synchronizacji części stanu gry między dwoma jej instancjami.
+Tryb online multiplayer oznacza konieczność synchronizacji części stanu gry między dwoma jej instancjami. Unty posiada wbudowany moduł odpowiedzialny za komunikację online ale nie jest on zbyt wydajny i posiada stosunkowo duży próg wejścia. Najlepszym pomysłem okazało się więc skorzystacie z rozwiązania które oferuje ExitGames. Jest to plugin do Unity o nazwie Photon. Jest to rozwiązanie które oferuje bardzo prostą synchronizację obiektów w Unity. Photon wykorzystuje architekturę klient-serwer. w chmurze zwaną Photon Cloud tworzone są serwery które zarządzają pokojami dla konkretnej gry. Instancje gry są klientami którzy dzielą się informacjami poprzez serwer. Żeby 2 graczy mogło wspólnie grać musi zostać nowiazne miedzy nimi połczenie. Nawiazywanie połaćzenia w Photonie polega na:
+\begin{enumerate}
+    \item Połączenie klienta z name serwerem. Jest na nim ustalany region z którym klient ma najszybsze połączenie.
+    \item Połączenie klienta z master serwerem danego regionu. Master serwer posiada informacje o wszystkich serwerach gier które aktualnie działają w chmurze. Klient jest przekierowywany na serwer gry w która aktualnie gra.
+    \item Połączenie z game serwerem. Game serwer zawiera listę lobby gry w której znajdują się pokoje dla danej gry.
+    \item Klient łączy się z wybranym pokojem na wcześniej ustalonych zasadach. po dołączeniu do pokoju możliwy jest swobodny przepływ informacji między klientami.
+\end{enumerate}
+
+\begin{figure}[H]
+	\begin{center}
+\centering
+\includegraphics[width = 0.9\textwidth]{\ImgPath/rys/photon_cloud_structure.png}
+\end{center}
+	\caption{Struktura chmury Photon Cloud}
+	\label{photon_cloud_structure}
+\end{figure}
+
+Wybór pokoju jest zależny od tego jaki opcje wybrał wcześniej gracz. Wybór tych opcji jest zrealizowany poprzez scenę MultiplayerJoin. Scena ta zawiera jedynie obiekty interfejsu użytkownika i służy do połączenia 2 graczy  oraz wybrania ustawień meczu. Możliwe są  typy rozgrywki online:
+\begin{itemize}
+    \item Random - Dołączenie do losowego pokoju. Po kilknięciu tego guzika rozpoczyna się proces połączenia z serwerem oraz dołączania do pokoju. Jeżeli żaden pokój nie istnieje lub wszystkie są zajęte tworzony jest nowy pokój.
+    \item Friends - Dołączenie do pokoju ze znajomym. Wybranie tej opcji otwiera menu wpisywania sekretnej frazy. Znajdują się też tam informacje tłumaczące działanie gry ze znajomymi. Po wpisaniu frazy rozpoczyna się proces łączenia z serwerem oraz tworzenia pokoju. Nazwą tworzonego pokoju jest sekretna fraza, oraz jest on niedołączalny poprzez losowy wybór pokoju. Jeżeli istnieje już pokój o takiej nazwie klient dołącza do niego. W ten sposób znajomi wpisując taką samą sekretną frazę upewniają się że grają ze sobą. Jeżeli istnieje już pełen pokój o takiej nazwie nie zostanie on stworzony a gracz zostanie poinformowany o konieczności zmiany sekretnej frazy.
+\end{itemize}
+
+Po stworzeniu pokoju klient czeka na dołączenie gracza do pary. Po dołączeniu obydwu graczy wysyłana jest informacja do obu klientów o rozpoczęciu wyboru ustawień meczu. Klient który założył serwer jest tzw. master klientem. Pozwala mu to na decydowanie o nieścisłościach podczas meczu oraz wybór większości ustawień meczu. Wybór ustawień wygląda podobnie do Wyboru podczas trybu lokalnego, z tą różnicą że guzik READY wysyła informację o gotowości do drugiego klienta. zmiany wyborów ustawień wysyłane są też do drugiego klienta dzięki czemu są one u niego widoczne.
+
+Po tym jak każdy z graczy jest w trybie gotowości, następuję rozpoczęcie meczu. Master klient wysyła informacje o konieczności załadowania konkretnej mapy do drugiego klienta. Po załadowaniu mapy master klient czeka na informacje od drugiego klienta o poprawnym załadowaniu poziomu. Po otrzymaniu tej informacji, wysyłane są jako odpowiedź informacje o zestawie ustawień meczu o raz planowanym czasie jego rozpoczęcia. Master klient zajmuje się załadowaniem sterowanych przez niego obiektów, po czym rozpoczyna odliczanie do startu meczu. Drugi klient po otrzymaniu informacji z ustawieniami meczu, dostosowuje lokalne ustawienia do tych otrzymanych, ładuje sterowane przez niego obiekty oraz ustawia czas odliczania tak aby start meczu był zsynchronizowany na obu maszynach. Po zakończeniu meczu master klient wysyła policzony wynik podsumowania meczu do drugiego klienta. Następnie na obu klientach wyświetlane jest okno z podsumowaniem meczu.
+
+Synchronizacja rozgrywki odbywa się poprzez dołączenie do obiektów synchronizowanych odpowiednich komponentów dostarczonych przez Photona. Do każdego obiektu typu Player dodany został komponent typu PhotonView. Zajmuje się on synchronizacją komponentów sieciowych. W przypadku tego obiektu jest to komponent typu PhotonAnimatorView oraz skrypt TSDUPlayer który został rozszerzony o możliwości sieciowe. Komponent PhotonAnimatorView służy do synchronizacji flag animatora. dzięki temu na obu maszynach wykonywane są te same animacje. Skrypt TSDUPlayer odpowiedzialny jest za synchronizację pozycji oraz rotacji postaci gracza. W skrypcie tym została również zaimplementowanie tak zwane lag compensation. Polega to na tym że obiekt jest przesuwany na podstawie ostatniej informacji jaka została otrzymana. Jeżeli np. otrzymana została informacja o pozycji obiektu, brane jest pod uwagę jego przesunięcie oraz czas w którym została wysłana ta informacja. Na podstawie tych danych obiekt przesuwany jest o dodatkową, obliczoną wartość. Dzięki temu obiekt przesuwa się nieco płynniej i nie jest widoczna jego teleportacja. 
+
+Do obiektu typu Ball również został dodany skrypt typu PhotonView. Obserwuje on specjalnie stworzony skrypt o nazwie BallNetworkSync. Odpowiedzialny jest on za synchronizację piłki na obu maszynach. Wysyłana jest rotacja, pozycja oraz prędkość piłki. W wersji replikowanej piłki czyli kliencie który nie steruje piłką, fizyka piłki jest również liczona z tym że jej pozycja, rotacja i prędkość jest ciągle poprawiana poprzez dane dostarczone od klienta sterującego piłką. Dzięki temu piłka porusza się płynnie na obu maszynach. Dodatkowo zaimplementowane jest w tym skrypcie lag compensation.  
+
+Reszta stanu meczu synchronizowana jest poprzez zdarzenia sieciowe. Działają one podobnie do zdarzeń zaimplementowanych za pomocą System.Action, z tą różnicą że zdarzenie wysyłane jest nie tylko do konkretnych obiektów ale przede wszystkim do konkretnych maszyn. W ten sposób właśnie zaimplementowane zostało uderzenie postaci gracza, rzut piłką czy zmiana wyniku. Kod przykładowego zdarzenia znajduje się w dodatku \ref{code_PhotonEventExample}. Zdarzenia zawierają też dane niezbędne do odtworzenia stanu gry na drugim urządzeniu. Są one bardzo wydajne, a także niezawodne. Nie ma wiec ryzyko że jakieś wydarzenie nie  zostanie dostarczone do klienta docelowego.
+
+
+
 
 \section{Przygotowanie gry pod nowe platformy}
 Zagadnienie tzw. portowania czyli przeniesienia gry na nową platformę, jest dość rozbudowane. Jak okazało się podczas procesu tworzenia gry, większość rzeczy jaki można zrobić to pisanie kodu który jest czysty, przejrzysty oraz łatwo skalowalny. Znacznie przyspiesza to ten proces i pozwala unikając błędów wynikających z niezrozumienia kodu. Wiele funkcjonalności które przynoszą zwykle problem podczas procesu przenoszenia nie zostało jeszcze zaimplementowanych lub po prostu nie jest planowane dodawanie ich. Można do nich zaliczyć takie rzeczy jak; system zapisów, tablice wyników czy osiągnięcia.
