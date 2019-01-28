@@ -22,6 +22,7 @@
 \usepackage{float}
 \usepackage{listings}
 \usepackage{color}
+\usepackage[final]{pdfpages}
 
 
 % rozmaite polecenia pomocnicze
@@ -62,7 +63,7 @@
 
 \opiekun{dr hab. inż. Paweł Piotrowski}
 %\konsultant{prof. Dzielny Konsultant}  % opcjonalnie
-\terminwykonania{25 stycznia 2019} % data na oświadczeniu o samodzielności
+\terminwykonania{28 stycznia 2019} % data na oświadczeniu o samodzielności
 \rok{2019}
 
 
@@ -109,15 +110,15 @@ W dzisiejszych czasach gry są niemal wszędzie. Mimo tak krótkiej historii ist
 
 Z punktu widzenia odbiorcy, sam problem stworzenia gry komputerowej może wydawać się pozornie prosty, jednak są to jedne z najbardziej zaawansowanych dzieł ludzkich. Poza kompleksowymi problemami natury programistycznej czy algorytmicznej, dobra gra musi przyciągać uwagę użytkownika i zaspokajać jego ciekawość oraz potrzeby rozrywki. Do osiągnięcia tych celów nierzadko korzysta się z bardzo wielu dziedzin nauki, między innymi: psychologia, fizyka lub biologia.
 
-Ponadto, branża gier komputerowych nie różni się bardzo od branży filmowej czy muzycznej. Powoli zaczyna doganiać ich rozmiar w niektórych krajach, a globalny rynek gier komputerowych przewyższył swoją wartością przemysł filmowy już w 2013 roku. W Polsce z roku na rok branża growa rośnie, a polskie gry są jednym z lepszych towarów eksportowych\cite{canalplus_gry}. Zdecydowanie mają przed sobą ciekawą przyszłość. Dlatego też zagadnienie to jest głównym tematem tej pracy. 
+Ponadto, branża gier komputerowych nie różni się bardzo od branży filmowej czy muzycznej. Powoli zaczyna doganiać ich rozmiar w niektórych krajach, a globalny rynek gier komputerowych przewyższył swoją wartością przemysł filmowy już w 2013 roku. W Polsce z roku na rok branża growa rośnie, a polskie gry są jednym z lepszych towarów eksportowych \cite{canalplus_gry}. Zdecydowanie mają przed sobą ciekawą przyszłość. Dlatego też zagadnienie to jest głównym tematem tej pracy. 
 
 \section{Motywacja}
-Pierwotnie Gra Turbo Slam Dunk Unleashed została wykonana w środowisku Game Maker Studio. Środowisko dawało wystarczające możliwości jak na prostotę gry, jednak narzucało również dużo ograniczeń oraz komplikacji. Game Maker jest prostym narzędziem do tworzenia gier dwuwymiarowych. Struktura projektu, którą narzuca to środowisko, sprawia że stosunkowo trudno rozwijać w nim projekty o większej skali. Game Maker korzysta z języka skryptowego Game Maker Language (GML), który składnią przypomina C i Javascript. Skrypty są zwykle krótkimi plikami realizującymi proste zadania. Przez to, naturalnie wraz z wzrostem projektu robi się ich duża ilość, a wyszukiwanie konkretnych zmian staje się coraz trudniejsze. Z tych powodów pisanie warstwy sieciowej wprowadziłoby chaos w wystarczająco skomplikowanym już projekcie.  Ponadto wsparcie dla konsol, mimo swojego istnienia, jest znacznie ograniczone w stosunku do tego w Unity.
+Pierwotnie Gra Turbo Slam Dunk Unleashed została wykonana w środowisku Game Maker Studio. Środowisko dawało wystarczające możliwości jak na prostotę gry, jednak narzucało również dużo ograniczeń oraz komplikacji. Game Maker jest prostym narzędziem do tworzenia gier dwuwymiarowych. Struktura projektu, którą narzuca to środowisko, sprawia że stosunkowo trudno rozwijać w nim projekty o większej skali. Game Maker korzysta z języka skryptowego Game Maker Language (GML), który składnią przypomina C oraz Javascript. Skrypty są zwykle krótkimi plikami realizującymi proste zadania. Przez to, naturalnie wraz z wzrostem projektu robi się ich duża liczba, a wyszukiwanie konkretnych zmian staje się coraz trudniejsze. Z tych powodów pisanie warstwy sieciowej wprowadziłoby chaos w wystarczająco skomplikowanym już projekcie.  Ponadto wsparcie dla konsol, mimo swojego istnienia, jest znacznie ograniczone w stosunku do tego w Unity.
 
-Środowisko Unity pozwala pokonać wszystkie te problemy, dodając przy tym projektowi nowego potencjału dla rozwiązywania niektórych, zarówno algorytmicznych, jak i projektowych problemów w grze. Wsparcie samych twórców silnika jest stabilniejsze w przypadku Unity z prostego powodu - komercyjnych gier tworzonych za jego pomocą jest znacznie więcej. Najważniejszym powodem przepisania gry nie była sama technologia, co postęp doświadczenia twórcy. Finalna wersja gry powstała w 2016 roku. Po 3 latach praktyki umiejętności autora znacznie się poprawiły i projekt może zdecydowanie na tym skorzystać. 
+Środowisko Unity pozwala pokonać wszystkie te problemy, dodając przy tym projektowi nowego potencjału dla rozwiązywania niektórych, zarówno algorytmicznych, jak i projektowych problemów w grze. Wsparcie samych twórców silnika jest stabilniejsze w przypadku Unity z prostego powodu - komercyjnych gier tworzonych za jego pomocą jest znacznie więcej. Najważniejszym powodem przepisania gry nie była sama technologia, co postęp doświadczenia twórcy. Finalna wersja gry powstała w 2016 roku. Po 3 latach praktyki umiejętności autora znacznie się poprawiły. Jego wiedza na temat środowiska Unity, a także języka C\# oraz programowania obiektowego powiększyła się. Projekt może zdecydowanie na tym skorzystać. 
 
 \section{Założenia}
-Gry komputerowe nie mają jasno określonej granicy ukończenia projektu. Zawsze można coś poprawić, dodać, czy zmienić. W takim projekcie ważne jest, żeby wyznaczyć jasne cele i wymagania, które doprowadzą do stworzenia skończonego produktu. Dlatego też zostały stworzone założenia, które musi spełniać gra, żeby uznać ją za kompletną:
+Gry komputerowe nie mają jasno określonej granicy ukończenia projektu. Zawsze istnieje możliwość wprowadzenia zmian jakościowych. W takim projekcie ważne jest, żeby wyznaczyć jasne cele i wymagania, które doprowadzą do stworzenia skończonego produktu. Dlatego też zostały stworzone założenia, które musi spełniać gra, żeby uznać ją za kompletną:
 
 \begin{itemize}
     \item Przeniesienie gry w wersji podstawowej do środowiska Unity
@@ -173,13 +174,14 @@ Enterprise & Nielimitowane & TAK & Indywidualnie \\
 \centering
 \includegraphics[scale=0.2]{\ImgPath/rys/unity_home.png}
 \end{center}
-	\caption{Domyślny widok edytora Unity w projekcie gry}
+	\caption{Domyślny widok edytora Unity w projekcie gry. Opracowanie własne.}
 	\label{unity_home}
 \end{figure}
 
 Na chwilę obecną silnik obsługuje 27 platform: iOS, Android, Tizen, Windows, Universal Windows Platform, macOS, Linux, WebGL, PlayStation 4, PlayStation Vita, Xbox One, Wii U, 3DS, Oculus Rift, Google Cardboard, SteamVR, PlayStation VR, Gear VR, Windows Mixed Reality, Daydream, Android TV, Samsung Smart TV, tvOS, Nintendo Switch, Fire OS, Facebook Gameroom, Apple's ARKit, Google's ARCore, and Vuforia. Jest to dość długa lista jak na silnik do tworzenia gier. Zwykle ograniczają się one do mniejszej liczby platform. Dlatego też gra stworzona w tym silniku ma bardzo duży potencjał do zaistnienia na większej ilości platform, a co za tym idzie - zyskanie nowych graczy. Samo przeniesienie między platformą jest reklamowane przez Unity jako bardzo prosta akcja - wystarczy jeden przycisk. W praktyce jednak zależy to bardzo od typu gry oraz tego jak wygląda architektura samej gry.
 
-Silnik napisany jest w językach C, C++ oraz C\#. W pierwszych dwóch napisane są podstawy silnika takie jak renderowanie, logika czy obsługa wejść. Trzeci z tych języków został użyty do napisania warstwy wizualnej - GUI edytora oraz do stworzenia podstawowych komponentów. Może on być również używany przez twórców gier do tworzenia własnych komponentów lub rozszerzeń silnika. Unity przyjmuje podejście komponentowe. Typ obiektu w grze jest definiowany przez zestaw jego komponentów. Komponenty są mniejszymi elementami, które realizują określone zdania. Do podstawowych typów komponentów można zaliczyć między innymi:
+Silnik napisany jest w językach C, C++ oraz C\#. W pierwszych dwóch napisane są podstawy silnika takie jak renderowanie, logika czy obsługa wejść. Trzeci z tych języków został użyty do napisania warstwy wizualnej - GUI edytora oraz do stworzenia podstawowych komponentów. Może on być również używany przez twórców gier do tworzenia własnych komponentów lub rozszerzeń silnika.
+Podstawowym obiektem jest GameObject. Jest to reprezentacja dowolnego obiektu w świecie gry. Unity przyjmuje podejście komponentowe. Typ obiektu w grze jest definiowany przez zestaw komponentów podłączonych do GameObjectu. Komponenty są mniejszymi elementami, które realizują określone zdania. Do podstawowych typów komponentów można zaliczyć między innymi:
 \begin{itemize}
     \item \textit{Transform} - Posiada go każdy GameObject, służy do określenia pozycji, rotacji oraz skali obiektu w przestrzeni trójwymiarowej sceny. Transformy tworzą hierarchię sceny podobną do drzewa. Dzięki temu można np. tworzyć skompilowane obiekty na scenie, a następnie poruszać je całe poprzez translację jednego, nadrzędnego transforma.
     \item \textit{Camera} - Podstawa renderingu, wyświetla na danym ekranie część sceny, którą aktualnie obejmuje. Posiada 2 tryby projekcji - ortogonalną oraz perspektywiczną. Z zasady pierwszy typ wykorzystywany jest dla gier dwuwymiarowych, natomiast drugi dla trójwymiarowych.
@@ -190,11 +192,11 @@ Silnik napisany jest w językach C, C++ oraz C\#. W pierwszych dwóch napisane s
     \item \textit{Canvas} - Podstawa interfejsu użytkownika. Definiuje przestrzeń, w której wyświetlane są jego elementy. Może być ona wyświetlana jako narzuta na okno gry, narzuta na konkretną kamerę, lub płaszczyzna w przestrzeni trójwymiarowej.
     \item \textit{Mono Behaviour} - Komponenty tego typu są skryptami w języku C\#. Można więc swobodnie je definiować i stworzyć w nich niemalże dowolną funkcjonalność. Więcej informacji o skryptowaniu znajduje się w sekcji ,,Język C\# oraz Mono''.
 \end{itemize}
-Powyższe elementy są najczęściej wykorzystywane podczas tworzenia gry dwuwymiarowej. Istnieje szereg komponentów o funkcjonalności trójwymiarowej, ale jako że gra opisywana w tej pracy operuje tylko na dwóch wymiarach, zostały one pominięte.
+Opisane elementy są najczęściej wykorzystywane podczas tworzenia gry dwuwymiarowej. Istnieje szereg komponentów o funkcjonalności trójwymiarowej, ale jako że gra opisywana w tej pracy operuje tylko na dwóch wymiarach, zostały one pominięte.
 
 \section{Język C\# oraz Mono}
 
-Do programowania rozgrywki oraz logiki gry używa się języka C\#. Nie jest on jednak natywnym językiem silnika. Żeby możliwe było obsługiwanie skryptów w tym języku, Unity używa zewnętrznej platformy zwaną Mono. Mono jest open-sourcowym projektem opartym na frameworku .Net\cite{about_mono}. Pozwala między innymi na łatwe budowanie aplikacji na wiele platform.
+Do programowania rozgrywki oraz logiki gry użyto języka C\#. Nie jest on jednak natywnym językiem silnika. Żeby możliwe było obsługiwanie skryptów w tym języku, Unity używa zewnętrznej platformy zwaną Mono. Mono jest open-sourcowym projektem opartym na frameworku .Net\cite{about_mono}. Pozwala między innymi na łatwe budowanie aplikacji na wiele platform.
 
 \begin{figure}[!htbp]
 	\begin{center}
@@ -207,7 +209,7 @@ Do programowania rozgrywki oraz logiki gry używa się języka C\#. Nie jest on 
 
 W przeszłości do podobnych celów wykorzystywało się języki skryptowe. Wiele silników posiadało własne mniej lub bardziej wydajne implementacje. Często jednak wielkość skryptów przekraczała możliwości interpretatora lub nawet silnika skryptowania, przez co możliwości były bardzo ograniczone. Mono używa różnych języków do różnych celów, a więc traktuje je jako narzędzia, które służą do rozwiązywania innych problemów.
 
-Podczas gdy ważna, krytyczna część aplikacji może być napisana w wydajnym nisko poziomowym języku jak C, częściami takimi jak interfejs użytkownika czy interakcje z użytkownikiem zajmuje się język wyższego poziomu, który nie jest tak samo wydajny, ale pozwala zmniejszyć ilość wymaganych linijek kodu do zrealizowania konkretnego zadania. Kod napisany w takim języku jest zdecydowanie wolniejszy od kodu natywnego, ale w porównaniu z popularnymi językami skryptowymi takimi jak np. LUA jest zdecydowanie szybszy. Mono umożliwia bardzo proste wołanie metod w języku natywnym, przez co łatwo jest podzielić zadania na te, które powinny być napisane optymalnie, oraz na te, które nie wymagają aż takiej oszczędności. Wspierane jest wiele języków wyższego poziomu, do których należą miedzy innymi: C\#, Java, F\#, Python czy JavaScript.
+Podczas gdy ważna, krytyczna część aplikacji może być napisana w wydajnym niskopoziomowym języku jak C, częściami takimi jak interfejs użytkownika czy interakcje z użytkownikiem zajmuje się język wyższego poziomu, który nie jest tak samo wydajny, ale pozwala zmniejszyć liczbę wymaganych linijek kodu do zrealizowania konkretnego zadania. Kod napisany w takim języku jest zdecydowanie wolniejszy od kodu natywnego, ale w porównaniu z popularnymi językami skryptowymi takimi jak np. LUA jest zdecydowanie szybszy. Mono umożliwia bardzo proste wołanie metod w języku natywnym, przez co łatwo jest podzielić zadania na te, które powinny być napisane optymalnie, oraz na te, które nie wymagają aż takiej oszczędności. Wspierane jest wiele języków wyższego poziomu, do których należą miedzy innymi: C\#, Java, F\#, Python czy JavaScript.
 
 Język C\# jest stworzonym dla Microsoft obiektowym językiem programowania. Kod napisany w tym języku kompilowany jest do Common Intermediate Language (CIL), który jest z kolei wykonywany w środowisku uruchomieniowym  takim jak .Net czy właśnie Mono.  
 
@@ -253,7 +255,7 @@ Proces tworzenia gry rozpoczął się w 2015 roku, a jej pełna wersja została 
 \centering
 \includegraphics[scale=0.25]{\ImgPath/rys/gamejolt_page.png}
 \end{center}
-	\caption{Strona główna gry w serwise Gamejolt.com}
+	\caption{Strona główna gry w serwisie Gamejolt.com . Opracowanie własne.}
 	\label{gamejolt_page}
 \end{figure}
 
@@ -269,7 +271,7 @@ Poniżej znajduje się obrazek pokazujący graficzne reprezentacje wymienionych 
     \item Postacie graczy - W grze istnieją 2 instancje. Jest ona sterowana przez człowiek poprzez zestaw wejść. Może chodzić w lewo lub w prawo, skakać, rzucać piłkę oraz uderzać. Dwie ostatnie akcje możliwe są zarówno podczas stania jak i w locie. Skok służy do zwiększenia zasięgu rzutu lub po prostu lepszego do niego ustawienia. Obrót gracza jest niemożliwy w powietrzu, pozwala to na dokładniejsze dostosowanie swojej pozycji do rzutu. Rzut piłki służy głownie do umiejscowienia jej w obręczy kosza. Po rozpoczęciu przyciskania klawisza odpowiedzialnego za rzut, gracz traci możliwość chodzenia i jest w trakcie rzutu. Podczas tego czasu pokazuje się wskaźnik siły rzutu który oscyluje między minimalną i maksymalna siłą rzutu. Po puszczeniu przycisku piłka jest rzucana zgodnie z siłą która była wskazana w tym momencie. Uderzanie służy do zabierania piłki drugiemu graczowi. Po przyciśnięciu klawisza uderzenia rozpoczyna się animacja uderzenia i jeżeli trafiliśmy ręką w punkt w którym znajduje się piłka piłka jest wybijana drugiem graczowi. W trakcie trwania animacji, możliwość chodzenia jest zablokowana.
     \item Piłka - Główny element, służy do zdobywania punktów przez graczów. Jej fizyka jest symulowana w 2 wymiarach, przez co uzyskujemy bardzo ciekawe efekty jej wyrzutu. Jeżeli znajdzie się w obręczy kosza, naliczane są 2 punkty graczowi atakującemu ten kosz. Jeżeli piłka została wyrzucona z odpowiednio dużej odległości, trafienie daje dodatkowy punkt. Jeżeli piłka wyleci poza boisko to jej pozycja resetuje się do środka planszy, a gracze pojawiają się na swoich początkowych pozycjach.
     \item Kosze -  W grze istnieją 2 instancje. Trafienie do jednego z nich dodaje punkty. Ich wygląd różni się zależnie od planszy, ale sama funkcjonalność pozostaje niezmienna.
-    \item Tablica Wyników - Pokazuje aktualny stan meczu - pozostały czas, ilość punktów oraz ilość fauli każdego z graczy. na środku tablicy znajduje się grafika piłki, której kolor zmiana się zależnie od wyniku meczu.
+    \item Tablica Wyników - Pokazuje aktualny stan meczu - pozostały czas, liczba punktów oraz liczba fauli każdego z graczy. na środku tablicy znajduje się grafika piłki, której kolor zmiana się zależnie od wyniku meczu.
 \end{enumerate}
 
 \begin{figure}[!htbp]
@@ -277,12 +279,12 @@ Poniżej znajduje się obrazek pokazujący graficzne reprezentacje wymienionych 
 \centering
 \includegraphics[scale=0.6]{\ImgPath/rys/game_elements.png}
 \end{center}
-	\caption{Elementy gry na zrzucie ekranu z aplikacji}
+	\caption{Elementy gry na zrzucie ekranu z aplikacji. Opracowanie własne.}
 	\label{game_elements}
 \end{figure}
 
 \section{Inne funkcjonalności}
-Wyżej wymienione elementy stanowią podstawę gry. Teoretycznie wystarczą one do przeprowadzenia pełnej rozgrywki jednak, nie wydaje się ona zbyt ciekawa. Gra posiada wiele funkcjonalności które ułatwiają rozgrywkę, zwiększają jej komfort, bądź też jej odczucie przez gracza:
+Wymienione elementy stanowią podstawę gry. Teoretycznie wystarczą one do przeprowadzenia pełnej rozgrywki jednak, nie wydaje się ona zbyt ciekawa. Gra posiada wiele funkcjonalności które ułatwiają rozgrywkę, zwiększają jej komfort, bądź też jej odczucie przez gracza:
 \begin{itemize}
     \item Ekran ustawień - pozwala na ustawienie klawiszy które odpowiedzialne są za konkretne akcje w grze, oraz ustawienie poziomu głośności dźwięków. Ustawienia te są zapisywane w pliku .ini przez co po restarcie gry nie trzeba ich od nowa ustawiać. 
     \item Ekran ustawień meczu - pozwala na zmianę ustawień pojedynczego meczu. Zmienione może zostać:
@@ -307,7 +309,7 @@ Wyżej wymienione elementy stanowią podstawę gry. Teoretycznie wystarczą one 
 \centering
 \includegraphics[scale=0.5]{\ImgPath/rys/match_setup_old.png}
 \end{center}
-	\caption{Ekran ustawień meczu}
+	\caption{Ekran ustawień meczu. Opracowanie własne.}
 	\label{match_setup_old}
 \end{figure}
 
@@ -317,14 +319,14 @@ Wyżej wymienione elementy stanowią podstawę gry. Teoretycznie wystarczą one 
 %-----------------
 \chapter{Implementacja nowej wersji gry}
 
-Tak jak zostało już wspomniane wcześniej, gra została przepisana od zera w środowisku Unity. W tym rozdziale znajduje się szczegółowy opis implementacji.
+Gra została napisana od zera w środowisku Unity. W tym rozdziale znajduje się szczegółowy opis jej implementacji w tym środowisku.
 
 \section{Zmiany w stosunku do oryginalnej wersji gry}
 
-Oryginalnej gra była atrakcyjna dla graczy, jednak z perspektywy czasu jej design może być poprawiony w wielu aspektach. Niektóre aspekty okazały się nietrafione a inne po prostu mogą być ulepszone o nowe pomysły. W obecnej wersji zostały wprowadzone następujące zmiany w stosunku do wersji oryginalnej:
+W wersji oryginalnej gra była atrakcyjna dla graczy, jednak z perspektywy czasu jej design może być poprawiony w wielu aspektach. Niektóre aspekty okazały się nietrafione a inne po prostu mogą być ulepszone o nowe pomysły. W obecnej wersji zostały wprowadzone następujące zmiany w stosunku do wersji pierwtonej:
 \begin{itemize}
     \item Dodanie trybu online multiplayer - W oryginalnej grze możliwa była tylko gra na jednym komputerze. Dlatego też niezbędna była obecność 2 graczy przy jednym urządzeniu. Dzięki wprowadzeniu takiego trybu, gracze nie muszą być teraz fizycznie w jednym miejscu. Nie muszą też współdzielić klawiatury.
-    \item Zmiana rozmiaru okna gry - Oryginalna gra jest wyświetlana w oknie o rozdzielczości 800x600. Jest to zdecydowanie przestarzała rozdzielczość nie mówiąc już o jej współczynniku proporcji - 4:3. Użytkownicy posiadają monitory o wile większych rozdzielczościach najczęściej w 16:9. Dlatego też gra zaczęła wspierać rozdzielczość 1920x1080  nazywaną czasami FullHD jako domyślną. Większość monitorów komputerów PC operuje na takiej rozdzielczości lub innych o takim samym współczynniku proporcji. Tak długo jak jest on zachowany okno gry skaluje się poprawnie i widoczne są wszystkie elementy gry.
+    \item Zmiana rozmiaru okna gry - Oryginalna gra jest wyświetlana w oknie o rozdzielczości 800x600. Jest to zdecydowanie przestarzała rozdzielczość nie mówiąc już o jej współczynniku proporcji - 4:3 dpi. Użytkownicy posiadają monitory o wile większych rozdzielczościach najczęściej w 16:9. Dlatego też gra zaczęła wspierać rozdzielczość 1920x1080 dpi  nazywaną czasami FullHD jako domyślną. Większość monitorów komputerów PC operuje na takiej rozdzielczości lub innych o takim samym współczynniku proporcji. Tak długo jak jest on zachowany okno gry skaluje się poprawnie i widoczne są wszystkie elementy gry.
     \item Poprawa kamery - Kamera nie różni się bardzo od podstawowej wersji, jednak zostały wprowadzone małe usprawnienia. Śledzony jest teraz każdy gracz oraz piłka, zamiast tylko gracza z piłką lub samej piłki. Dzięki temu kluczowe elementy gry zawsze znajdują się w polu widzenia. Przed każdym graczem widoczna jest też konkretna przestrzeń, tak żeby kosze były widoczne. Dzięki takiemu rozwiązaniu możliwe jest też zobaczenie całej mapy na ekranie.  
     \item Zmiana systemu kolorowania graczy - W wersji oryginalnej warianty kolorystyczne graczy były realizowane poprzez podmianę spritów gracza. W takim rozwiązaniu dla każdego wariantu kolorystycznego musiał powstać zestaw wszystkich klatek animacji. W wersji obecnej zmiana koloru odbywa się w tzw. shaderze. Jest to część kodu wykonywana na karcie graficznej podczas rednerowania. Shader korzystając z maski zamienia kolory gracza w każdej animacji, przez co możliwe jest stworzenie niemalże nieskończonej liczby wariantów, bardzo tanim kosztem. Rozwiązanie te jest też dużo wydajniejsze pamięciowo - każdy nowy wariant nie wymaga tworzenia plików które ładowane są do pamięci.
     \item Zmiany zasad rozgrywki - W wersji oryginalnej wyrzucenie piłki poza plansze oznaczało restart pozycji graczy oraz piłki za każdym razem. W tej wersji piłka jest po prostu odrzucana ze strony z której wyleciała. Pozwala to zachować dynamikę gry i jest nieco humorystycznym akcentem w grze. Ponadto zdobycie punktów, po prostu resetuje pozycję graczy zamiast ustawiać ich w pozycji zależenie od tego kto zdobył punkt i jaki kosz został zaatakowany.
@@ -342,7 +344,7 @@ Główną sceną gry jest scena o nazwie "Main Menu". Jej głównym celem jest u
 \centering
 \includegraphics[scale=0.3]{\ImgPath/rys/main_menu.png}
 \end{center}
-	\caption{Ekran głównego menu}
+	\caption{Ekran głównego menu. Opracowanie własne.}
 	\label{main_menu}
 \end{figure}
 
@@ -353,7 +355,7 @@ Zdecydowana większość sceny jest interfejsem użytkownika. Dlatego też znajd
 \centering
 \includegraphics[scale=0.75]{\ImgPath/rys/GOMainMenuUI.png}
 \end{center}
-	\caption{Ekran inspektora po wybraniu obiektu MainMenuUI}
+	\caption{Ekran inspektora po wybraniu obiektu MainMenuUI. Opracowanie własne.}
 	\label{GOMainMenuUI}
 \end{figure}
 
@@ -366,7 +368,7 @@ Dwa ostatnie dzieci to panele zawierające kolejne elementy UI. Panele pozwalaj�
 \centering
 \includegraphics[scale=0.7]{\ImgPath/rys/text_component.png}
 \end{center}
-	\caption{Komponent Text}
+	\caption{Komponent Text. Opracowanie własne.}
 	\label{text_component}
 \end{figure}
 
@@ -376,7 +378,7 @@ Dwa ostatnie dzieci to panele zawierające kolejne elementy UI. Panele pozwalaj�
 \centering
 \includegraphics[scale=0.7]{\ImgPath/rys/button_component.png}
 \end{center}
-	\caption{Komponent Button}
+	\caption{Komponent Button. Opracowanie własne.}
 	\label{button_component}
 \end{figure}
 
@@ -394,7 +396,7 @@ Jednym z ważniejszych elementów sceny jest obiekt GameState. Zawiera on dane k
 \centering
 \includegraphics[width = 0.9\textwidth]{\ImgPath/rys/default_game_data_instance.png}
 \end{center}
-	\caption{Instancja GameDefaultData w grze}
+	\caption{Instancja GameDefaultData w grze. Opracowanie własne.}
 	\label{default_game_data_instance}
 \end{figure}
 
@@ -413,7 +415,7 @@ Każdy z elementów sterujących wyborem zawiera strzałki do zmiany aktualnie w
 \centering
 \includegraphics[width = \textwidth]{\ImgPath/rys/match_setup.png}
 \end{center}
-	\caption{Okno ustawień meczu}
+	\caption{Okno ustawień meczu. Opracowanie własne.}
 	\label{match_setup}
 \end{figure}
 
@@ -427,15 +429,15 @@ Ostatnie 2 sceny w grze są dość podobne - obydwie służą do samej rozgrywki
 \begin{itemize}
     \item Universe Manager - Główny obiekt decydujący o rozgrywce. W nim dzieję się niemalże cała logika meczu. Opisany bardziej szczegółowo poniżej w podsekcji \ref{universe_manager}.
     \item SceneRoot - Korzeń całej grafiki która znajduje się na planszy. Jego funkcja jest głownie organizacyjna ale pozwala też na manipulowanie całą planszą.
-    \item GameplayUI - Obiekt zawierający komponent Canvas. Zajmuje się całą logiką z w interfejsem użytkonika wyświetlanym podczas meczu. Opisany bardziej szczegółowo poniżej w podsekcji \ref{gameplayui}.
+    \item GameplayUI - Obiekt zawierający komponent Canvas. Zajmuje się całą logiką z w interfejsem użytkonika wyświetlanym podczas meczu. Opisany bardziej szczegółowo w podsekcji \ref{gameplayui}.
     \item GameInput - Obiekt realizujący obsługę wejść w grze. Opisany bardziej szczegółowo poniżej w podsekcji \ref{gameinput}.
     \item MainCamera - Kamera główna renderująca całą scenę. Jej właściwości są sterowane obiektem komponentem Cinemachine Brain oraz obiektem VirtualCamera.
-    \item VirtualCamera - Obiekt reprezentujący ustawienia kamery w module Cinemachine. Śledzi ona obiekt TargetGroup. Opisany bardziej szczegółowo poniżej w podsekcji \ref{virtualcamera}.
+    \item VirtualCamera - Obiekt reprezentujący ustawienia kamery w module Cinemachine. Śledzi ona obiekt TargetGroup. Opisany bardziej szczegółowo w podsekcji \ref{virtualcamera}.
     \item TargetGroup - Pozycją tego obiektu jest uśredniony punkt wszystkich obiektów które śledzi kamera.
-    \item Basket - Obiekt reprezentujący kosz. Posiada obręcz oraz punkt w który należy trafić żeby zdobyć punkty. Opisany bardziej szczegółowo poniżej w podsekcji \ref{basket}.
+    \item Basket - Obiekt reprezentujący kosz. Posiada obręcz oraz punkt w który należy trafić żeby zdobyć punkty. Opisany bardziej szczegółowo w podsekcji \ref{basket}.
     \item GameState - Obiekt przechowujący stan gry. Jest przenoszony między scenami. Opisany bardziej szczegółowo wyżej.
-    \item Player - Reprezentacja postaci sterowanej przez gracza w świecie gry. Opisany bardziej szczegółowo poniżej w podsekcji \ref{player}.
-    \item Ball - Obiekt odpowiedzialny za fizyczną symulację piłki w dwóch wymiarach. Opisany bardziej szczegółowo poniżej w podsekcji \ref{ball}.
+    \item Player - Reprezentacja postaci sterowanej przez gracza w świecie gry. Opisany bardziej szczegółowo w podsekcji \ref{player}.
+    \item Ball - Obiekt odpowiedzialny za fizyczną symulację piłki w dwóch wymiarach. Opisany bardziej szczegółowo w podsekcji \ref{ball}.
     \item Spawners - Zestaw obiektów reprezentujących pozycję początkową piłki oraz graczy. Są to zwykłe obiektu posiadające jedynie komponent typu Transform. Pozwalają na łatwe i wygodne ustawienie tych pozycji na scenie.
     \item Background - Zestaw obiektów posiadających komponent Sprite Renderer do stworzenia grafiki boiska. W jej skład wchodzi każdy element graficzny poza koszami, postaciami graczy piłką i interfejsem użytkownika.
     \item Platforms - Zestaw obiektów posiadających komponent Box Collider 2D reprezentujących fizyczne granice do poruszania dla postaci gracza. Aktualnie jest to jeden duży Collider służący jako podłoże do chodzenia oraz dwa Collidery pełniące rolę ścian blokujących graczy przed wyjściem poza planszę.
@@ -447,7 +449,7 @@ Ostatnie 2 sceny w grze są dość podobne - obydwie służą do samej rozgrywki
 \centering
 \includegraphics[width = \textwidth]{\ImgPath/rys/COURT_1.png}
 \end{center}
-	\caption{Scena COURT\_1 podczas rozgrywki}
+	\caption{Scena COURT\_1 podczas rozgrywki. Opracowanie własne.}
 	\label{COURT_1}
 \end{figure}
 
@@ -455,9 +457,9 @@ Ostatnie 2 sceny w grze są dość podobne - obydwie służą do samej rozgrywki
 \label{universe_manager}
 Obiekt zarządzający całą rozgrywką. Istnieje tylko jeden na scenie. jest realizowany jako singleton z tą różnicą że istnieje tylko na scenach z rozgrywką. Po opuszczeniu takiej sceny zostaje zniszczony i przy rozpoczęciu nowego meczu tworzony jest nowy obiekt. Jedynym komponentem tego obiektu jest skrypt UniverseManager który odpowiada za wspomniane właśnie funkcje. Kod wybranych funkcji można znaleźć w załączniku \ref{code_UniverseManager}. Implementacje funkcji różnią się zależnie od tego czy gramy w trybie online czy local.
 
-Podstawą skrytpu jest zestaw funkcji czysto rozgrywkowych. Każda z ważniejszych mechanik w grze jest realizowana przez ten obiekt. Są to akcje takie jak: rzut piłki, wybicie piłki innemu graczu, popełnienie faulu oraz podnoszenie piłki. Działa to w taki sposób że gracz robiąc konkretne akcje uruchamia funkcje w skrypcie. W przypadku rzutu piłki gracz uruchamia funkcję SpawnBall() która za argument przyjmuje pozycje z której zostanie wyrzucona piłka, siłę rzutu oraz początkowy moment obrotowy piłki. Gracz po wywołaniu tej funkcji przyjmuje że piłka została wyrzucona, a sam skrypt zajmuje się już umieszczeniem piłki o danych parametrach w świecie gry. Wybicie piłki wygląda bardzo podobnie do wyrzutu. Informuje ona gracza który został uderzony że nie stracił on piłkę, wykonując na nim funkcję GetHit(). Gracz w tej funkcji dostosowuje swój wewnętrzny stan do tej sytuacji i woła funkcję SpawnBall() na skrypcie. Podniesienie piłki przez gracza odbywa się poprzez zawołanie funkcji RequestPickupBall(). W wersji lokalnej jest ona trywialna - informuje gracza o podniesieniu przez niego piłki oraz ustawia odpowiednie flagi na obiekcie piłki. Flagi te sprawiają że nie może być ona podniesiona przez innego gracza, oraz że obiekt piłki zostanie zniszczony pod koniec klatki. Funkcja odpowiedzialna za faule - DoneFoul() W wersji lokalnej zwiększa tylko licznik fauli.
+Podstawą skryptu jest zestaw funkcji czysto rozgrywkowych. Każda z ważniejszych mechanik w grze jest realizowana przez ten obiekt. Są to akcje takie jak: rzut piłki, wybicie piłki innemu graczu, popełnienie faulu oraz podnoszenie piłki. Działa to w taki sposób że gracz robiąc konkretne akcje uruchamia funkcje w skrypcie. W przypadku rzutu piłki gracz uruchamia funkcję SpawnBall() która za argument przyjmuje pozycje z której zostanie wyrzucona piłka, siłę rzutu oraz początkowy moment obrotowy piłki. Gracz po wywołaniu tej funkcji przyjmuje że piłka została wyrzucona, a sam skrypt zajmuje się już umieszczeniem piłki o danych parametrach w świecie gry. Wybicie piłki wygląda bardzo podobnie do wyrzutu. Informuje ona gracza który został uderzony że nie stracił on piłkę, wykonując na nim funkcję GetHit(). Gracz w tej funkcji dostosowuje swój wewnętrzny stan do tej sytuacji i woła funkcję SpawnBall() na skrypcie. Podniesienie piłki przez gracza odbywa się poprzez zawołanie funkcji RequestPickupBall(). W wersji lokalnej jest ona trywialna - informuje gracza o podniesieniu przez niego piłki oraz ustawia odpowiednie flagi na obiekcie piłki. Flagi te sprawiają że nie może być ona podniesiona przez innego gracza, oraz że obiekt piłki zostanie zniszczony pod koniec klatki. Funkcja odpowiedzialna za faule - DoneFoul() W wersji lokalnej zwiększa tylko licznik fauli.
 
-Kolejnym ważnym zdaniem skryptu jest monitorowanie stanu rozgrywki. Istnieją funkcje odpowiedzialne za początek i koniec meczu, zmianę liczników punktów oraz fauli a także obsługę wyrzucenia piłki poza obszar rozgrywki. Reszta obiektów na scenie jest informowana poprzez tzw. eventy czyli zdarzenia pod które dowolny obiekt może doczepić wykonanie własnej funkcji. Są one zaimplementowane używając C\# akcji (System.Action). Zdarzenia takie występują np. gdy mecz się zakończy lub zmieniony zostanie wynik. Skrypt ten też liczy czas rozgrywki i aktualizuje co klatkę pozostały czas meczu w sekundach.
+Kolejnym, ważnym zdaniem skryptu jest monitorowanie stanu rozgrywki. Istnieją funkcje odpowiedzialne za początek i koniec meczu, zmianę liczników punktów oraz fauli a także obsługę wyrzucenia piłki poza obszar rozgrywki. Reszta obiektów na scenie jest informowana poprzez tzw. eventy czyli zdarzenia pod które dowolny obiekt może doczepić wykonanie własnej funkcji. Są one zaimplementowane używając C\# akcji (System.Action). Zdarzenia takie występują np. gdy mecz się zakończy lub zmieniony zostanie wynik. Skrypt ten też liczy czas rozgrywki i aktualizuje co klatkę pozostały czas meczu w sekundach.
 
 \subsection{GameplayUI}
 \label{gameplayui}
@@ -469,14 +471,14 @@ Jest to obiekt o najbardziej skomplikowanej hierarchii, zawierający wiele obiek
 
 Dzieckiem tego obiektu jest również obiekt zawierający komponenty Sprite oraz Animator. Jest to reprezentacja graficzna postaci gracza. Zawiera ona liczne animacje poklatkowe. Animacje te są sterowane za pomocą maszyny stanów. Przejścia między stanami determinowane są poprzez zmiany flag w maszynie stanów. Za miane flag odpowiada również skrypt TSDUPlayer. Na rysunku \ref{anim_state_machine} pokazany jest schemat maszyny stanów. 
 
-Kolejnym ciekawszym dzieckiem jest obiekt odpowiedzialny za wyświetlanie wskaźnika siły rzutu. Pojawia się on tylko gdy przycisk rzutu jest wciśnięty. Jest kontrolowany również przez skrypt TSDUPlayer na głównym obiekcie. Sam obiekt posiada komponent Canvas którego tryb wyświetlania ustawiony jest na przestrzeń trójwymiarową. Dzięki temu możemy korzystać z wszystkich elementów interfejsu użytkownika.Jedna z funkcjonalności komponentu Image, jest tutaj bardzo przydatna 0 zmiana typu obrazu. Typ obrazu ustawiony na został na Fill, a tryb wypełniania na pionowy. Poprzez miane wartości pola fill ammount uzyskujemy w bardzo prosty sposób pasek wskazujący aktualną siłę rzutu. Gdy fill ammount wynosi 1 widoczny jest cały obrazek i oznacza to maksymalną siłę rzutu. W przeciwnym wypadku (fill ammount = 0) obrazek jest niewidoczny i oznacza on minimalną siłę.  
+Kolejnym, ciekawszym dzieckiem jest obiekt odpowiedzialny za wyświetlanie wskaźnika siły rzutu. Pojawia się on tylko gdy przycisk rzutu jest wciśnięty. Jest kontrolowany również przez skrypt TSDUPlayer na głównym obiekcie. Sam obiekt posiada komponent Canvas którego tryb wyświetlania ustawiony jest na przestrzeń trójwymiarową. Dzięki temu możemy korzystać z wszystkich elementów interfejsu użytkownika.Jedna z funkcjonalności komponentu Image, jest tutaj bardzo przydatna 0 zmiana typu obrazu. Typ obrazu ustawiony na został na Fill, a tryb wypełniania na pionowy. Poprzez miane wartości pola fill ammount uzyskujemy w bardzo prosty sposób pasek wskazujący aktualną siłę rzutu. Gdy fill ammount wynosi 1 widoczny jest cały obrazek i oznacza to maksymalną siłę rzutu. W przeciwnym wypadku (fill ammount = 0) obrazek jest niewidoczny i oznacza on minimalną siłę.  
 
 \begin{figure}[H]
 	\begin{center}
 \centering
 \includegraphics[width = 1.45\textwidth, angle = -90]{\ImgPath/rys/anim_state_machine.png}
 \end{center}
-	\caption{Maszyna stanów animatora postaci gracza}
+	\caption{Maszyna stanów animatora postaci gracza. Opracowanie własne.}
 	\label{anim_state_machine}
 \end{figure}
 
@@ -489,7 +491,7 @@ Bardzo prosty obiekt reprezentujący piłkę. Zawiera takie komponenty jak Spher
 \centering
 \includegraphics[width = 0.7\textwidth]{\ImgPath/rys/rigidbody_ball.png}
 \end{center}
-	\caption{Komponent Rigidbody 2D na obiekcie Ball}
+	\caption{Komponent Rigidbody 2D na obiekcie Ball. Opracowanie własne.}
 	\label{rigidbody_ball}
 \end{figure}
 
@@ -515,7 +517,7 @@ Obiekt zawierający skrypt TargetGroup z modułu Cinemachine. Skrypt ten wyznacz
 
 \section{Implementacja trybu online multiplayer}
 \label{implementation_online}
-Tryb online multiplayer oznacza konieczność synchronizacji części stanu gry między dwoma jej instancjami. Unty posiada wbudowany moduł odpowiedzialny za komunikację online ale nie jest on zbyt wydajny i posiada stosunkowo duży próg wejścia. Najlepszym pomysłem okazało się więc skorzystacie z rozwiązania które oferuje ExitGames. Jest to plugin do Unity o nazwie Photon. Jest to rozwiązanie które oferuje bardzo prostą synchronizację obiektów w Unity. Photon wykorzystuje architekturę klient-serwer. w chmurze zwaną Photon Cloud tworzone są serwery które zarządzają pokojami dla konkretnej gry. Instancje gry są klientami którzy dzielą się informacjami poprzez serwer. Żeby 2 graczy mogło wspólnie grać musi zostać nowiazne miedzy nimi połczenie. Nawiazywanie połaćzenia w Photonie polega na:
+Tryb online multiplayer oznacza konieczność synchronizacji części stanu gry między dwoma jej instancjami. Unty posiada wbudowany moduł odpowiedzialny za komunikację online ale nie jest on zbyt wydajny i posiada stosunkowo duży próg wejścia. Najlepszym pomysłem okazało się więc skorzystacie z rozwiązania które oferuje ExitGames. Jest to plugin do Unity o nazwie Photon. Jest to rozwiązanie które oferuje bardzo prostą synchronizację obiektów w Unity. Photon wykorzystuje architekturę klient-serwer. w chmurze zwaną Photon Cloud tworzone są serwery które zarządzają pokojami dla konkretnej gry. Instancje gry są klientami którzy dzielą się informacjami poprzez serwer. Żeby 2 graczy mogło wspólnie grać musi zostać nawiązane miedzy nimi połączenie. Nawiązywanie połączenie w Photonie polega na:
 \begin{enumerate}
     \item Połączenie klienta z name serwerem. Jest na nim ustalany region z którym klient ma najszybsze połączenie.
     \item Połączenie klienta z master serwerem danego regionu. Master serwer posiada informacje o wszystkich serwerach gier które aktualnie działają w chmurze. Klient jest przekierowywany na serwer gry w która aktualnie gra.
@@ -528,7 +530,7 @@ Tryb online multiplayer oznacza konieczność synchronizacji części stanu gry 
 \centering
 \includegraphics[width = 0.9\textwidth]{\ImgPath/rys/photon_cloud_structure.png}
 \end{center}
-	\caption{Struktura chmury Photon Cloud}
+	\caption{Struktura chmury Photon Cloud.}
 	\label{photon_cloud_structure}
 \end{figure}
 
@@ -546,42 +548,42 @@ Synchronizacja rozgrywki odbywa się poprzez dołączenie do obiektów synchroni
 
 Do obiektu typu Ball również został dodany skrypt typu PhotonView. Obserwuje on specjalnie stworzony skrypt o nazwie BallNetworkSync. Odpowiedzialny jest on za synchronizację piłki na obu maszynach. Wysyłana jest rotacja, pozycja oraz prędkość piłki. W wersji replikowanej piłki czyli kliencie który nie steruje piłką, fizyka piłki jest również liczona z tym że jej pozycja, rotacja i prędkość jest ciągle poprawiana poprzez dane dostarczone od klienta sterującego piłką. Dzięki temu piłka porusza się płynnie na obu maszynach. Dodatkowo zaimplementowane jest w tym skrypcie lag compensation.  
 
-Reszta stanu meczu synchronizowana jest poprzez zdarzenia sieciowe. Działają one podobnie do zdarzeń zaimplementowanych za pomocą System.Action, z tą różnicą że zdarzenie wysyłane jest nie tylko do konkretnych obiektów ale przede wszystkim do konkretnych maszyn. W ten sposób właśnie zaimplementowane zostało uderzenie postaci gracza, rzut piłką czy zmiana wyniku. Kod przykładowego zdarzenia znajduje się w dodatku \ref{code_PhotonEventExample}. Zdarzenia zawierają też dane niezbędne do odtworzenia stanu gry na drugim urządzeniu. Są one bardzo wydajne, a także niezawodne. Nie ma wiec ryzyko że jakieś wydarzenie nie  zostanie dostarczone do klienta docelowego.
+Reszta stanu meczu synchronizowana jest poprzez zdarzenia sieciowe. Działają one podobnie do zdarzeń zaimplementowanych za pomocą System.Action, z tą różnicą że zdarzenie wysyłane jest nie tylko do konkretnych obiektów ale przede wszystkim do konkretnych maszyn. W ten sposób właśnie zaimplementowane zostało uderzenie postaci gracza, rzut piłką czy zmiana wyniku. Kod przykładowego zdarzenia znajduje się w dodatku \ref{code_PhotonEventExample}. Zdarzenia zawierają też dane niezbędne do odtworzenia stanu gry na drugim urządzeniu. Są one bardzo wydajne, a także niezawodne. Nie ma wiec ryzyka że jakieś wydarzenie nie  zostanie dostarczone do klienta docelowego.
 
 
 
 
 \section{Przygotowanie gry pod nowe platformy}
-Zagadnienie tzw. portowania czyli przeniesienia gry na nową platformę, jest dość rozbudowane. Jak okazało się podczas procesu tworzenia gry, większość rzeczy jaki można zrobić to pisanie kodu który jest czysty, przejrzysty oraz łatwo skalowalny. Znacznie przyspiesza to ten proces i pozwala unikając błędów wynikających z niezrozumienia kodu. Wiele funkcjonalności które przynoszą zwykle problem podczas procesu przenoszenia nie zostało jeszcze zaimplementowanych lub po prostu nie jest planowane dodawanie ich. Można do nich zaliczyć takie rzeczy jak; system zapisów, tablice wyników czy osiągnięcia.
+Zagadnienie tzw. portowania czyli przeniesienia gry na nową platformę, jest dość rozbudowane. Jak okazało się podczas procesu tworzenia gry, większość rzeczy jaki można zrobić to pisanie kodu który jest czysty, przejrzysty oraz łatwo skalowalny. Znacznie przyspiesza to ten proces i pozwala uniknąć błędów wynikających z niezrozumienia kodu. Wiele funkcjonalności które przynoszą zwykle problem podczas procesu przenoszenia nie zostało jeszcze zaimplementowanych lub po prostu nie jest planowane dodawanie ich. Można do nich zaliczyć takie elementy jak; system zapisów, tablice wyników czy osiągnięcia.
 
 Jednym z głównych narzędzi używanych podczas portowania jest abstrakcja. Dobrym przykładem użycia abstrakcji do ułatwienia procesu portowania jest skrypt GameInput. Korzysta on ze zmiennych implementacji Metod GetButton, GetButtonPressed, GetButtonReleased, GetAxis w klasie InputPlayer. Kod tej klasy można znaleźć w dodatku \ref{code_InputPLayer} Tworzone są klasy dziedziczące po  klasie InputPlayer i przeciążają jej metody. W ten sposób może być realizowana obsługa różnych urządzeń wejścia. W przypadku komputera metody te zwracają wartość true/false lub wartość typu float w przypadku ostatniej metody, zależnie od stanu klawiszy na klawiaturze komputera. Argumentami funkcji są wartości enumów GameButtons i GameAxis. Dzięki takiemu rozwianiu skrypt GameInput zawsze pyta o klawisz odpowiedzialny za jakąś akcje, a nie konkretny przycisk na klawiaturze. Za ustawienie przycisków odpowiedzialnych za akcje odpowiada klasa dziedzicząca po klasie InputPlayer. Posiada ona po prostu zestaw pól w których zapisywane są kody fizycznych guzików. Dzięki zastosowaniu takiego rozwiązania możliwa jest łatwa zmiana przycisków odpowiedzialnych za akcje na danym urządzeniu wejścia. na obecny moment wartości te są ustawiane podczas inicjalizacji gry, jednak w przyszłości możliwe będzie ich zmiana podczas uruchomienia aplikacji.
 
-Kolejnym ważnym aspektem podczas portowania jest wydajność na docelowym urządzeniu. Gra omawiania w niniejszej pracy nie jest wymagająca obliczeniowo. Największym problemem na konsolach o słabszych możliwościach może być jednak obliczanie fizyki oraz warstwa sieciowa. Jeżeli chodzi o fizykę - głównym powodem jej liczenia jest piłka. W menu głównym spadające piłki opierają się na fizyce, żeby spadać. Piłek jest dużo ale dzięki zastosowaniu tzw. object poolingu ich liczba jest kontrolowania a pojawienie się kolejnych piłek jest tylko kwestią aktywacji obiektu oraz zmiany jego położenia i prędkości. Object pooling polega na stworzeniu organicznej liczby obiektów danego typu oraz dezaktywacji ich. Kiedy w grze istnieje potrzeba stworzenia nowego obiektu, zamiast alokować pamięć, wykorzystany jest istniejący już w pamięci nieaktywny obiekt. Analogicznie zamiast usuwać obiekt którego już nie potrzebujemy jest on po prostu dezaktywowany. Jeżeli fizyka będzie liczyć się za długo na nowych platformach wystarczy zmniejszyć ilość piłek. Piłka używana podczas meczu nie jest zbyt skomplikowana. Jej Collider jest to po prostu kołem, czyli jeden z prostszych kształtów jeżeli chodzi o obliczanie kolizji.
+Kolejnym ważnym aspektem podczas portowania jest wydajność na docelowym urządzeniu. Gra omawiania w niniejszej pracy nie jest wymagająca obliczeniowo. Największym problemem na konsolach o słabszych możliwościach może być jednak obliczanie fizyki oraz warstwa sieciowa. Jeżeli chodzi o fizykę - głównym powodem jej liczenia jest piłka. W menu głównym spadające piłki opierają się na fizyce, żeby spadać. Piłek jest dużo ale dzięki zastosowaniu tzw. object poolingu ich liczba jest kontrolowania a pojawienie się kolejnych piłek jest tylko kwestią aktywacji obiektu oraz zmiany jego położenia i prędkości. Object pooling polega na stworzeniu organicznej liczby obiektów danego typu oraz dezaktywacji ich. Kiedy w grze istnieje potrzeba stworzenia nowego obiektu, zamiast alokować pamięć, wykorzystany jest istniejący już w pamięci nieaktywny obiekt. Analogicznie zamiast usuwać obiekt którego już nie potrzebujemy jest on po prostu dezaktywowany. Jeżeli fizyka będzie liczyć się za długo na nowych platformach wystarczy zmniejszyć liczba piłek. Piłka używana podczas meczu nie jest zbyt skomplikowana. Jej Collider jest to po prostu kołem, czyli jeden z prostszych kształtów jeżeli chodzi o obliczanie kolizji.
 
-Aspekt sieciowy został szczegółowo opisany w rozdziale \ref{implementation_online}. Ważniejszą jego częścią, jeżeli chodzi o optymalizacje, jest ilość danych przesyłanych między urządzeniami. Większość danych jest wysyłana poprzez pojedyncze zdarzenia sieciowe. Jest to np. informacja o zmianach ustawień meczu czy zdobyciu punktu. Liczba obiektów które muszą wysyłać dane w regularnych odstępach czasu jest ograniczona do minimum. Do tych obiektów zaliczana jest piłka oraz postacie graczy.
+Aspekt sieciowy został szczegółowo opisany w rozdziale \ref{implementation_online}. Jeżeli chodzi o optymalizacje, ważna jest liczba danych przesyłanych między urządzeniami. Większość danych jest wysyłana poprzez pojedyncze zdarzenia sieciowe. Jest to np. informacja o zmianach ustawień meczu czy zdobyciu punktu. Liczba obiektów które muszą wysyłać dane w regularnych odstępach czasu jest ograniczona do minimum. Do tych obiektów zaliczana jest piłka oraz postacie graczy.
 
 %-----------------
 % Testowanie
 %-----------------
 \chapter{Przetestowanie opracowanej gry komputerowe}
 
-Zagadnienie przetestowania całej gry komputerowej jest ogromnym zadaniem - ilość możliwych stanów jakich może znaleźć się aplikacja jest kolosalna. Wiele gier mimo uznania je za kompletne i wydania wersji 1.0 posiada liczne błędy. Zwykle im większa jest gra tym więcej zawiera błędów. Kluczową rzeczą jest upewnienie się nie że gra nie posiada błędów ale że nie posiada błędów które uniemożliwiają rozgrywkę lub sprawiają że staje się ona bardzo trudna albo nieprzyjemna. Dobrze też żeby gra działała płynnie na docelowym sprzęcie - komputerze osobistym, konsoli czy urządzeniu mobilnym. 
+Zagadnienie przetestowania całej gry komputerowej jest ogromnym zadaniem - liczba możliwych stanów jakich może znaleźć się aplikacja jest kolosalna. Wiele gier mimo uznania je za kompletne i wydania wersji 1.0 posiada liczne błędy. Zwykle im większa jest gra tym więcej zawiera błędów. Kluczową rzeczą jest upewnienie się nie że gra nie posiada błędów ale że nie posiada błędów które uniemożliwiają rozgrywkę lub sprawiają że staje się ona bardzo trudna albo nieprzyjemna. Dobrze też żeby gra działała płynnie na docelowym sprzęcie - komputerze osobistym, konsoli czy urządzeniu mobilnym. 
 
 %Ważne, pameitaj że w poprzednim roku na techniki multimedialne robiłeś samasymulacje piłki - były to ponieka testy.
 
 \section{Gameplay}
 
-Najważniejszymi testami w przypadku gier są testy prowadzane przez użytkowników - w tym przypadku graczy. W celu przetestowania projektu został stworzony serwer na platformie Discord. Platforma ta pozwala na komunikację natychmiastową (zarówno tekstową jak i głosową) na licznych kanałach założonych przed administratora serwera. Na serwer została zaproszona grupa 20 osób której udostępnioną została najnowsza stabilna wersja gry. Dodatkowo zostały założone kanały tekstowe których celem było opisywanie błędów, dodawanie sugestii oraz ogólnie rozmowy o grze. Część błędów zgłoszonych do czasu powstania pracy została naprawiona, a część wciąż czeka na naprawę. Nie są to jednak rzeczy uniemożliwiające rozgrywkę dzięki czemu testerzy mogą dalej grać w grę i znajdować nowe błędy. Przeprowadzono również tzw. stress testy, czyli zachowanie aplikacji podczas dużego obciążenia. W przypadku gry, darmowy plan Photona pozwala na zaledwie 20 graczy, co wyznacza maksymalną ilość graczy grających na raz w grę w trybie online. W tym celu zostały założone też 3 dodatkowe kanały głosowe na serwerze Discord. Testerzy zebrali się 24 stycznia 2019 w godzinach wieczornych w celu przeprowadzenia tych właśnie testów. W ich wyniku zostało stwierdzone kilka nowych błędów podczas rozgrywki jednak sam system łączenia graczy w pary działał bardzo dobrze i nie udało się znaleźć żadnego błędu.
+Najważniejszymi testami w przypadku gier są testy prowadzane przez użytkowników - w tym przypadku graczy. W celu przetestowania projektu został stworzony serwer na platformie Discord. Platforma ta pozwala na komunikację natychmiastową (zarówno tekstową jak i głosową) na licznych kanałach założonych przed administratora serwera. Na serwer została zaproszona grupa 20 osób której udostępnioną została najnowsza stabilna wersja gry. Dodatkowo zostały założone kanały tekstowe których celem było opisywanie błędów, dodawanie sugestii oraz ogólnie rozmowy o grze. Część błędów zgłoszonych do czasu powstania pracy została naprawiona, a część wciąż czeka na naprawę. Nie są to jednak rzeczy uniemożliwiające rozgrywkę dzięki czemu testerzy mogą dalej grać w grę i znajdować nowe błędy. Przeprowadzono również tzw. stress testy, czyli zachowanie aplikacji podczas dużego obciążenia. W przypadku gry, darmowy plan Photona pozwala na zaledwie 20 graczy, co wyznacza maksymalną liczba graczy grających na raz w grę w trybie online. W tym celu zostały założone też 3 dodatkowe kanały głosowe na serwerze Discord. 15 testerów zebrało się 24 stycznia 2019 w godzinach wieczornych w celu przeprowadzenia tych właśnie testów. W ich wyniku zostało stwierdzone kilka nowych błędów podczas rozgrywki jednak sam system łączenia graczy w pary działał bardzo dobrze i nie udało się znaleźć żadnego błędu.
 
 \section{Wydajność}
-Wyżej wspomniani gracze korzystali z prywatnych komputerów i laptopów do testowania, w celu zbadania możliwych problemów z wydajnością. Do debugowania wydajności w grach bardzo często korzysta się z profilerów. Są to specjalne programy liczące czas wykonania każdej funkcji. Podczas testów żadnemu z testerów nie zdarzyły się problemy z wydajnością. na rysunkach poniżej zostały zamieszczone wyniki działania profilera podczas uruchomienia menu głównego (rysunek \ref{profiler_mainmenu}) oraz meczu (rysunek \ref{profiler_gameplay}). Tak jak jest to spodziewane gra działa bardzo płynnie. Nie jest ona skomplikowana obliczeniowo.
+Wspomniani gracze korzystali z prywatnych komputerów i laptopów do testowania, w celu zbadania możliwych problemów z wydajnością. Do debugowania wydajności w grach bardzo często korzysta się z profilerów. Są to specjalne programy liczące czas wykonania każdej funkcji. Podczas testów żadnemu z testerów nie zdarzyły się problemy z wydajnością. na rysunkach poniżej zostały zamieszczone wyniki działania profilera podczas uruchomienia menu głównego (rysunek \ref{profiler_mainmenu}) oraz meczu (rysunek \ref{profiler_gameplay}). Tak jak jest to spodziewane gra działa bardzo płynnie. Nie jest ona skomplikowana obliczeniowo.
 
 \begin{figure}[H]
 	\begin{center}
 \centering
 \includegraphics[width =\textwidth]{\ImgPath/rys/profiler_mainmenu.png}
 \end{center}
-	\caption{Okno profilera podczas działania gry w menu głównym}
+	\caption{Okno profilera podczas działania gry w menu głównym. Opracowanie własne.}
 	\label{profiler_mainmenu}
 \end{figure}
 
@@ -590,7 +592,7 @@ Wyżej wspomniani gracze korzystali z prywatnych komputerów i laptopów do test
 \centering
 \includegraphics[width = \textwidth]{\ImgPath/rys/profiler_gameplay.png}
 \end{center}
-	\caption{Okno profilera podczas działania gry w trakcie trwania meczu}
+	\caption{Okno profilera podczas działania gry w trakcie trwania meczu. Opracowanie własne.}
 	\label{profiler_gameplay}
 \end{figure}
 
