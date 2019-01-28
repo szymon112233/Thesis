@@ -598,6 +598,24 @@ Wyżej wspomniani gracze korzystali z prywatnych komputerów i laptopów do test
 % Podsumowanie i wnioski 
 %-----------------
 \chapter{Podsumowanie i wnioski }
+Opracowaną grę można uznać za kompletną i stabilną według założeń postawionych na początku niniejszej pracy. Proces tworzenia okazał się o wiele bardziej złożonym zagadnieniem. Implementacja w nowym środowisku pozwoliła na rozwiązanie wielu problemów które były związane z poprzednim środowiskiem, ale sprawiło też kilka nowych problemów których rozwiązanie zajęło dodatkowy czas. Największym wyzwaniem okazała się jednak implementacja trybu online mutliplayer. Sam kod rozgrywki nie wymagał dużych zmian, działa bowiem na zdarzeniach które bardzo łatwo przeniosły się do wersji sieciowej. O wiele gorszym aspektem tej części okazała się synchroniczna obiektów poruszających się dynamicznie. Gra liczy pozycje tych obiektów dokładnie 60 razy na sekundę. Żadna dostępna implementacja obsługi sieci nie jest w stanie wysłać i przetworzyć takiej ilości danych w takim czasie. Fakt tego że obliczone pozycje są pozycjami z przeszłości, dodaje problemowi skomplikowania. Dokładana replikacja tych obiektów okazało się niemożliwa, dlatego też istnieją nieznaczne błędy między obiema wersjami obiektów , jeżeli się ruszają. Ponadto, grze przydałoby się o wiele więcej testowania - opinia graczy jest bardzo przydatna przy tworzeniu ciekawej rozgrywki, a grze przydałoby się jeszcze małe zmiany w celu jej polepszenia.
+
+\section{Perspektywy rozwoju gry}
+
+Gra może być rozwinięta na bardzo wiele sposobów. Kluczem do ukończenia nowych wersji jest podjecie się modyfikacji które ulepszą obecny stan gry, a nie pogorszą jej odbiór przez gracza lub jej wydajność. W grze zdecydowanie zmienione zostać mogą następujące rzeczy:
+\begin{itemize}
+    \item Nowe warianty kolorystyczne piłek,
+    \item Nowe warianty kolorystyczne graczy,
+    \item Nowe plansze,
+    \item Ulepszenia w kodzie sieciowym,
+    \item Dodanie mechaniki Slam Dunków,
+    \item Zmiana interfejsu użytkownika sceny MultiplayerJoin,
+    \item Dodatnie nowych trybów rozgrywki,
+    \item Dodanie meczy dla więcej niż 2 osób.
+\end{itemize}
+Większość wymienionych rzeczy nie jest skomplikowana i może być dodana w mniej niż dzień. Inne zmiany stanowią bardziej zaawansowane zmiany w systemach gry i wymagają też nie tyle pracy programistycznej co dobrego zaprojektowania.
+
+Gra została też przygotowana wstępnie do kompilacji na nowe platformy. Dzięki temu bardzo możliwe w przyszłości jest stworzenie nowych wersji. Nowe systemy operacyjne takie jak Linux czy MacOS nie wymagają prawie żadnych nowych zmian. Żeby stworzyć wersję na popularne konsole do gier, wymagane jest więcej pracy ale nie będzie to wymagało przerobienia całej gry, a jedynie jej małych części.
 
 %minimum 2 strony w tym opis problemow programistycznych i ich rozwiazanie, perspektywy rozwoju gry itp
 
