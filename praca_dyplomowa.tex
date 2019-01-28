@@ -203,7 +203,7 @@ Do programowania rozgrywki oraz logiki gry użyto języka C\#. Nie jest on jedna
 \centering
 \includegraphics[scale=0.6]{\ImgPath/rys/mono_architecture_scripting.png}
 \end{center}
-	\caption{Architektura implementacji C\# jako język skryptowy w Mono}
+	\caption{Architektura implementacji C\# jako język skryptowy w Mono. (Żródło: \cite{mono_scrpiting})}
 	\label{mono_architecture_scripting}
 \end{figure}
 
@@ -219,7 +219,7 @@ Język C\# jest stworzonym dla Microsoft obiektowym językiem programowania. Kod
 \centering
 \includegraphics[scale=0.43]{\ImgPath/rys/CIL.png}
 \end{center}
-	\caption{Schemat pokazujący proces kompilacji języka wykorzystującego CIL}
+	\caption{Schemat pokazujący proces kompilacji języka wykorzystującego CIL. (Źródło: \cite{CLI_wiki})}
 	\label{CIL}
 \end{figure}
 
@@ -326,7 +326,7 @@ Gra została napisana od zera w środowisku Unity. W tym rozdziale znajduje się
 W wersji oryginalnej gra była atrakcyjna dla graczy, jednak z perspektywy czasu jej design może być poprawiony w wielu aspektach. Niektóre aspekty okazały się nietrafione a inne po prostu mogą być ulepszone o nowe pomysły. W obecnej wersji zostały wprowadzone następujące zmiany w stosunku do wersji pierwtonej:
 \begin{itemize}
     \item Dodanie trybu online multiplayer - W oryginalnej grze możliwa była tylko gra na jednym komputerze. Dlatego też niezbędna była obecność 2 graczy przy jednym urządzeniu. Dzięki wprowadzeniu takiego trybu, gracze nie muszą być teraz fizycznie w jednym miejscu. Nie muszą też współdzielić klawiatury.
-    \item Zmiana rozmiaru okna gry - Oryginalna gra jest wyświetlana w oknie o rozdzielczości 800x600. Jest to zdecydowanie przestarzała rozdzielczość nie mówiąc już o jej współczynniku proporcji - 4:3 dpi. Użytkownicy posiadają monitory o wile większych rozdzielczościach najczęściej w 16:9. Dlatego też gra zaczęła wspierać rozdzielczość 1920x1080 dpi  nazywaną czasami FullHD jako domyślną. Większość monitorów komputerów PC operuje na takiej rozdzielczości lub innych o takim samym współczynniku proporcji. Tak długo jak jest on zachowany okno gry skaluje się poprawnie i widoczne są wszystkie elementy gry.
+    \item Zmiana rozmiaru okna gry - Oryginalna gra jest wyświetlana w oknie o rozdzielczości 800 pikseli na 600 pikseli. Jest to zdecydowanie przestarzała rozdzielczość nie mówiąc już o jej współczynniku proporcji - 4:3. Użytkownicy posiadają monitory o wile większych rozdzielczościach najczęściej w 16:9. Dlatego też gra zaczęła wspierać rozdzielczość 1920 pikseli na 1080 pikseli nazywaną czasami FullHD jako domyślną. Większość monitorów komputerów PC operuje na takiej rozdzielczości lub innych o takim samym współczynniku proporcji. Tak długo jak jest on zachowany okno gry skaluje się poprawnie i widoczne są wszystkie elementy gry.
     \item Poprawa kamery - Kamera nie różni się bardzo od podstawowej wersji, jednak zostały wprowadzone małe usprawnienia. Śledzony jest teraz każdy gracz oraz piłka, zamiast tylko gracza z piłką lub samej piłki. Dzięki temu kluczowe elementy gry zawsze znajdują się w polu widzenia. Przed każdym graczem widoczna jest też konkretna przestrzeń, tak żeby kosze były widoczne. Dzięki takiemu rozwiązaniu możliwe jest też zobaczenie całej mapy na ekranie.  
     \item Zmiana systemu kolorowania graczy - W wersji oryginalnej warianty kolorystyczne graczy były realizowane poprzez podmianę spritów gracza. W takim rozwiązaniu dla każdego wariantu kolorystycznego musiał powstać zestaw wszystkich klatek animacji. W wersji obecnej zmiana koloru odbywa się w tzw. shaderze. Jest to część kodu wykonywana na karcie graficznej podczas rednerowania. Shader korzystając z maski zamienia kolory gracza w każdej animacji, przez co możliwe jest stworzenie niemalże nieskończonej liczby wariantów, bardzo tanim kosztem. Rozwiązanie te jest też dużo wydajniejsze pamięciowo - każdy nowy wariant nie wymaga tworzenia plików które ładowane są do pamięci.
     \item Zmiany zasad rozgrywki - W wersji oryginalnej wyrzucenie piłki poza plansze oznaczało restart pozycji graczy oraz piłki za każdym razem. W tej wersji piłka jest po prostu odrzucana ze strony z której wyleciała. Pozwala to zachować dynamikę gry i jest nieco humorystycznym akcentem w grze. Ponadto zdobycie punktów, po prostu resetuje pozycję graczy zamiast ustawiać ich w pozycji zależenie od tego kto zdobył punkt i jaki kosz został zaatakowany.
@@ -530,7 +530,7 @@ Tryb online multiplayer oznacza konieczność synchronizacji części stanu gry 
 \centering
 \includegraphics[width = 0.9\textwidth]{\ImgPath/rys/photon_cloud_structure.png}
 \end{center}
-	\caption{Struktura chmury Photon Cloud.}
+	\caption{Struktura chmury Photon Cloud. (Źródło: \cite{photn_doc_reg})}
 	\label{photon_cloud_structure}
 \end{figure}
 
@@ -556,11 +556,22 @@ Reszta stanu meczu synchronizowana jest poprzez zdarzenia sieciowe. Działają o
 \section{Przygotowanie gry pod nowe platformy}
 Zagadnienie tzw. portowania czyli przeniesienia gry na nową platformę, jest dość rozbudowane. Jak okazało się podczas procesu tworzenia gry, większość rzeczy jaki można zrobić to pisanie kodu który jest czysty, przejrzysty oraz łatwo skalowalny. Znacznie przyspiesza to ten proces i pozwala uniknąć błędów wynikających z niezrozumienia kodu. Wiele funkcjonalności które przynoszą zwykle problem podczas procesu przenoszenia nie zostało jeszcze zaimplementowanych lub po prostu nie jest planowane dodawanie ich. Można do nich zaliczyć takie elementy jak; system zapisów, tablice wyników czy osiągnięcia.
 
-Jednym z głównych narzędzi używanych podczas portowania jest abstrakcja. Dobrym przykładem użycia abstrakcji do ułatwienia procesu portowania jest skrypt GameInput. Korzysta on ze zmiennych implementacji Metod GetButton, GetButtonPressed, GetButtonReleased, GetAxis w klasie InputPlayer. Kod tej klasy można znaleźć w dodatku \ref{code_InputPLayer} Tworzone są klasy dziedziczące po  klasie InputPlayer i przeciążają jej metody. W ten sposób może być realizowana obsługa różnych urządzeń wejścia. W przypadku komputera metody te zwracają wartość true/false lub wartość typu float w przypadku ostatniej metody, zależnie od stanu klawiszy na klawiaturze komputera. Argumentami funkcji są wartości enumów GameButtons i GameAxis. Dzięki takiemu rozwianiu skrypt GameInput zawsze pyta o klawisz odpowiedzialny za jakąś akcje, a nie konkretny przycisk na klawiaturze. Za ustawienie przycisków odpowiedzialnych za akcje odpowiada klasa dziedzicząca po klasie InputPlayer. Posiada ona po prostu zestaw pól w których zapisywane są kody fizycznych guzików. Dzięki zastosowaniu takiego rozwiązania możliwa jest łatwa zmiana przycisków odpowiedzialnych za akcje na danym urządzeniu wejścia. na obecny moment wartości te są ustawiane podczas inicjalizacji gry, jednak w przyszłości możliwe będzie ich zmiana podczas uruchomienia aplikacji.
+Jednym z głównych narzędzi używanych podczas portowania jest abstrakcja. Dobrym przykładem użycia abstrakcji do ułatwienia procesu portowania jest skrypt GameInput. Korzysta on ze zmiennych implementacji Metod GetButton, GetButtonPressed, GetButtonReleased, GetAxis w klasie InputPlayer. Kod tej klasy można znaleźć w dodatku \ref{code_InputPLayer}. Tworzone są klasy dziedziczące po  klasie InputPlayer i przeciążają jej metody. W ten sposób może być realizowana obsługa różnych urządzeń wejścia. W przypadku komputera metody te zwracają wartość true/false lub wartość typu float w przypadku ostatniej metody, zależnie od stanu klawiszy na klawiaturze komputera. Argumentami funkcji są wartości enumów GameButtons i GameAxis. Dzięki takiemu rozwianiu skrypt GameInput zawsze pyta o klawisz odpowiedzialny za jakąś akcje, a nie konkretny przycisk na klawiaturze. Za ustawienie przycisków odpowiedzialnych za akcje odpowiada klasa dziedzicząca po klasie InputPlayer. Posiada ona po prostu zestaw pól w których zapisywane są kody fizycznych guzików. Na rysunku \ref{UML_Input} znajduje się diagram klas opisywanych zależności. Dzięki zastosowaniu takiego rozwiązania możliwa jest łatwa zmiana przycisków odpowiedzialnych za akcje na danym urządzeniu wejścia. na obecny moment wartości te są ustawiane podczas inicjalizacji gry, jednak w przyszłości możliwe będzie ich zmiana podczas uruchomienia aplikacji.
 
 Kolejnym ważnym aspektem podczas portowania jest wydajność na docelowym urządzeniu. Gra omawiania w niniejszej pracy nie jest wymagająca obliczeniowo. Największym problemem na konsolach o słabszych możliwościach może być jednak obliczanie fizyki oraz warstwa sieciowa. Jeżeli chodzi o fizykę - głównym powodem jej liczenia jest piłka. W menu głównym spadające piłki opierają się na fizyce, żeby spadać. Piłek jest dużo ale dzięki zastosowaniu tzw. object poolingu ich liczba jest kontrolowania a pojawienie się kolejnych piłek jest tylko kwestią aktywacji obiektu oraz zmiany jego położenia i prędkości. Object pooling polega na stworzeniu organicznej liczby obiektów danego typu oraz dezaktywacji ich. Kiedy w grze istnieje potrzeba stworzenia nowego obiektu, zamiast alokować pamięć, wykorzystany jest istniejący już w pamięci nieaktywny obiekt. Analogicznie zamiast usuwać obiekt którego już nie potrzebujemy jest on po prostu dezaktywowany. Jeżeli fizyka będzie liczyć się za długo na nowych platformach wystarczy zmniejszyć liczba piłek. Piłka używana podczas meczu nie jest zbyt skomplikowana. Jej Collider jest to po prostu kołem, czyli jeden z prostszych kształtów jeżeli chodzi o obliczanie kolizji.
 
 Aspekt sieciowy został szczegółowo opisany w rozdziale \ref{implementation_online}. Jeżeli chodzi o optymalizacje, ważna jest liczba danych przesyłanych między urządzeniami. Większość danych jest wysyłana poprzez pojedyncze zdarzenia sieciowe. Jest to np. informacja o zmianach ustawień meczu czy zdobyciu punktu. Liczba obiektów które muszą wysyłać dane w regularnych odstępach czasu jest ograniczona do minimum. Do tych obiektów zaliczana jest piłka oraz postacie graczy.
+
+
+\begin{figure}[b]
+	\begin{center}
+\centering
+\includegraphics[width =\textwidth]{\ImgPath/rys/UML.png}
+\end{center}
+	\caption{Diagram klas związany z obsługą wejść. Opracowanie własne.}
+	\label{UML_Input}
+\end{figure}
+
 
 %-----------------
 % Testowanie
@@ -624,10 +635,17 @@ Gra została też przygotowana wstępnie do kompilacji na nowe platformy. Dzięk
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Bibliografia}
 \bibitem{gamejolt_page}{Gra Turbo Slam Dunk Unleashed w serwise GameJolt. \url{https://gamejolt.com/games/turbo-slam-dunk-unleashed/123485} [dostęp 14 stycznia 2019]}
-\bibitem{unity_wiki} {Strona Wikipedi poświęcona Unity  \url{https://en.wikipedia.org/wiki/Unity_(game_engine)} [dostęp 17 stycznia 2019]}
-\bibitem{canalplus_gry} {Twórcy Światów - Dokument zrealizowany przez Canal + \url{https://www.canalplus.pl/discovery/tworcy-swiatow}}
-\bibitem{wiki_gameshistory} {Historia gier komputerowych na Wikipedi: \url{https://pl.wikipedia.org/wiki/Historia_gier_komputerowych} [dostęp 19 stycznia 2019]}
-\bibitem{about_mono} {Oficjalna strona Mono \url{https://www.mono-project.com/docs/about-mono/} [dostęp 20 stycznia 2019]}
+\bibitem{unity_wiki} {Strona Wikipedi poświęcona Unity.  \url{https://en.wikipedia.org/wiki/Unity_(game_engine)} [dostęp 17 stycznia 2019]}
+\bibitem{canalplus_gry} {Twórcy Światów - Dokument zrealizowany przez Canal +. \url{https://www.canalplus.pl/discovery/tworcy-swiatow}}
+\bibitem{wiki_gameshistory} {Strona Wikipedi poświęcona historii gier komputerowych. \url{https://pl.wikipedia.org/wiki/Historia_gier_komputerowych} [dostęp 19 stycznia 2019]}
+\bibitem{about_mono} {Oficjalna strona Mono. \url{https://www.mono-project.com/docs/about-mono/} [dostęp 20 stycznia 2019]}
+\bibitem{mono_wiki} {Strona Wikipedi poświęcona Mono. \url{https://en.wikipedia.org/wiki/Mono_(software)} [dostęp 17 stycznia 2019]}
+\bibitem{mono_scrpiting} {Dokumentacja Mono - skryptowanie. \url{https://www.mono-project.com/docs/advanced/embedding/scripting/} [dostęp 20 stycznia 2019]}
+\bibitem{CLI_wiki} {Strona Wikipedi poświęcona CLI. \url{https://en.wikipedia.org/wiki/Common_Language_Infrastructure} [dostęp 17 stycznia 2019]}
+\bibitem{photn_doc_reg} {Dokumentacja Photona - Regions. \url{https://doc.photonengine.com/en-us/realtime/current/connection-and-authentication/regions/} [dostęp 18 stycznia 2019]}
+\bibitem{game_engine_architecture} {Nystrom R. ,,Game Engine Architecture'', 2014}
+\bibitem{game_programming_paterns} {Gregory J. ,,Game Programming Paterns'', 2018}
+\bibitem{unity_blueprints} {Doran J. ,,Unity Game Development Blueprints'', Listopad 2014}
 
 \end{thebibliography}
 
