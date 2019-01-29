@@ -115,7 +115,7 @@ Ponadto, branża gier komputerowych nie różni się bardzo od branży filmowej 
 \section{Motywacja}
 Pierwotnie Gra Turbo Slam Dunk Unleashed została wykonana w środowisku Game Maker Studio. Środowisko dawało wystarczające możliwości jak na prostotę gry, jednak narzucało również dużo ograniczeń oraz komplikacji. Game Maker jest prostym narzędziem do tworzenia gier dwuwymiarowych. Struktura projektu, którą narzuca to środowisko, sprawia że stosunkowo trudno rozwijać w nim projekty o większej skali. Game Maker korzysta z języka skryptowego Game Maker Language (GML), który składnią przypomina C oraz Javascript. Skrypty są zwykle krótkimi plikami realizującymi proste zadania. Przez to, naturalnie wraz z wzrostem projektu robi się ich duża liczba, a wyszukiwanie konkretnych zmian staje się coraz trudniejsze. Z tych powodów pisanie warstwy sieciowej wprowadziłoby chaos w wystarczająco skomplikowanym już projekcie.  Ponadto wsparcie dla konsol, mimo swojego istnienia, jest znacznie ograniczone w stosunku do tego w Unity.
 
-Środowisko Unity pozwala pokonać wszystkie te problemy, dodając przy tym projektowi nowego potencjału dla rozwiązywania niektórych, zarówno algorytmicznych, jak i projektowych problemów w grze. Wsparcie samych twórców silnika jest stabilniejsze w przypadku Unity z prostego powodu - komercyjnych gier tworzonych za jego pomocą jest znacznie więcej. Najważniejszym powodem przepisania gry nie była sama technologia, co postęp doświadczenia twórcy. Finalna wersja gry powstała w 2016 roku. Po 3 latach praktyki umiejętności autora znacznie się poprawiły. Jego wiedza na temat środowiska Unity, a także języka C\# oraz programowania obiektowego powiększyła się. Projekt może zdecydowanie na tym skorzystać. 
+Środowisko Unity pozwala pokonać wszystkie te problemy i sprawia, że pozostałe problemy algorytmiczne, jak i projektowe mogą zostać łatwiej rozwiązane. Wsparcie samych twórców silnika jest stabilniejsze w przypadku Unity z prostego powodu - komercyjnych gier tworzonych za jego pomocą jest znacznie więcej. Najważniejszym powodem przepisania gry nie była sama technologia, lecz postęp doświadczenia twórcy. Finalna wersja gry powstała w 2016 roku. Po 3 latach praktyki, umiejętności autora znacznie się poprawiły. Jego wiedza na temat środowiska Unity, a także języka C\# oraz programowania obiektowego powiększyła się. Projekt może zdecydowanie na tym skorzystać. 
 
 \section{Założenia}
 Gry komputerowe nie mają jasno określonej granicy ukończenia projektu. Zawsze istnieje możliwość wprowadzenia zmian jakościowych. W takim projekcie ważne jest, żeby wyznaczyć jasne cele i wymagania, które doprowadzą do stworzenia skończonego produktu. Dlatego też zostały stworzone założenia, które musi spełniać gra, żeby uznać ją za kompletną:
@@ -123,7 +123,7 @@ Gry komputerowe nie mają jasno określonej granicy ukończenia projektu. Zawsze
 \begin{itemize}
     \item Przeniesienie gry w wersji podstawowej do środowiska Unity
     \begin{itemize}
-        \item Mecz 2 graczy na 1 komputerze,
+        \item Mecz pomiędzy 2 graczy na 1 komputerze,
         \item Rzucanie i zabieranie piłki, faule,
         \item Liczenie punktów, stan meczu,
         \item Wybór postaci, piłki, planszy oraz czasu meczu.
@@ -131,12 +131,12 @@ Gry komputerowe nie mają jasno określonej granicy ukończenia projektu. Zawsze
     
     \item Dodanie trybu online multiplayer
     \begin{itemize}
-        \item Mecz 2 graczy na 2 komputerach przez sieć,
-        \item Synchronizacja pozycji graczy oraz piłki,
-        \item Synchronizacja stanu meczu - punkty, faule, czas,
-        \item Synchronizacja wyboru ustawień meczu - wygląd graczy, piłki, mapa oraz czas meczu,
+        \item Mecz pomiędzy 2 graczy na 2 komputerach rozgrywany przez sieć,
+        \item Synchronizacja pozycji graczy oraz pozycji piłki,
+        \item Synchronizacja stanu meczu - punktów, fauli, czasu,
+        \item Synchronizacja wyboru ustawień meczu - wygląd graczy i piłki, mapa oraz czas meczu,
         \item Możliwość dołączenia do losowego gracza lub gry ze znajomym,
-        \item Obsługa błędów związana z problemami z połączeniem.
+        \item Obsługa błędów związanych z niską jakością połączenia internetowego
     \end{itemize}
     
     \item Przygotowanie gry do przeniesienia na nowe platformy
@@ -154,7 +154,9 @@ Gry komputerowe nie mają jasno określonej granicy ukończenia projektu. Zawsze
 \chapter{Opis Środowiska}
 W tym rozdziale znajduje się opis narzędzi, przy pomocy których został zrealizowany projekt gry.
 \section{Unity}
-Unity jest częściowo darmowym silnikiem do tworzenia gier, stworzonym w 2005 roku. Od tego czasu silnik był wielokrotnie modyfikowany i zostało opublikowane wiele nowych wersji. Obecnie najnowsza stabilna wersja oznaczona jest numerem 2018.3\cite{unity_wiki}. Silnikiem do gry nazywamy zestaw narzędzi, oraz sprawdzonych algorytmów, które często używane są do tworzenia gier. Pierwsza wersja Unity została stworzona przez 3 kolegów - Davida Helgason, Joachima Ante oraz Nicholasa Francisa w Danii. Unity posiada kilka typów licencji. Podstawowa z nich jest darmowa, jednak po przekroczeniu określonego przez Unity pułapu przychodów, należy kupić licencję wyższego poziomu. Płatne licencje nie dają tylko takiej możliwości, rozszerzają one nieco możliwości edytora a także zwiększają wsparcie twórców gier. W przypadku najdroższej wersji - Enterprise, użytkownicy silnika mają nawet dostęp do kodu źródłowego silnika.
+ Silnikiem, w kontekście gier, nazywany jest zestaw narzędzi oraz sprawdzonych algorytmów, które często używane są do tworzenia gier. Unity jest częściowo darmowym silnikiem, stworzonym w 2005 roku. Pierwsza jego wersja została stworzona przez 3 kolegów - Davida Helgasona, Joachima Ante'a oraz Nicholasa Francisa w Danii. Od tego czasu Unity było wielokrotnie modyfikowane i doczekało się publikacji wielu świetnych edycji. Obecnie najnowsza stabilna wersja oznaczona jest numerem 2018.3\cite{unity_wiki}. 
+
+Unity posiada kilka typów licencji. Podstawowa z nich jest darmowa, jednak po przekroczeniu określonego przez Unity pułapu przychodów, należy kupić licencję wyższego poziomu. Płatne licencje, prócz możliwości dalszego czerpania dochodu, rozszerzają nieco możliwości edytora, a także zapewniają twórcy wsparcie techniczne. W przypadku najdroższej wersji - Enterprise, użytkownicy silnika uzyskują dostęp do kodu źródłowego silnika.
 
 \begin{table}[h!]
 \centering
@@ -178,18 +180,20 @@ Enterprise & Nielimitowane & TAK & Indywidualnie \\
 	\label{unity_home}
 \end{figure}
 
-Na chwilę obecną silnik obsługuje 27 platform: iOS, Android, Tizen, Windows, Universal Windows Platform, macOS, Linux, WebGL, PlayStation 4, PlayStation Vita, Xbox One, Wii U, 3DS, Oculus Rift, Google Cardboard, SteamVR, PlayStation VR, Gear VR, Windows Mixed Reality, Daydream, Android TV, Samsung Smart TV, tvOS, Nintendo Switch, Fire OS, Facebook Gameroom, Apple's ARKit, Google's ARCore, and Vuforia. Jest to dość długa lista jak na silnik do tworzenia gier. Zwykle ograniczają się one do mniejszej liczby platform. Dlatego też gra stworzona w tym silniku ma bardzo duży potencjał do zaistnienia na większej ilości platform, a co za tym idzie - zyskanie nowych graczy. Samo przeniesienie między platformą jest reklamowane przez Unity jako bardzo prosta akcja - wystarczy jeden przycisk. W praktyce jednak zależy to bardzo od typu gry oraz tego jak wygląda architektura samej gry.
+Na chwilę obecną silnik obsługuje 27 platform: iOS, Android, Tizen, Windows, Universal Windows Platform, macOS, Linux, WebGL, PlayStation 4, PlayStation Vita, Xbox One, Wii U, 3DS, Oculus Rift, Google Cardboard, SteamVR, PlayStation VR, Gear VR, Windows Mixed Reality, Daydream, Android TV, Samsung Smart TV, tvOS, Nintendo Switch, Fire OS, Facebook Gameroom, Apple's ARKit, Google's ARCore oraz Vuforię. Jest to dość długa lista jak na silnik do tworzenia gier. Zwykle ograniczają się one do mniejszej liczby platform. Dlatego też gra stworzona w tym silniku ma bardzo duży potencjał do zaistnienia na większej ilości platform, a co za tym idzie - uzyskania nowych graczy. Samo przeniesienie między platformą jest reklamowane przez Unity jako bardzo prosta akcja - wystarczy jeden przycisk. W praktyce jednak zależy to bardzo od typu gry oraz tego jak wygląda architektura jej kodu.
 
-Silnik napisany jest w językach C, C++ oraz C\#. W pierwszych dwóch napisane są podstawy silnika takie jak renderowanie, logika czy obsługa wejść. Trzeci z tych języków został użyty do napisania warstwy wizualnej - GUI edytora oraz do stworzenia podstawowych komponentów. Może on być również używany przez twórców gier do tworzenia własnych komponentów lub rozszerzeń silnika.
-Podstawowym obiektem jest GameObject. Jest to reprezentacja dowolnego obiektu w świecie gry. Unity przyjmuje podejście komponentowe. Typ obiektu w grze jest definiowany przez zestaw komponentów podłączonych do GameObjectu. Komponenty są mniejszymi elementami, które realizują określone zdania. Do podstawowych typów komponentów można zaliczyć między innymi:
+Silnik napisany jest w językach C, C++ oraz C\#. W pierwszych dwóch napisane są podstawy silnika takie jak renderowanie, logika czy obsługa wejść. Trzeci został użyty do napisania warstwy wizualnej - GUI edytora oraz do stworzenia podstawowych komponentów. Może on być również używany przez twórców gier do tworzenia własnych komponentów lub rozszerzeń silnika.
+
+
+Unity przyjmuje podejście komponentowe. Podstawową  reprezentacja dowolnego obiektu w świecie gry jest GameObject, do którego podłączane są zestawy komponentów. Komponenty są mniejszymi elementami, które realizują określone zdania. Do ich podstawowych typów można zaliczyć między innymi:
 \begin{itemize}
     \item \textit{Transform} - Posiada go każdy GameObject, służy do określenia pozycji, rotacji oraz skali obiektu w przestrzeni trójwymiarowej sceny. Transformy tworzą hierarchię sceny podobną do drzewa. Dzięki temu można np. tworzyć skompilowane obiekty na scenie, a następnie poruszać je całe poprzez translację jednego, nadrzędnego transforma.
-    \item \textit{Camera} - Podstawa renderingu, wyświetla na danym ekranie część sceny, którą aktualnie obejmuje. Posiada 2 tryby projekcji - ortogonalną oraz perspektywiczną. Z zasady pierwszy typ wykorzystywany jest dla gier dwuwymiarowych, natomiast drugi dla trójwymiarowych.
+    \item \textit{Camera} - Podstawa renderingu, wyświetla na danym ekranie część sceny, którą aktualnie obejmuje. Posiada 2 tryby projekcji - ortogonalną oraz perspektywiczną. Z zasady pierwszy typ wykorzystywany jest w grach dwuwymiarowych, natomiast drugi w trójwymiarowych.
     \item \textit{Sprite Renderer} - Komponent odpowiedzialny za rysowanie dwuwymiarowych grafik - tzw. Sprite'ów. Posiada różne tryby rysowania, obroty w osiach X i Y, kolejność sortowania oraz możliwość przemnożenia kolorów obrazka przez jeden wybrany kolor.
     \item \textit{Box Collider 2D} - Komponent ten umożliwia rejestrowanie kolizji - fundamentalnej funkcjonalności gry. Kolizje występują kiedy dwa obiekty są w kontakcie, a także dostarczają szczegółowych informacji o tych kontaktach. Typ Box jest prostszym kształtem, istnieją też inne bardziej lub mniej skomplikowane kształty colliderów.
     \item \textit{Rigidbody 2D} - Podstawa symulacji fizyki dwuwymiarowej w Unity. Obiekt posiadający ten komponent musi również posiadać komponent typu Collider 2D, żeby móc odbierać informacje o kolizjach. Posiada zestaw zmiennych umożliwiających symulację fizyki: masa, pozycja, prędkość, prędkość kątowa oraz środek ciężkości. Ulega też grawitacji, jeżeli taka jest zdefiniowana na scenie.
     \item \textit{Animator} - Odpowiada za animacje niemalże dowolnej wartości obiektu. Poprzez animację można rozumieć zmianę wartości w czasie. Najczęściej służy do zmiany pozycji obiektów, ale można nim także zmieniać pojedyncze zmienne komponentów, takie jak kolor czy sprite. Animator jest realizowany w postaci maszyny stanów.
-    \item \textit{Canvas} - Podstawa interfejsu użytkownika. Definiuje przestrzeń, w której wyświetlane są jego elementy. Może być ona wyświetlana jako narzuta na okno gry, narzuta na konkretną kamerę, lub płaszczyzna w przestrzeni trójwymiarowej.
+    \item \textit{Canvas} - Podstawa interfejsu użytkownika. Definiuje przestrzeń, w której wyświetlane są jego elementy. Może być wyświetlana jako narzuta na okno gry, narzuta na konkretną kamerę, lub płaszczyzna w przestrzeni trójwymiarowej.
     \item \textit{Mono Behaviour} - Komponenty tego typu są skryptami w języku C\#. Można więc swobodnie je definiować i stworzyć w nich niemalże dowolną funkcjonalność. Więcej informacji o skryptowaniu znajduje się w sekcji ,,Język C\# oraz Mono''.
 \end{itemize}
 Opisane elementy są najczęściej wykorzystywane podczas tworzenia gry dwuwymiarowej. Istnieje szereg komponentów o funkcjonalności trójwymiarowej, ale jako że gra opisywana w tej pracy operuje tylko na dwóch wymiarach, zostały one pominięte.
@@ -209,7 +213,7 @@ Do programowania rozgrywki oraz logiki gry użyto języka C\#. Nie jest on jedna
 
 W przeszłości do podobnych celów wykorzystywało się języki skryptowe. Wiele silników posiadało własne mniej lub bardziej wydajne implementacje. Często jednak wielkość skryptów przekraczała możliwości interpretatora lub nawet silnika skryptowania, przez co możliwości były bardzo ograniczone. Mono używa różnych języków do różnych celów, a więc traktuje je jako narzędzia, które służą do rozwiązywania innych problemów.
 
-Podczas gdy ważna, krytyczna część aplikacji może być napisana w wydajnym niskopoziomowym języku jak C, częściami takimi jak interfejs użytkownika czy interakcje z użytkownikiem zajmuje się język wyższego poziomu, który nie jest tak samo wydajny, ale pozwala zmniejszyć liczbę wymaganych linijek kodu do zrealizowania konkretnego zadania. Kod napisany w takim języku jest zdecydowanie wolniejszy od kodu natywnego, ale w porównaniu z popularnymi językami skryptowymi takimi jak np. LUA jest zdecydowanie szybszy. Mono umożliwia bardzo proste wołanie metod w języku natywnym, przez co łatwo jest podzielić zadania na te, które powinny być napisane optymalnie, oraz na te, które nie wymagają aż takiej oszczędności. Wspierane jest wiele języków wyższego poziomu, do których należą miedzy innymi: C\#, Java, F\#, Python czy JavaScript.
+Podczas gdy ważna, krytyczna część aplikacji może być napisana w wydajnym niskopoziomowym języku jak C, częściami, takimi jak interfejs użytkownika czy interakcje z użytkownikiem, zajmuje się język wyższego poziomu, który nie jest tak samo wydajny, ale pozwala zmniejszyć liczbę wymaganych linijek kodu do zrealizowania konkretnego zadania. Kod napisany w takim języku jest zdecydowanie wolniejszy od kodu natywnego, ale w porównaniu z popularnymi językami skryptowymi takimi jak np. LUA jest zdecydowanie szybszy. Mono umożliwia bardzo proste wołanie metod w języku natywnym, przez co łatwo jest podzielić zadania na te, które powinny być napisane optymalnie, oraz na te, które nie wymagają aż takiej oszczędności. Wspierane jest wiele języków wyższego poziomu, do których należą miedzy innymi: C\#, Java, F\#, Python czy JavaScript.
 
 Język C\# jest stworzonym dla Microsoft obiektowym językiem programowania. Kod napisany w tym języku kompilowany jest do Common Intermediate Language (CIL), który jest z kolei wykonywany w środowisku uruchomieniowym  takim jak .Net czy właśnie Mono.  
 
@@ -226,7 +230,7 @@ Język C\# jest stworzonym dla Microsoft obiektowym językiem programowania. Kod
 Język ten jest silnie typowany, deklaratywny, imperatywny oraz funkcyjny. Powstał w około 2000 roku i został zaakceptowany jako standard przez ECMA (ECMA-334) oraz ISO (ISO/IEC 23270:2006). Posiada wiele przydatnych funkcji:
 \begin{itemize}
     \item Odśmiecanie pamięci - C\# automatycznie zarządza pamięcią poprzez liczenie referencji do obiektów. Jeżeli do danego obiektu nie prowadzi żadna referencja, jest on niszczony podczas przebiegu tzw. Garbage collectora.
-    \item Delegaty oraz Zdarzenia - bardzo wygodny sposób na kontrolowanie wykonywania kodu i uruchomienie go podczas zdarzeń. Jest to pewnym rozszerzeniem wskaźników, które możemy spotkać w językach niższego poziomu.
+    \item Delegaty oraz Zdarzenia - bardzo wygodny sposób na kontrolowanie wykonywania kodu i uruchomienie go podczas zdarzeń. Są rozszerzeniem wskaźników, które możemy spotkać w językach niższego poziomu.
     \item Refleksja i atrybuty klas - Podczas działania programu istnieje możliwość analizy jego struktury z poziomu tego kodu. Przydaje się chociażby podczas debugowania kodu czy innych zastosowaniach, które korzystają z nieznanej podczas kompilacji struktury kodu.
     \item Typy generyczne - mechanizm zbliżony do działania szablonów w C++. Pozwala na tworzenie całych klas operujących na danych o nieznanym typie, ale posiadającym konkretny zestaw funkcji.
 \end{itemize}
@@ -236,9 +240,9 @@ Do stworzenia kompletnej gry teoretycznie wystarczy sam silnik, jednak używanie
 
 \begin{itemize}
     \item Microsoft Visual Studio 2017 - środowisko programistyczne wspierające wiele języków. Możliwe jest doinstalowanie pakietu integracji z Unity. Poza edycją skryptów pozwala na debugowanie projektu poprzez wbudowany debugger.
-    \item Git - Darmowy i open soure'cowy program służący do kontroli wersji. Jest to program konsolowy. Bardzo przydaje się do śledzenia zmian, a także do łatwego tworzenia kopii zapasowej plików projektowych.
-    \item Git Extensions - Darmowy i open source'owy program do obsługi gita. Uzupełnia gita o graficzny interfejs, co ułatwia pracę przy dużych projektach. Zamyka też wiele skomplikowanych komend w przystępne guziki, co uprzyjemnia pracę z gitem.
-    \item Paint.Net - Darmowy i open sourcowy program do edycji grafiki. Napisany w języku C\# z wykorzystaniem frameworku .Net. Bardzo prosty w obsłudze program, dzięki któremu poprawki grafiki zostały wykonane szybko i precyzyjnie bez utraty jakości.
+    \item Git - Darmowy i open source'owy program służący do kontroli wersji. Jest to program konsolowy. Bardzo przydaje się do śledzenia zmian, a także do łatwego tworzenia kopii zapasowej plików projektowych.
+    \item Git Extensions - Darmowy i open source'owy program do obsługi gita. Uzupełnia go o graficzny interfejs, co ułatwia pracę przy dużych projektach. Zamyka też wiele skomplikowanych komend w przystępne guziki, co uprzyjemnia pracę z gitem.
+    \item Paint.Net - Darmowy i open source'owy program do edycji grafiki. Napisany w języku C\# z wykorzystaniem frameworku .Net. Bardzo prosty w obsłudze program, dzięki któremu poprawki grafiki zostały wykonane szybko i precyzyjnie bez utraty jakości.
     \item TexturePacker - Program do pakowania grafik w tzw. atlasy. Taki sposób przechowywania grafik umożliwia prostsze animowanie, jest wydajniejszy pamięciowo oraz pozwala ominąć kilka innych problemów związanych z importowaniem dużej ilości grafik do projektu z grą.
 \end{itemize}
 
@@ -323,12 +327,12 @@ Gra została napisana od zera w środowisku Unity. W tym rozdziale znajduje się
 
 \section{Zmiany w stosunku do oryginalnej wersji gry}
 
-W wersji oryginalnej gra była atrakcyjna dla graczy, jednak z perspektywy czasu jej design może być poprawiony w wielu aspektach. Niektóre aspekty okazały się nietrafione a inne po prostu mogą być ulepszone o nowe pomysły. W obecnej wersji zostały wprowadzone następujące zmiany w stosunku do wersji pierwtonej:
+W wersji oryginalnej gra była atrakcyjna dla graczy, jednak z perspektywy czasu jej design może być poprawiony w wielu aspektach. Niektóre aspekty okazały się nietrafione a inne po prostu mogą być ulepszone o nowe pomysły. W obecnej wersji zostały wprowadzone następujące zmiany w stosunku do wersji pierwotnej:
 \begin{itemize}
     \item Dodanie trybu online multiplayer - W oryginalnej grze możliwa była tylko gra na jednym komputerze. Dlatego też niezbędna była obecność 2 graczy przy jednym urządzeniu. Dzięki wprowadzeniu takiego trybu, gracze nie muszą być teraz fizycznie w jednym miejscu. Nie muszą też współdzielić klawiatury.
     \item Zmiana rozmiaru okna gry - Oryginalna gra jest wyświetlana w oknie o rozdzielczości 800 pikseli na 600 pikseli. Jest to zdecydowanie przestarzała rozdzielczość nie mówiąc już o jej współczynniku proporcji - 4:3. Użytkownicy posiadają monitory o wile większych rozdzielczościach najczęściej w 16:9. Dlatego też gra zaczęła wspierać rozdzielczość 1920 pikseli na 1080 pikseli nazywaną czasami FullHD jako domyślną. Większość monitorów komputerów PC operuje na takiej rozdzielczości lub innych o takim samym współczynniku proporcji. Tak długo jak jest on zachowany okno gry skaluje się poprawnie i widoczne są wszystkie elementy gry.
     \item Poprawa kamery - Kamera nie różni się bardzo od podstawowej wersji, jednak zostały wprowadzone małe usprawnienia. Śledzony jest teraz każdy gracz oraz piłka, zamiast tylko gracza z piłką lub samej piłki. Dzięki temu kluczowe elementy gry zawsze znajdują się w polu widzenia. Przed każdym graczem widoczna jest też konkretna przestrzeń, tak żeby kosze były widoczne. Dzięki takiemu rozwiązaniu możliwe jest też zobaczenie całej mapy na ekranie.  
-    \item Zmiana systemu kolorowania graczy - W wersji oryginalnej warianty kolorystyczne graczy były realizowane poprzez podmianę spritów gracza. W takim rozwiązaniu dla każdego wariantu kolorystycznego musiał powstać zestaw wszystkich klatek animacji. W wersji obecnej zmiana koloru odbywa się w tzw. shaderze. Jest to część kodu wykonywana na karcie graficznej podczas rednerowania. Shader korzystając z maski zamienia kolory gracza w każdej animacji, przez co możliwe jest stworzenie niemalże nieskończonej liczby wariantów, bardzo tanim kosztem. Rozwiązanie te jest też dużo wydajniejsze pamięciowo - każdy nowy wariant nie wymaga tworzenia plików które ładowane są do pamięci.
+    \item Zmiana systemu kolorowania graczy - W wersji oryginalnej warianty kolorystyczne graczy były realizowane poprzez podmianę spritów gracza. W takim rozwiązaniu dla każdego wariantu kolorystycznego musiał powstać zestaw wszystkich klatek animacji. W wersji obecnej zmiana koloru odbywa się w tzw. shaderze. Jest to część kodu wykonywana na karcie graficznej podczas renderowania. Shader korzystając z maski zamienia kolory gracza w każdej animacji, przez co możliwe jest stworzenie niemalże nieskończonej liczby wariantów, bardzo tanim kosztem. Rozwiązanie te jest też dużo wydajniejsze pamięciowo - każdy nowy wariant nie wymaga tworzenia plików które ładowane są do pamięci.
     \item Zmiany zasad rozgrywki - W wersji oryginalnej wyrzucenie piłki poza plansze oznaczało restart pozycji graczy oraz piłki za każdym razem. W tej wersji piłka jest po prostu odrzucana ze strony z której wyleciała. Pozwala to zachować dynamikę gry i jest nieco humorystycznym akcentem w grze. Ponadto zdobycie punktów, po prostu resetuje pozycję graczy zamiast ustawiać ich w pozycji zależenie od tego kto zdobył punkt i jaki kosz został zaatakowany.
     \item Usunięcie achievementów - W oryginalnej wersji nie ciszyły się zbytnią popularnością. Były też związane bezpośrednio z serwisem Gamejolt.org na którym nowa wersja nie będzie dostępna. Możliwe jednak że zostaną one dodane w przyszłości dla innych platform.
     \item Usunięcie znaczników pozycji - Z powodu zmian w kamerze, postacie zawsze widoczne są na ekranie. Nie ma więc potrzeby stosowania znaczników, tak jak było to zrobione w poprzedniej wersji gry.  
@@ -611,24 +615,24 @@ Wspomniani gracze korzystali z prywatnych komputerów i laptopów do testowania,
 % Podsumowanie i wnioski 
 %-----------------
 \chapter{Podsumowanie i wnioski }
-Opracowaną grę można uznać za kompletną i stabilną według założeń postawionych na początku niniejszej pracy. Proces tworzenia okazał się o wiele bardziej złożonym zagadnieniem. Implementacja w nowym środowisku pozwoliła na rozwiązanie wielu problemów które były związane z poprzednim środowiskiem, ale sprawiło też kilka nowych problemów których rozwiązanie zajęło dodatkowy czas. Największym wyzwaniem okazała się jednak implementacja trybu online mutliplayer. Sam kod rozgrywki nie wymagał dużych zmian, działa bowiem na zdarzeniach które bardzo łatwo przeniosły się do wersji sieciowej. O wiele gorszym aspektem tej części okazała się synchroniczna obiektów poruszających się dynamicznie. Gra liczy pozycje tych obiektów dokładnie 60 razy na sekundę. Żadna dostępna implementacja obsługi sieci nie jest w stanie wysłać i przetworzyć takiej ilości danych w takim czasie. Fakt tego że obliczone pozycje są pozycjami z przeszłości, dodaje problemowi skomplikowania. Dokładana replikacja tych obiektów okazało się niemożliwa, dlatego też istnieją nieznaczne błędy między obiema wersjami obiektów , jeżeli się ruszają. Ponadto, grze przydałoby się o wiele więcej testowania - opinia graczy jest bardzo przydatna przy tworzeniu ciekawej rozgrywki, a grze przydałoby się jeszcze małe zmiany w celu jej polepszenia.
+Opracowaną grę można uznać za kompletną i stabilną według założeń postawionych na początku niniejszej pracy. Proces tworzenia okazał się o wiele bardziej złożonym zagadnieniem niż pierwotnie zakładano. Implementacja w nowym środowisku pozwoliła na rozwiązanie wielu problemów które były związane z poprzednim środowiskiem, ale sprawiło też kilka nowych problemów których rozwiązanie zajęło dodatkowy czas. Największym wyzwaniem okazała się jednak implementacja trybu online mutliplayer. Sam kod rozgrywki nie wymagał dużych zmian, działa bowiem na zdarzeniach które bardzo łatwo przeniosły się do wersji sieciowej. O wiele gorszym aspektem tej części okazała się synchroniczna obiektów poruszających się dynamicznie. Gra liczy pozycje tych obiektów dokładnie 60 razy na sekundę. Żadna dostępna implementacja obsługi sieci nie jest w stanie wysłać i przetworzyć takiej ilości danych w takim czasie. Fakt tego że obliczone pozycje są pozycjami z przeszłości, dodaje problemowi skomplikowania. Dokładana replikacja tych obiektów okazało się niemożliwa, dlatego też istnieją nieznaczne błędy między obiema wersjami obiektów , jeżeli się ruszają. Ponadto, grze przydałoby się o wiele więcej testowania - opinia graczy jest bardzo przydatna przy tworzeniu ciekawej rozgrywki, a grze przydałoby się jeszcze małe zmiany w celu jej usprawnienia.
 
 \section{Perspektywy rozwoju gry}
 
-Gra może być rozwinięta na bardzo wiele sposobów. Kluczem do ukończenia nowych wersji jest podjecie się modyfikacji które ulepszą obecny stan gry, a nie pogorszą jej odbiór przez gracza lub jej wydajność. W grze zdecydowanie zmienione zostać mogą następujące rzeczy:
+Gra może być rozwinięta na bardzo wiele sposobów. Kluczem do ukończenia kolejnych wersji jest podjęcie się modyfikacji które ulepszą obecny stan gry, a nie pogorszą jej odbiór przez gracza lub jej wydajność. W grze zdecydowanie zmienione zostać mogą następujące elementy:
 \begin{itemize}
-    \item Nowe warianty kolorystyczne piłek,
-    \item Nowe warianty kolorystyczne graczy,
-    \item Nowe plansze,
-    \item Ulepszenia w kodzie sieciowym,
-    \item Dodanie mechaniki Slam Dunków,
-    \item Zmiana interfejsu użytkownika sceny MultiplayerJoin,
-    \item Dodatnie nowych trybów rozgrywki,
-    \item Dodanie meczy dla więcej niż 2 osób.
+    \item nowe warianty kolorystyczne piłek,
+    \item nowe warianty kolorystyczne graczy,
+    \item nowe plansze,
+    \item ulepszenia w kodzie sieciowym,
+    \item dodanie mechaniki Slam Dunków,
+    \item zmiana interfejsu użytkownika sceny MultiplayerJoin,
+    \item dodatnie nowych trybów rozgrywki,
+    \item dodanie meczy dla więcej niż 2 osób.
 \end{itemize}
-Większość wymienionych rzeczy nie jest skomplikowana i może być dodana w mniej niż dzień. Inne zmiany stanowią bardziej zaawansowane zmiany w systemach gry i wymagają też nie tyle pracy programistycznej co dobrego zaprojektowania.
+Większość wymienionych elementów nie jest skomplikowana i może być dodana w mniej niż jeden dzień. Inne zmiany stanowią bardziej zaawansowane modyfikacje w systemach gry i wymagają też nie tyle pracy programistycznej co dobrego zaprojektowania.
 
-Gra została też przygotowana wstępnie do kompilacji na nowe platformy. Dzięki temu bardzo możliwe w przyszłości jest stworzenie nowych wersji. Nowe systemy operacyjne takie jak Linux czy MacOS nie wymagają prawie żadnych nowych zmian. Żeby stworzyć wersję na popularne konsole do gier, wymagane jest więcej pracy ale nie będzie to wymagało przerobienia całej gry, a jedynie jej małych części.
+Gra została też przygotowana wstępnie do kompilacji na nowe platformy. Dzięki temu bardzo możliwe w przyszłości jest stworzenie nowych wersji. Nowe systemy operacyjne takie jak Linux czy MacOS nie wymagają prawie żadnych nowych zmian. Żeby opracować wersję na popularne konsole do gier, potrzebne jest więcej pracy ale nie będzie to wymagało przerobienia całej gry, a jedynie jej małych części.
 
 %minimum 2 strony w tym opis problemow programistycznych i ich rozwiazanie, perspektywy rozwoju gry itp
 
