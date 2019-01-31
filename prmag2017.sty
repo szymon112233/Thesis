@@ -55,7 +55,13 @@
  \if@twocolumn
  \twocolumn[\@maketitle]
  \else \newpage
- \global\@topnum\z@ \@maketitle \fi\thispagestyle{empty}\@thanks
+ \global\@topnum\z@ \@maketitle \fi\thispagestyle{empty}
+ \cleardoublepage
+ \includepdf[pages=-]{wydanie_tematu.pdf}
+ \cleardoublepage
+ \includepdf[pages=-]{oswiadczenie.pdf}
+ \cleardoublepage
+ \@thanks
  \endgroup
   \@streszczenia
 \cleardoublepage
@@ -140,7 +146,9 @@
 \long\def\@oswiadczenie{
 \cleardoublepage
 
-\includepdf[pages=-]{oswiadczenie.pdf}
+%\includepdf[pages=-]{wydanie_tematu.pdf}
+%\includepdf[pages=-]{oswiadczenie.pdf}
+
 \cleardoublepage
 \ps@plain
 }
